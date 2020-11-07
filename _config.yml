@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Tyler Porter"
+title                    : "Tyler Porter Analytics Portfolio"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Tyler Porter"
@@ -93,7 +93,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Tyler Porter Analytics Portfolio"
+  name             : "Tyler Porter"
   avatar           : "/assets/0.jfif"
   bio              : "A collection of my analytics work."
   location         : "Cedar Falls, IA"
