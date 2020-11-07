@@ -93,8 +93,8 @@ analytics:
 
 # Site Author
 author:
-  name             : "Tyler Porter"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  name             : "Tyler Porter Portfolio"
+  avatar           : ""/assets/0.jfif"
   bio              : "A collection of my analytics work."
   location         : "Cedar Falls, IA"
   email            : "tjporter@gmail.com"
