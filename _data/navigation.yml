@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "Home"
-    url: /
+    url: https://typo-19.github.io/
   - title: "About"
     url: /about/
   - title: "Machine Learning"
