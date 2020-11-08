@@ -1,4 +1,5 @@
 ---
+layout: archive
 title: "Machine Learning"
 permalink: /ml/
 author_profile: true
