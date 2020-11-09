@@ -31,4 +31,3 @@ author_profile: true
     {% include archive-single.html %}
   {% endfor %}
 {% endfor %}
---->
