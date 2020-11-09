@@ -19,7 +19,7 @@ The following part extracts all the tags from your posts and sort tags, so that 
 
 {% comment %}
 =======================
-The following part removes duplicated tags and invalid tags like blank tag.
+The following part removes dulpicated tags and invalid tags like blank tag.
 =======================
 {% endcomment %}
 {% assign tags = "" %}
@@ -34,42 +34,17 @@ The following part removes duplicated tags and invalid tags like blank tag.
 	{% endif %}
 {% endfor %}
 
-{% comment %}
-=======================
-The purpose of this snippet is to list all the tags you have in your site.
-=======================
-{% endcomment %}
-{% for tag in tags %}
-	<a href="#{{ tag | slugify }}"> {{ tag }} </a>
-{% endfor %}
 
 
-{% comment %}
-=======================
-The purpose of this snippet is to list all your posts posted with a certain tag.
-=======================
-{% endcomment %}
 {% for tag in tags %}
-	<h2 id="{{ tag | slugify }}">{{ tag }}</h2>
-	<ul>
-	 {% for post in site.posts %}
-		 {% if post.tags contains tag %}
-		 <li>
-		 <h3>
-		 <a href="{{ post.url }}">
-		 {{ post.title }}
-		 <small>{{ post.date | date_to_string }}</small>
-		 </a>
-		 {% for tag in post.tags %}
-			 <a class="tag" href="/blog/tag/#{{ tag | slugify }}">{{ tag }}</a>
-		 {% endfor %}
-		 </h3>
-		 </li>
-		 {% endif %}
-	 {% endfor %}
-	</ul>
+  {% assign posts = tags[forloop.index0] %}
+  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
+  {% for post in posts %}
+    {% include archive-single.html %}
+  {% endfor %}
 {% endfor %}
-<!---
+
+<!--
 <ul>
   {% for tag in group_names %}
     {% assign posts = group_items[forloop.index0] %}
@@ -86,6 +61,7 @@ The purpose of this snippet is to list all your posts posted with a certain tag.
     </li>
   {% endfor %}
 </ul>
+
 
 {% include group-by-array collection=site.posts field="tags" %}
 
