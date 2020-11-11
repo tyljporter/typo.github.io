@@ -19,7 +19,7 @@ The following part extracts all the tags from your posts and sort tags, so that 
 
 {% comment %}
 =======================
-The following part removes dulpicated tags and invalid tags like blank tag.
+The following part removes duplicated tags and invalid tags like blank tag.
 =======================
 {% endcomment %}
 {% assign tags = "" %}
@@ -34,7 +34,7 @@ The following part removes dulpicated tags and invalid tags like blank tag.
 	{% endif %}
 {% endfor %}
 
-
+<!--
 
 {% for tag in tags %}
   {% assign posts = tags[forloop.index0] %}
@@ -44,7 +44,7 @@ The following part removes dulpicated tags and invalid tags like blank tag.
   {% endfor %}
 {% endfor %}
 
-<!--
+
 <ul>
   {% for tag in group_names %}
     {% assign posts = group_items[forloop.index0] %}
