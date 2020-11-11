@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /tags/
+permalink: /topics/
 title: "Topics"
 author_profile: true
 ---
