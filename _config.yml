@@ -137,7 +137,6 @@ footer:
       icon: "fab fa-fw fa-bitbucket"
       # url:
     - label: "Surprise me"
-      icon: "fab fa-fw fa-instagram"
       url: "https://typo-19.github.io/404"
 
 
