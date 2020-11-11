@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 locale                   : "en-US"
 title                    : "Tyler Porter"
 title_separator          : "-"
-subtitle                 : "Data Enthusiast"
+subtitle                 : "A collection of Analytics"
 name                     : "Tyler Porter"
 description              : "Portfolio"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "Tyler Porter"
   avatar           : "/images/0.jfif"
-  bio              : "A collection of my analytics work."
+  bio              : "Data Enthusiast"
   location         : "Cedar Falls, IA"
   email            : "tjporter@gmail.com"
   links:
