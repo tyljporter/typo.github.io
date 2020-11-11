@@ -5,7 +5,8 @@ title: "Topics"
 author_profile: true
 ---
 
-Take a look around work that i've completed. You will see that it is sorted by topic and tools used!
+Take a look around work that i've completed.
+Each of my posts are sorted by topic as well as tools completed!
 
 {% comment %}
 =======================
