@@ -4,8 +4,8 @@ main:
     url: /
   - title: "About"
     url: /about/
-  - title: "Machine Learning"
-    url: /machine-learning/
+  - title: "Topics"
+    url: /topics/
 
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
