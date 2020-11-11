@@ -5,7 +5,7 @@ title: "Portfolio"
 author_profile: true
 ---
 
-Take a look around work that i've completed.  <br />
+Take a look around work that I've completed.  <br />
 Posts are sorted by topic as well as tools utilized!  <br />  <br />
 
 {% comment %}
