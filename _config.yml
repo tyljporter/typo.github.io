@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Tyler Porter"
-  avatar           : "/assets/0.jfif"
+  avatar           : "/images/0.jfif"
   bio              : "A collection of my analytics work."
   location         : "Cedar Falls, IA"
   email            : "tjporter@gmail.com"
@@ -129,16 +129,16 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/typo-19"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
     - label: "Bitbucket"
       icon: "fab fa-fw fa-bitbucket"
       # url:
-    - label: "Instagram"
+    - label: "Surprise me"
       icon: "fab fa-fw fa-instagram"
-      # url:
+      url: "https://typo-19.github.io/404"
 
 
 # Reading Files
