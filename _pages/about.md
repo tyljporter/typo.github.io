@@ -10,7 +10,7 @@ header:
 Thank you for visiting my portfolio site.
 
 I am currently pursuing a M.S. in Business Analytics remotely through the University of Iowa and am set to graduate in April.
-My current remote position with LIFT has allowed me to quickly turn around after class and apply what i've been learning, and I am fortunate enough to have a genuine interest in analytics; Doing cool stuff with data never ceases to amaze not only me, but those around me!
+My current remote position with LIFT has allowed me to quickly turn around after class and apply what I've been learning, and I am fortunate enough to have a genuine interest in analytics; Doing cool stuff with data never ceases to amaze not only me, but those around me!
 
 A few of my favorite things in the world:
 * Music [(Check out my last.fm!)](https://www.last.fm/user/Typo19)
