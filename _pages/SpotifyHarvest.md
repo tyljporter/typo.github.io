@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /SpotifyP1/
-title: "Spotify Data Collection"
+title: "Spotify Data Collection Script"
 author_profile: true
 ---
 ```python
