@@ -13,7 +13,7 @@ I am currently pursuing a M.S. in Business Analytics remotely through the Univer
 My current remote position with LIFT has allowed me to quickly turn around after class and apply what i've been learning, and I am fortunate enough to have a genuine interest in analytics; Doing cool stuff with data never ceases to amaze not only me, but those around me!
 
 A few of my favorite things in the world:
-* Music
+* Music [(Check out my last.fm!)](https://www.last.fm/user/Typo19)
 * Cars
 * Technology
 * Cooking
