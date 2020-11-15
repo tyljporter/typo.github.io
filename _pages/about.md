@@ -17,7 +17,7 @@ A few of my favorite things in the world:
 * Cars
 * Technology
 * Cooking
-* Beer [(Check out how many unique craft beers i've had!)](https://untappd.com/user/typo_19/beers)
+* Craft Beer [(Check out how many unique craft beers i've had!)](https://untappd.com/user/typo_19/beers)
 
 Have a look around and don't hesitate to reach out to me via any channel listed on the left. <br />
 (P.S.-I love working on cool projects with likeminded analysts!!)
