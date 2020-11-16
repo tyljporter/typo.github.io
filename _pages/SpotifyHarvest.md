@@ -17,9 +17,9 @@ import numpy as np
 
 ```python
 #Get token and authorize. Will prompt user to redirect URI on first run
-username = '1216929037'
-client_id ='aec85b8edcba466ea57b3fffb1bf1aac'
-client_secret = '3d02fadae4d64fb2af462b0f69cc1f92'
+username = 'REDACTED'
+client_id ='REDACTED'
+client_secret = 'REDACTED'
 redirect_uri = 'https://google.com/'
 scope = 'user-library-read'
 
