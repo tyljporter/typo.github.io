@@ -327,7 +327,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_1.png)
+![png](/images/SpotTrans/output_7_1.png)
 
 
 
@@ -339,7 +339,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_3.png)
+![png](/images/SpotTrans/output_7_3.png)
 
 
 
@@ -349,7 +349,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_5.png)
+![png](/images/SpotTrans/output_7_5.png)
 
 
 
@@ -361,7 +361,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_7.png)
+![png](/images/SpotTrans/output_7_7.png)
 
 
 
@@ -371,7 +371,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_9.png)
+![png](/images/SpotTrans/output_7_9.png)
 
 
 
@@ -383,7 +383,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_11.png)
+![png](/images/SpotTrans/output_7_11.png)
 
 
 
@@ -395,7 +395,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_13.png)
+![png](/images/SpotTrans/output_7_13.png)
 
 
 
@@ -407,7 +407,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_15.png)
+![png](/images/SpotTrans/output_7_15.png)
 
 
 
@@ -417,7 +417,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_17.png)
+![png](/images/SpotTrans/output_7_17.png)
 
 
 
@@ -427,7 +427,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_19.png)
+![png](/images/SpotTrans/output_7_19.png)
 
 
 
@@ -437,7 +437,7 @@ standtracks = skew_autotransform(tracks.copy(deep = True), include = numeric_col
 
 
 
-![png](output_7_21.png)
+![png](/images/SpotTrans/output_7_21.png)
 
 
 
@@ -604,7 +604,7 @@ plt.savefig('Starting.png')
 ```
 
 
-![png](output_10_0.png)
+![png](/images/SpotTrans/output_10_0.png)
 
 
 
@@ -617,7 +617,7 @@ plt.savefig('Standardized.png')
 ```
 
 
-![png](output_11_0.png)
+![png](/images/SpotTrans/output_11_0.png)
 
 
 
@@ -672,7 +672,7 @@ plt.savefig('processed.png')
 ```
 
 
-![png](output_14_0.png)
+![png](/images/SpotTrans/output_14_0.png)
 
 
 
