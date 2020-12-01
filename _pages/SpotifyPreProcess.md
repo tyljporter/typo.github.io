@@ -672,7 +672,7 @@ plt.savefig('processed.png')
 ```
 
 
-![png](/images/SpotTrans/output_14_0.png)
+![png](https://tyljporter.github.io/images/SpotTrans/output_14_0.png)
 
 
 
