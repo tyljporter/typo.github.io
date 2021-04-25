@@ -9,8 +9,11 @@ header:
 
 Thank you for visiting my portfolio site.
 
-I am currently pursuing a M.S. in Business Analytics remotely through the University of Iowa and am set to graduate in April.
-My current remote position with LIFT has allowed me to quickly turn around after class and apply what I've been learning, and I am fortunate enough to have a genuine interest in analytics; Doing cool stuff with data never ceases to amaze not only me, but those around me!
+As of April 2021, I am now a graduate of the University of Iowa Tippie College of Business with my MS in Business Analytics.
+
+Click here to see a list of classes I've completed during my education. I am currently in process moving all of my work completed to this site.
+
+Doing cool stuff with data never ceases to amaze not only me, but those around me!
 
 A few of my favorite things in the world:
 * Music [(Check out my last.fm!)](https://www.last.fm/user/Typo19)
@@ -18,8 +21,9 @@ A few of my favorite things in the world:
 * Technology
 * Cooking
 * Craft Beer [(Check out how many unique craft beers i've had!)](https://untappd.com/user/typo_19/beers)
+* Traveling (See the photo of my wife and I hiking in Phoenix!)
 
 Have a look around and don't hesitate to reach out to me via any channel listed on the left. <br />
-(P.S.-I love working on cool projects with likeminded analysts!!)
+(P.S.-I love working on cool projects with like-minded analysts!)
 
 ###### Tyler Porter
