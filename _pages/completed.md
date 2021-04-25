@@ -5,6 +5,7 @@ permalink: /transcript/
 
 ## Data Programming in R
 * Introduction to programming and analysis with R.
+
 Technology used: RStudio.
 * Completed the following objectives:
   * Design a step-by-step procedure for solving a problem and then code it using RStudio.
@@ -20,8 +21,8 @@ Technology used: RStudio.
   * Understanding and describing randomness.
   * Gathering data using sampling.
   * Establishing relationships between two or more sets of data using regression.
-  * Determining best decisions using optimization models.
-
+  * Determining best decisions using basic optimization models.
+* Completed group project that utilized home purchase data in the Des Moines, IA metro area to create a regression model to predict the purchase price of homes based on home features and age of the home.
 ## Advanced Analytics
 * A continuation of the above course, Advanced Analytics focused on a more in-depth treatment of quantitative techniques involved in data analysis and decision-making. Technology used: Excel and JMP.
 * Completed the following objectives:
