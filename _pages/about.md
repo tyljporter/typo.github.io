@@ -11,7 +11,7 @@ Thank you for visiting my portfolio site.
 
 As of April 2021, I am now a graduate of the University of Iowa Tippie College of Business with my MS in Business Analytics.
 
-Click here to see a list of classes I've completed during my education. I am currently in process moving all of my work completed to this site.
+Click [here](https://tyljporter.github.io/transcript/) to see a list of classes I've completed during my education. I am currently in process moving all of my work completed to this site.
 
 Doing cool stuff with data never ceases to amaze not only me, but those around me!
 
