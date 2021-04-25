@@ -5,8 +5,7 @@ permalink: /transcript/
 
 ## Data Programming in R
 * Introduction to programming and analysis with R.
-
-Technology used: RStudio.
+* Technology used: RStudio.
 * Completed the following objectives:
   * Design a step-by-step procedure for solving a problem and then code it using RStudio.
   * Use advanced R features to scrape information from websites.
@@ -14,7 +13,8 @@ Technology used: RStudio.
 * Completed group project centered around analysis of data collected from the Eastern Iowa Airport(CID). Project included data visualization utilizing ggplot2.
 
 ## Data and Decisions
-* Introduction of techniques of quantitative modeling, statistical analysis, and structured decision making. Technology used: Excel.
+* Introduction of techniques of quantitative modeling, statistical analysis, and structured decision making.
+* Technology used: Excel.
 * Completed the following objectives:
   * Displaying and analyzing data in Excel.
   * Systematic decision analysis.
@@ -23,8 +23,10 @@ Technology used: RStudio.
   * Establishing relationships between two or more sets of data using regression.
   * Determining best decisions using basic optimization models.
 * Completed group project that utilized home purchase data in the Des Moines, IA metro area to create a regression model to predict the purchase price of homes based on home features and age of the home.
+
 ## Advanced Analytics
-* A continuation of the above course, Advanced Analytics focused on a more in-depth treatment of quantitative techniques involved in data analysis and decision-making. Technology used: Excel and JMP.
+* A continuation of the above course, Advanced Analytics focused on a more in-depth treatment of quantitative techniques involved in data analysis and decision-making.
+* Technology used: Excel and JMP.
 * Completed the following objectives:
   * Optimization methods.
   * Advanced regression techniques.
@@ -32,7 +34,8 @@ Technology used: RStudio.
   * Data mining essentials.
 
 ## Data Management and Visual Analytics
-* Core concepts related to relational database design and management, extensive SQL techniques, and visual analytics to translate information or data received. Technology used: Oracle Database, Oracle SQL, Tableau
+* Core concepts related to relational database design and management, extensive SQL techniques, and visual analytics to translate information or data received.
+* Technology used: Oracle Database, Oracle SQL, Tableau
 * Completed the following objectives:
   * Conceptual data modeling and relational models (ERDs).
   * Data manipulation with SQL queries.
@@ -40,15 +43,18 @@ Technology used: RStudio.
   * Visual analytics using Tableau.
 
 ## Data Programming in Python
-* Introduction to programming and analysis with Python. Technology used: Project Jupyter.
+* Introduction to programming and analysis with Python.
+* Technology used: Project Jupyter.
 * Completed the following objectives:
   * Introduction to Python and Jupyter Notebooks.
   * Data Manipulation and Analysis with Pandas.
   * Data Visualization with matplotlib, seaborn, and plotly.
   * Machine learning with Scikit-Learn, NLTK, NumPy, and SciPy.
+* Completed group project that utilized user data output from Spotify to perform attribute analysis along with a classification model to predict whether or not a user would 'favorite' a particular song.
 
 ## Data Science
-* Basics of data science, particularly data mining, as applied to business problems. Processing of raw data into intelligent decisions and algorithms that are commonly used to build predictive models. Technology used: Orange Data Mining.
+* Basics of data science, particularly data mining, as applied to business problems. Processing of raw data into intelligent decisions and algorithms that are commonly used to build predictive models.
+* Technology used: Orange Data Mining.
 * Completed the following objectives:
   * Understand the knowledge discovery process.
   * Master the details of various supervised and unsupervised machine learning algorithms including, but now limited to: logistic regression, neural networks, support vector machines, random forests, k-Means, and hierarchical clustering.
@@ -57,25 +63,30 @@ Technology used: RStudio.
   * Gain practical experience in using a software package to preprocess data, build and evaluate models, and interpret the results.
 
 ## Social Analytics
-* Exploration of social network analysis using Python encompassing individuals and organizations and with their interactions with one-another. Technology used: Project Jupyter.
+* Exploration of social network analysis using Python encompassing individuals and organizations and with their interactions with one-another.
+* Technology used: Project Jupyter.
 * Completed the following objectives:
   * Introduction to Social Network Analysis.
-  * Social Network visualization with igraph and networkx.
-  * Social Network Analysis graph and ego metrics.
-  * Subgroup identification and analysis.
-  * Introduction to text mining utilizing NLP (part-of-speech tagging, entity recognition, sentiment analysis, topic modeling).
+  * Conduct Social Network Analysis including network metrics, identification of key influencers, subgroups, and network visualization.
+  * Perform basic text analysis, including tokenization, stemming, lemmatization.
+  * Conduct association mining, including topic modeling, word association analysis.
+  * Perform information extraction (named entity recognition, sentiment analysis, part-of-speech tagging)
+* Completed a group project that used customer service Twitter account interactions, collected through Twitter's API, to analyze the most common approach to customer service on Twitter from some of the biggest brands.
 
 ## Text Analytics
-* Introduction of concepts and techniques used in text analytics using the Python programming language. Technology used: Project Jupyter.
+* Introduction of concepts and techniques used in text analytics using the Python programming language.
+* Technology used: Project Jupyter.
 * Completed the following objectives:
   * Text processing.
   * Application of NLP techniques.
   * Keyword analysis and visualization.
   * Text classification, clustering, and topic modeling.
   * Collection of text data using web scraping and APIs.
+* Completed a group project that scraped a Bitcoin news site to collect over 5,000 articles in which sentences were extracted. A manual sentiment classification was completed, and a variety of machine learning models were evaluated to create a sentiment classifier. Cluster and topic analysis was then completed to understand the content covered on the site.
 
 ## Applied Optimization
-* Formulation and solution of mathematical optimization problems, with an emphasis on applications to business functional areas. Technology used: SAS Optimization.
+* Formulation and solution of mathematical optimization problems, with an emphasis on applications to business functional areas.
+* Technology used: SAS Optimization.
   * Linear programming.
   * Integer and mixed-integer programming.
   * Piecewise-linear optimization.
