@@ -1,3 +1,10 @@
+---
+layout: archive
+permalink: /BitcoinPart3/
+title: "Bitcoin Topic Modeling"
+author_profile: true
+---
+
 # Text Analytics | BAIS:6100
 # Team Project Part 3
 ### Cluster & Topic Analysis
@@ -7,7 +14,7 @@ Deliverables:
 1. CSV file
 2. Jupyter Notebook with code and output
 
-Instructor: Kang-Pyo Lee 
+Instructor: Kang-Pyo Lee
 
 Team: CryptoPredictors
 
@@ -27,14 +34,14 @@ from pandas import DataFrame
 
 #file directory
 import os
-   
+
 #text analytic packages
 import nltk
 import re
 from nltk.util import ngrams
 from textblob import TextBlob
 
-# importing random module 
+# importing random module
 import random
 ```
 
@@ -126,7 +133,7 @@ df.head()
 
 
 ```python
-#Change the article dates where they are non standard format - Troy 
+#Change the article dates where they are non standard format - Troy
 #Code is designed to handle file scraped on same day as acquired
 import datetime
 
@@ -267,8 +274,8 @@ df.info()  #4,498 articles
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 4498 entries, 0 to 4497
     Data columns (total 5 columns):
-     #   Column             Non-Null Count  Dtype 
-    ---  ------             --------------  ----- 
+     #   Column             Non-Null Count  Dtype
+    ---  ------             --------------  -----
      0   file_name          4498 non-null   object
      1   article_title      4498 non-null   object
      2   article_date_time  4498 non-null   object
@@ -281,7 +288,7 @@ df.info()  #4,498 articles
 
 ```python
 from nltk.corpus import stopwords
-import string 
+import string
 
 global_stopwords = stopwords.words("english")
 
@@ -936,7 +943,7 @@ from collections import Counter
 
 def get_counter(dataframe, stopwords=[]):
     counter = Counter()
-    
+
     for l in dataframe.tagged_words:
         word_set = set()
 
@@ -946,9 +953,9 @@ def get_counter(dataframe, stopwords=[]):
 
             if word not in stopwords:
                 word_set.add(word)
-            
+
         counter.update(word_set)
-        
+
     return counter
 ```
 
@@ -1129,7 +1136,7 @@ counter0.most_common(30)
 1) The largest cluster is '0' and the count is 3507. The theme is hard to decipher with a hodge podge of topics suggesting it may contain too many clusters.
 2) The second largest cluster is '1' and the count is 445. The theme is around electronic exhanges/trading.
 3) The third cluster is '2' and the count is 363. The theme is around institutions and banking.
-4) The smallest cluster is '3' and the count is 183. The theme is potentially the value of bitcoin. 
+4) The smallest cluster is '3' and the count is 183. The theme is potentially the value of bitcoin.
 
 
 ```python
@@ -1346,22 +1353,22 @@ def show_topics(model, feature_names, num_top_words):
         print("***Topic {}:".format(topic_idx))
         print(" + ".join(["{:.2f} * {}".format(topic_scores[i], feature_names[i]) for i in topic_scores.argsort()[::-1][:num_top_words]]))
         print()
-        
+
 show_topics(lda, vectorizer.get_feature_names(), 10)
 ```
 
     ***Topic 0:
     13.01 * mining + 11.60 * 000 + 9.98 * token + 9.86 * market + 9.76 * scam + 8.21 * exchange + 7.93 * prices + 7.32 * markets + 7.22 * video + 6.99 * miners
-    
+
     ***Topic 1:
     12.97 * market + 12.51 * price + 12.12 * digital + 11.21 * bank + 10.77 * fees + 10.48 * satoshi + 9.53 * buy + 9.34 * fund + 9.12 * government + 8.92 * markets
-    
+
     ***Topic 2:
     21.29 * exchange + 16.65 * gold + 16.30 * trading + 15.43 * futures + 14.68 * bank + 14.66 * court + 13.87 * indian + 13.59 * market + 13.24 * platform + 11.90 * launches
-    
+
     ***Topic 3:
     15.24 * banks + 15.00 * bank + 14.92 * exchanges + 11.77 * exchange + 11.63 * tax + 9.97 * services + 9.50 * rates + 8.87 * interest + 8.56 * year + 8.53 * launches
-    
+
 
 
 
@@ -1370,7 +1377,7 @@ from collections import Counter
 import networkx as nx
 from matplotlib import pyplot as plt
 ###################################################################################
-# The 'counter' object will have all the word count information. 
+# The 'counter' object will have all the word count information.
 # The 'co_counter' object will have all the co-occurrence count information.
 ###################################################################################
 counter = Counter()
@@ -1378,15 +1385,15 @@ co_counter = dict()
 
 for l in df.words:
     word_set = set()
-    
+
     for item in l:
         word = item.lower()
-        
+
         if word not in (global_stopwords + local_stopwords):
             word_set.add(word)
 
     counter.update(word_set)
-    
+
     ###################################################################################
     # Calculate co-occurrence count of two words and save it in 'co_counter'.
     # Co_counter is a dictionary of dictionaries.
@@ -1395,19 +1402,19 @@ for l in df.words:
     for word1 in words:
         if word1 not in co_counter:
             co_counter[word1] = dict()
-        
+
         for word2 in words:
             ######################################
             # Skip if the two words are the same.
             ######################################
             if word1 == word2:
                 continue
-            
+
             if word2 not in co_counter[word1]:
                 co_counter[word1][word2] = 1
             else:
                 co_counter[word1][word2] += 1
-                
+
 
 G = nx.Graph()
 nodes = [item[0] for item in counter.most_common(20)]
@@ -1427,21 +1434,21 @@ edge_weights = nx.get_edge_attributes(G, "weight").values()
 edge_weights = [item / 5 for item in edge_weights]
 
 plt.figure(figsize=(10, 10))
-nx.draw_networkx(G, pos=nx.circular_layout(G), 
+nx.draw_networkx(G, pos=nx.circular_layout(G),
                  nodelist=nodes, node_size=node_weights, edgelist=edges, width=edge_weights,
                  node_color="yellow", with_labels=True, font_size=10)
 plt.draw()
 ```
 
 
-    
+
 ![png](output_38_0.png)
-    
+
 
 
 SUMMARY:
-1) There seems to be a resonable corelation between the clusters and the topic analysis when they both are set to 4.<br> 
+1) There seems to be a resonable corelation between the clusters and the topic analysis when they both are set to 4.<br>
 <br>
 2) The weighted words in each of the topics are aligned with what we observed through the cluster analysis.<br>
 <br>
-3) Another interesting observation was the comparison between bitcoin and gold in cluster=2/topic=2. Random analysis of our sentences revealed that there was a discussion around the limited quantity of both bitcoin and gold. In both cases, their value is supported, in part, by scarcity. Gold is limited by physical supply and the difficulty of extraction, while bitcoin creation is capped at 21 million by its source code. These qualities, as well as the deep liquid markets, mean that both gold and bitcoin have the potential to retain value, and in fact appreciate, during difficult economic cycles. 
+3) Another interesting observation was the comparison between bitcoin and gold in cluster=2/topic=2. Random analysis of our sentences revealed that there was a discussion around the limited quantity of both bitcoin and gold. In both cases, their value is supported, in part, by scarcity. Gold is limited by physical supply and the difficulty of extraction, while bitcoin creation is capped at 21 million by its source code. These qualities, as well as the deep liquid markets, mean that both gold and bitcoin have the potential to retain value, and in fact appreciate, during difficult economic cycles.

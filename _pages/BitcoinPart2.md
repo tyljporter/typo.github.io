@@ -1,3 +1,10 @@
+---
+layout: archive
+permalink: /BitcoinPart2/
+title: "Bitcoin Sentiment Classifier"
+author_profile: true
+---
+
 # Text Analytics | BAIS:6100
 # Team Project Part 2
 ### Sentiment Classifier
@@ -7,7 +14,7 @@ Deliverables:
 1. CSV file
 2. Jupyter Notebook with code and output
 
-Instructor: Kang-Pyo Lee 
+Instructor: Kang-Pyo Lee
 
 Team: CryptoPredictors
 
@@ -27,14 +34,14 @@ from pandas import DataFrame
 
 #file directory
 import os
-   
+
 #text analytic packages
 import nltk
 import re
 from nltk.util import ngrams
 from textblob import TextBlob
 
-# importing random module 
+# importing random module
 import random
 ```
 
@@ -87,7 +94,7 @@ df.article_date_time
 
 
 ```python
-#Change the article dates where they are non standard format - Troy 
+#Change the article dates where they are non standard format - Troy
 #Code is designed to handle file scraped on same day as acquired
 import datetime
 
@@ -1441,9 +1448,9 @@ dfSent.to_csv("RandomSentences/Sentences2.csv",sep='\t')
 ## Rating guidance for sentence sentiment classification
 
 Multiple sentiments ->  Add all positive, negative and neutral adjectives, adverbs. The category with the most will be the overall classification. https://monkeylearn.com/sentiment-analysis/
-    
+
 Sarcasm -> Classify as positive statements. Sarcasm contains positive words about a negative situation. Determining negative situations is beyond the scope of this assignment. https://www.aclweb.org/anthology/D13-1066.pdf
-    
+
 No clear sentiment -> neutral
 
 
@@ -1661,12 +1668,12 @@ from sklearn.metrics import classification_report, confusion_matrix
 def train_test(X_train, X_test, y_train, y_test, classifier):
     classifier.fit(X_train, y_train)
     pred = classifier.predict(X_test)
-    
+
     print("Train score: {:.2f}".format(classifier.score(X_train, y_train)))
     print("Test score: {:.2f}\n".format(classifier.score(X_test, y_test)))
     print("Classification report:\n{}".format(classification_report(y_test, pred, zero_division=0)))
     print(confusion_matrix(y_test,pred))
-    
+
     return classifier
 ```
 
@@ -1675,7 +1682,7 @@ def train_test(X_train, X_test, y_train, y_test, classifier):
 
 ```python
 #KNN model
-from sklearn.neighbors import KNeighborsClassifier 
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import cross_val_score
 
 
@@ -1684,11 +1691,11 @@ for param in [1, 3, 5, 7, 9, 11]:
     model = KNeighborsClassifier(n_neighbors=param)
     scores = cross_val_score(model, X_train, y_train, cv=10)
     print("k = {}: {}\n{:.3f}, {:.3f}\n".format(param, scores, scores.mean(), scores.std()))
-    
+
     if scores.mean() > score_max:
         score_max = scores.mean()
         param_best = param         
-        
+
 print("Highest score : {:.3f} when k = {}".format(score_max, param_best))
 
 print("k = {}".format(param_best))
@@ -1700,43 +1707,43 @@ summary["KNN"] = round(knn.score(X_test, y_test), 3)
     k = 1: [0.35625 0.34375 0.3375  0.34375 0.35    0.34375 0.3375  0.3375  0.325
      0.35   ]
     0.343, 0.008
-    
+
     k = 3: [0.34375 0.34375 0.34375 0.34375 0.3375  0.3375  0.34375 0.34375 0.33125
      0.35   ]
     0.342, 0.005
-    
+
     k = 5: [0.375   0.35    0.3375  0.3375  0.3375  0.35625 0.34375 0.3375  0.375
      0.35   ]
     0.350, 0.014
-    
+
     k = 7: [0.40625 0.3625  0.33125 0.3875  0.35625 0.44375 0.375   0.3625  0.39375
      0.35   ]
     0.377, 0.031
-    
+
     k = 9: [0.44375 0.3625  0.35    0.3875  0.4125  0.41875 0.40625 0.39375 0.43125
      0.3625 ]
     0.397, 0.030
-    
+
     k = 11: [0.475   0.3625  0.3375  0.3875  0.40625 0.375   0.4     0.4     0.38125
      0.34375]
     0.387, 0.037
-    
+
     Highest score : 0.397 when k = 9
     k = 9
     Train score: 0.46
     Test score: 0.42
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.50      0.13      0.21        99
          neutral       0.40      0.90      0.56       156
         positive       0.61      0.10      0.17       145
-    
+
         accuracy                           0.42       400
        macro avg       0.50      0.38      0.31       400
     weighted avg       0.50      0.42      0.33       400
-    
+
     [[ 13  85   1]
      [  7 141   8]
      [  6 125  14]]
@@ -1764,18 +1771,18 @@ summary["Logistic Regression"] = round(lr.score(X_test, y_test), 3)
 
     Train score: 0.97
     Test score: 0.53
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.55      0.42      0.48        99
          neutral       0.55      0.47      0.51       156
         positive       0.50      0.66      0.57       145
-    
+
         accuracy                           0.53       400
        macro avg       0.53      0.52      0.52       400
     weighted avg       0.53      0.53      0.52       400
-    
+
     [[42 25 32]
      [19 73 64]
      [16 34 95]]
@@ -1802,18 +1809,18 @@ summary["Multinomial Naive Bayes"] = round(mnb.score(X_test, y_test), 3)
 
     Train score: 0.92
     Test score: 0.52
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.67      0.22      0.33        99
          neutral       0.60      0.42      0.50       156
         positive       0.46      0.82      0.59       145
-    
+
         accuracy                           0.52       400
        macro avg       0.58      0.49      0.47       400
     weighted avg       0.57      0.52      0.49       400
-    
+
     [[ 22  22  55]
      [  7  66  83]
      [  4  22 119]]
@@ -1839,52 +1846,52 @@ for param in [0.01, 0.03, 0.1, 0.3, 1, 3, 10]:
     model = LinearSVC(C=param)
     scores = cross_val_score(model, X_train, y_train, cv=5)
     print("C = {}: {}\n{:.3f}, {:.3f}\n".format(param, scores, scores.mean(), scores.std()))
-    
+
     if scores.mean() > score_max:
         score_max = scores.mean()
         param_best = param
-        
+
 print("Highest score : {:.3f} when C = {}".format(score_max, param_best))
 ```
 
     Train score: 1.00
     Test score: 0.52
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.43      0.44      0.44        99
          neutral       0.57      0.53      0.54       156
         positive       0.54      0.57      0.55       145
-    
+
         accuracy                           0.52       400
        macro avg       0.51      0.51      0.51       400
     weighted avg       0.52      0.52      0.52       400
-    
+
     [[44 27 28]
      [31 82 43]
      [27 36 82]]
     C = 0.01: [0.40625  0.390625 0.41875  0.409375 0.440625]
     0.413, 0.016
-    
+
     C = 0.03: [0.440625 0.39375  0.45     0.425    0.446875]
     0.431, 0.021
-    
+
     C = 0.1: [0.4625   0.453125 0.496875 0.490625 0.4875  ]
     0.478, 0.017
-    
+
     C = 0.3: [0.478125 0.484375 0.48125  0.49375  0.515625]
     0.491, 0.014
-    
+
     C = 1: [0.471875 0.465625 0.4875   0.496875 0.496875]
     0.484, 0.013
-    
+
     C = 3: [0.45625  0.45     0.484375 0.4875   0.490625]
     0.474, 0.017
-    
+
     C = 10: [0.4375   0.453125 0.471875 0.490625 0.490625]
     0.469, 0.021
-    
+
     Highest score : 0.491 when C = 0.3
 
 
@@ -1898,18 +1905,18 @@ svm = train_test(X_train, X_test, y_train, y_test, svm)
     C = 0.3
     Train score: 0.98
     Test score: 0.53
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.47      0.45      0.46        99
          neutral       0.56      0.49      0.52       156
         positive       0.53      0.62      0.57       145
-    
+
         accuracy                           0.53       400
        macro avg       0.52      0.52      0.52       400
     weighted avg       0.53      0.53      0.53       400
-    
+
     [[45 27 27]
      [27 76 53]
      [23 32 90]]
@@ -1940,52 +1947,52 @@ for param in [0.01, 0.03, 0.1, 0.3, 1, 3, 10]:
     model = SVC(C=param, kernel="rbf", gamma="scale")
     scores = cross_val_score(model, X_train, y_train, cv=5)
     print("C = {}: {}\n{:.3f}, {:.3f}\n".format(param, scores, scores.mean(), scores.std()))
-    
+
     if scores.mean() > score_max:
         score_max = scores.mean()
         param_best = param
-        
+
 print("Highest score : {:.3f} when C = {}".format(score_max, param_best))
 ```
 
     Train score: 1.00
     Test score: 0.51
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.63      0.24      0.35        99
          neutral       0.73      0.34      0.46       156
         positive       0.44      0.88      0.59       145
-    
+
         accuracy                           0.51       400
        macro avg       0.60      0.49      0.47       400
     weighted avg       0.60      0.51      0.48       400
-    
+
     [[ 24  10  65]
      [  7  53  96]
      [  7  10 128]]
     C = 0.01: [0.375    0.375    0.375    0.371875 0.375   ]
     0.374, 0.001
-    
+
     C = 0.03: [0.375    0.375    0.375    0.371875 0.375   ]
     0.374, 0.001
-    
+
     C = 0.1: [0.375    0.375    0.375    0.371875 0.375   ]
     0.374, 0.001
-    
+
     C = 0.3: [0.38125  0.38125  0.38125  0.378125 0.378125]
     0.380, 0.002
-    
+
     C = 1: [0.44375  0.415625 0.45625  0.440625 0.45    ]
     0.441, 0.014
-    
+
     C = 3: [0.478125 0.46875  0.50625  0.51875  0.4875  ]
     0.492, 0.018
-    
+
     C = 10: [0.484375 0.46875  0.50625  0.521875 0.484375]
     0.493, 0.019
-    
+
     Highest score : 0.493 when C = 10
 
 
@@ -1999,18 +2006,18 @@ ksvm = train_test(X_train, X_test, y_train, y_test, ksvm)
     C = 10
     Train score: 1.00
     Test score: 0.50
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.46      0.40      0.43        99
          neutral       0.57      0.44      0.49       156
         positive       0.48      0.64      0.55       145
-    
+
         accuracy                           0.50       400
        macro avg       0.50      0.49      0.49       400
     weighted avg       0.51      0.50      0.50       400
-    
+
     [[40 24 35]
      [23 68 65]
      [24 28 93]]
@@ -2041,11 +2048,11 @@ for param in [10, 30, 100]:
     model = MLPClassifier(hidden_layer_sizes=(param, ), activation="relu", random_state=0)
     scores = cross_val_score(model, X_train, y_train, cv=10)
     print("hidden_layer_size = {}: {}\n{:.3f}, {:.3f}\n".format(param, scores, scores.mean(), scores.std()))
-    
+
     if scores.mean() > score_max:
         score_max = scores.mean()
         param_best = param
-        
+
 print("Highest score : {:.3f} when hidden_layer_sizes = {}".format(score_max, param_best))
 ```
 
@@ -2055,18 +2062,18 @@ print("Highest score : {:.3f} when hidden_layer_sizes = {}".format(score_max, pa
 
     Train score: 1.00
     Test score: 0.50
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.42      0.35      0.38        99
          neutral       0.52      0.54      0.53       156
         positive       0.53      0.56      0.54       145
-    
+
         accuracy                           0.50       400
        macro avg       0.49      0.49      0.49       400
     weighted avg       0.50      0.50      0.50       400
-    
+
     [[35 36 28]
      [27 85 44]
      [21 43 81]]
@@ -2097,15 +2104,15 @@ print("Highest score : {:.3f} when hidden_layer_sizes = {}".format(score_max, pa
     hidden_layer_size = 10: [0.4875  0.3875  0.425   0.5     0.475   0.50625 0.49375 0.51875 0.46875
      0.4375 ]
     0.470, 0.039
-    
+
     hidden_layer_size = 30: [0.475   0.41875 0.425   0.4625  0.48125 0.49375 0.4875  0.51875 0.4625
      0.44375]
     0.467, 0.030
-    
+
     hidden_layer_size = 100: [0.4625  0.3875  0.43125 0.4875  0.50625 0.49375 0.4875  0.51875 0.45
      0.45   ]
     0.468, 0.037
-    
+
     Highest score : 0.470 when hidden_layer_sizes = 10
 
 
@@ -2119,18 +2126,18 @@ mlp = train_test(X_train, X_test, y_train, y_test, mlp)
     hidden_layer_size = 10
     Train score: 1.00
     Test score: 0.50
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.42      0.35      0.38        99
          neutral       0.52      0.54      0.53       156
         positive       0.53      0.56      0.54       145
-    
+
         accuracy                           0.50       400
        macro avg       0.49      0.49      0.49       400
     weighted avg       0.50      0.50      0.50       400
-    
+
     [[35 36 28]
      [27 85 44]
      [21 43 81]]
@@ -2166,18 +2173,18 @@ clf = train_test(X_train, X_test, y_train, y_test, clf)
 
     Train score: 1.00
     Test score: 0.50
-    
+
     Classification report:
                   precision    recall  f1-score   support
-    
+
         negative       0.60      0.21      0.31        99
          neutral       0.46      0.69      0.56       156
         positive       0.55      0.50      0.52       145
-    
+
         accuracy                           0.50       400
        macro avg       0.54      0.47      0.46       400
     weighted avg       0.53      0.50      0.48       400
-    
+
     [[ 21  62  16]
      [  4 108  44]
      [ 10  63  72]]

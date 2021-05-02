@@ -1,3 +1,9 @@
+---
+layout: archive
+permalink: /BitcoinPart1/
+title: "Bitcoin Site Scraping"
+author_profile: true
+---
 # Text Analytics | BAIS:6100
 # Team Project Part 1
 ### Scraping Bitcoin Articles
@@ -8,7 +14,7 @@ Deliverables:
 2. CSV file
 3. Jupyter Notebook with code and output
 
-Instructor: Kang-Pyo Lee 
+Instructor: Kang-Pyo Lee
 
 Team: CryptoPredictors
 
@@ -42,7 +48,7 @@ import re
 from nltk.util import ngrams
 from textblob import TextBlob
 
-# importing random module 
+# importing random module
 import random
 
 #Import image package
@@ -61,9 +67,9 @@ Image("BitcoinWebsiteImage.png")
 
 
 
-    
+
 ![png](output_6_0.png)
-    
+
 
 
 
@@ -75,9 +81,9 @@ Image("rolling.jpeg")
 
 
 
-    
+
 ![jpeg](output_7_0.jpg)
-    
+
 
 
 
@@ -632,47 +638,47 @@ if not os.path.isdir(path):
 
 for url in urls:
     print(url)
-    
+
     ####################################################
     # Get the content of a page
     ####################################################
     r = requests.get(url)
     soup = BeautifulSoup(r.content, "html.parser")
-    
+
     ####################################################
     # Get the list of articles
     ####################################################
     h_list = soup.find_all(name="div", attrs={"class": "story story--medium"})
-    
+
     for h in h_list:
         ####################################################
         # Find the anchor tag
         ####################################################
         a = h.find("a")
         b = h.find("h6")
-        
+
         ####################################################
         # Extract the title & URL of an article
         ####################################################
         title = b.text
         article_url = a["href"]
-        
+
         ####################################################
         # Fetch the content and save it as an HTML file
         ####################################################
         r2 = requests.get(article_url)
-                
+
         file_name = article_url[len("https://news.bitcoin.com/"):-1] + ".html"
         with open(path + file_name, "w+b") as fw:
             fw.write(r2.content)
-        
+
         print("- " + file_name + " saved.")
-        
+
         ####################################################
         # Sleep for a second to not overload the web site
         ####################################################
         time.sleep(1)
-    
+
     print()
 ```
 
@@ -694,7 +700,7 @@ for url in urls:
     - hut-8-purchases-30m-worth-of-nvidias-gpu-miners-looks-to-push-capacity-to-1600-gigahash.html saved.
     - crypto-markets-rebound-bitcoin-price-consolidates-btc-dominance-levels-sink.html saved.
     - dmg-and-argo-to-launch-a-clean-energy-focused-bitcoin-mining-pool.html saved.
-    
+
     https://news.bitcoin.com/page/2/
     - italian-copyright-agency-selects-algorand-to-create-over-four-million-nfts-to-represent-author-rights.html saved.
     - bitcoin-cash-powered-onlycoins-aims-to-compete-with-the-popular-content-platform-onlyfans.html saved.
@@ -705,7 +711,7 @@ for url in urls:
     - over-6b-in-bitcoin-options-set-to-expire-today-april-contracts-show-bets-for-80k-per-btc.html saved.
     - bank-of-international-settlements-chief-says-cryptocurrencies-being-used-to-evade-laws-advocates-for-more-regulation.html saved.
     - rbi-governor-government-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/3/
     - study-finds-cryptocurrency-scams-surged-40-in-2020-forecasts-an-increase-of-75-in-2021.html saved.
     - jamaica-plans-to-pilot-a-central-bank-crypto-cbdc-to-work-alongside-notes-and-coinage.html saved.
@@ -716,7 +722,7 @@ for url in urls:
     - microsoft-president-currencies-issued-backed-by-governments.html saved.
     - kim-dotcom-insists-bitcoin-cash-will-serve-the-mass-market-criticizes-btc-fees-elon-musk-responds.html saved.
     - fidelity-bitcoin-etf-institutional-demand-btc.html saved.
-    
+
     https://news.bitcoin.com/page/4/
     - decentralized-exchange-uniswap-reveals-protocol-version-3-with-new-automated-elements.html saved.
     - john-mcafees-bodyguard-pleads-not-guilty-in-the-13m-crypto-fraud-case.html saved.
@@ -727,7 +733,7 @@ for url in urls:
     - jmp-securities-1-5-trillion-flow-into-bitcoin-retail-wealth-management-morgan-stanley-offer-btc.html saved.
     - blockchain-com-raises-300-million-firms-post-money-valuation-now-5-2-billion.html saved.
     - new-fatf-guidance-applies-regulatory-standards-to-decentralized-exchanges-defi-and-nfts.html saved.
-    
+
     https://news.bitcoin.com/page/5/
     - after-btc-slid-by-14-onchain-analyst-says-a-us-based-institution-is-currently-buying-the-dip.html saved.
     - tesla-accepting-bitcoin-elon-musk-btc-payments.html saved.
@@ -738,7 +744,7 @@ for url in urls:
     - hut-8-joins-foundrys-us-mining-pool-adds-over-14000-bitcoin-mining-rigs-of-hashpower.html saved.
     - mystery-whale-moves-20-bitcoin-block-rewards-from-2010-entity-moved-10000-btc-since-last-year.html saved.
     - jim-cramer-gold-let-him-down-put-5-in-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/6/
     - american-news-magazine-time-to-accept-crypto-for-subscriptions-firm-auctions-3-nft-covers.html saved.
     - indian-government-block-ip-addresses-cryptocurrency-exchanges.html saved.
@@ -749,7 +755,7 @@ for url in urls:
     - tokenized-jack-dorsey-tweet-sells-for-2-9m-funds-from-nft-auction-will-be-sent-to-charity.html saved.
     - legendary-skateboarder-tony-hawk-to-auction-nft-of-trick-footage.html saved.
     - 500-mw-by-2025-bitcoin-miners-greenidge-and-its-wholly-owned-power-plant-to-be-listed-on-nasdaq.html saved.
-    
+
     https://news.bitcoin.com/page/7/
     - fed-chairman-jerome-powell-bitcoin-substitute-for-gold.html saved.
     - amd-wont-restrict-crypto-miners-from-using-its-graphic-cards.html saved.
@@ -760,7 +766,7 @@ for url in urls:
     - deutsche-bank-bitcoin-3rd-largest-currency-too-important-to-ignore.html saved.
     - bridgewater-ray-dalio-government-restrict-bitcoin-investments-impose-shocking-taxes.html saved.
     - fbi-arrests-free-keene-members-cryptocurrency-exchange.html saved.
-    
+
     https://news.bitcoin.com/page/8/
     - opioid-premiums-jobseekers-and-vaccines-covid-19-fuels-darknet-markets-in-a-different-way.html saved.
     - central-bank-of-nigeria-official-reiterates-nigerian-residents-free-to-trade-cryptos-directive-only-applies-to-banking-sector.html saved.
@@ -771,7 +777,7 @@ for url in urls:
     - elon-musk-bitcoin-giveaway-scam-btc.html saved.
     - ipo-coinbase-pays-cftc-6-5-million-false-reporting-wash-trading.html saved.
     - shenzhen-listed-ict-company-plans-to-invest-155-million-in-microbt-bitcoin-mining-hardware.html saved.
-    
+
     https://news.bitcoin.com/page/9/
     - atlanta-based-bitcoin-atm-provider-launches-over-100-new-machines-across-24-states-in-the-us.html saved.
     - south-koreans-are-required-to-pay-taxes-for-crypto-holdings-in-overseas-exchanges-authorities-warn.html saved.
@@ -782,7 +788,7 @@ for url in urls:
     - nft-related-token-prices-soar-amid-digital-art-mania.html saved.
     - lindsey-lohan-jumps-into-nft-market-auctioning-her-own-creation.html saved.
     - smartkey-shows-there-is-real-value-and-utility-in-nft-tokens.html saved.
-    
+
     https://news.bitcoin.com/page/10/
     - putin-asks-russian-attorney-general-office-to-combat-illegal-cross-border-crypto-transfers.html saved.
     - bank-of-america-good-reason-holding-bitcoin-price-appreciation.html saved.
@@ -793,7 +799,7 @@ for url in urls:
     - how-bitcoin-neutrality-is-simply-another-vote-for-a-crumbling-status-quo.html saved.
     - six-bitcoin-sdx-crypto-trading-platform-summer.html saved.
     - morgan-stanley-bitcoin-funds.html saved.
-    
+
     https://news.bitcoin.com/page/11/
     - south-african-exchange-ice3x-suspends-trading-after-noting-discrepancies-in-balances-of-btc-and-ltc.html saved.
     - worlds-fourth-oldest-auction-house-sothebys-joins-the-nft-ecosystem-with-a-mysterious-artist.html saved.
@@ -804,7 +810,7 @@ for url in urls:
     - bitmex-cofounder-ben-delo-surrenders-to-us-authorities-arthur-hayes-to-follow-in-april.html saved.
     - us-judge-denies-request-to-add-xrp-holders-as-intervenors-in-secs-lawsuit-against-ripple.html saved.
     - a-ledger-hardware-wallet-is-the-best-solution-to-protect-and-own-your-private-keys.html saved.
-    
+
     https://news.bitcoin.com/page/12/
     - private-messaging-app-signal-now-accepts-donations-in-cryptocurrencies.html saved.
     - beeple-joins-nft-allstar-artists-to-combat-climate-change-with-charity-fundraiser.html saved.
@@ -815,7 +821,7 @@ for url in urls:
     - cryptocurrency-and-stock-trading-platform-etoro-aims-to-go-public-via-10-4-billion-spac-deal.html saved.
     - dutch-political-candidate-bitcoin-is-the-future-billboards-laser-eyes.html saved.
     - btcs-hands-of-steel-37-bitcoins-supply-hasnt-moved-2017-55-sat-idle-2018s-bottom.html saved.
-    
+
     https://news.bitcoin.com/page/13/
     - turkey-police-dismantle-massive-chinese-crypto-scam-that-held-101-hostages-to-run-operations.html saved.
     - gaming-startup-lepricon-seeks-to-drive-mass-adoption-of-blockchain-technology.html saved.
@@ -826,7 +832,7 @@ for url in urls:
     - mizuho-bank-survey-says-24-billion-in-us-stimulus-checks-may-be-used-to-buy-bitcoin.html saved.
     - elon-musk-technoking-of-tesla-master-of-coin-cfo-zach-kirkhorn.html saved.
     - meet-qonos-a-purpose-built-digital-frame-for-nft-art-and-collectibles.html saved.
-    
+
     https://news.bitcoin.com/page/14/
     - individual-detained-in-romania-under-suspicion-of-stealing-thousands-of-cryptos-from-an-unnamed-major-exchange.html saved.
     - btc-miner-stresses-bitcoin-is-one-of-the-most-environmentally-friendly-financial-networks.html saved.
@@ -837,7 +843,7 @@ for url in urls:
     - elon-musk-coinbase-dogecoin-cryptocurrency-adoption-grows.html saved.
     - french-lawmaker-petition-central-bank-buy-hold-bitcoin.html saved.
     - chasing-liquidity-pools-crypto-assets-and-defi-apps-can-give-yields-up-to-400-annually.html saved.
-    
+
     https://news.bitcoin.com/page/15/
     - ripple-to-dispose-stake-in-moneygram-shortly-after-announcing-end-of-a-business-relationship.html saved.
     - valkyrie-hopes-launch-balance-sheet-etf-companies-exposed-bitcoin.html saved.
@@ -848,7 +854,7 @@ for url in urls:
     - japanese-court-convicts-bitcoin-tax-evader-trader-gets-a-year-in-prison-plus-fine-for-200k.html saved.
     - the-congolese-mountain-of-gold-surprise-discovery-in-africa-shows-metals-scarcity-is-hard-to-prove.html saved.
     - spanish-ministry-of-economy-proposes-to-create-a-financial-customer-ombudsman-for-crypto-related-matters.html saved.
-    
+
     https://news.bitcoin.com/page/16/
     - ethereums-buterin-highlights-layer-two-rollups-as-potential-scaling-solution.html saved.
     - old-school-bitcoin-whales-are-moving-this-week-a-single-entity-transferred-10000-btc-acquired-in-2013.html saved.
@@ -859,7 +865,7 @@ for url in urls:
     - goldman-sachs-reports-rising-customer-demand-for-btc-predicts-an-explosion-in-the-use-of-digital-currencies.html saved.
     - validator-entry-thresholds-decline-cloud-based-staking.html saved.
     - alex-jones-lost-laptop-10000-bitcoins.html saved.
-    
+
     https://news.bitcoin.com/page/17/
     - 100-in-bitcoin-gold-bug-peter-schiffs-son-spencer-all-in-on-btc.html saved.
     - spin-to-win-10000-free-rounds-in-the-latest-tournament-from-bitcoin-games.html saved.
@@ -870,7 +876,7 @@ for url in urls:
     - vulcanverse-takes-nfts-to-next-level-with-amazing-graphics-gameplay-and-lore.html saved.
     - france-auction-611-bitcoins-seized-hackers.html saved.
     - colombian-cryptocurrency-project-kmuschicoin-gains-popularity-as-adoption-on-local-stores-grows.html saved.
-    
+
     https://news.bitcoin.com/page/18/
     - spanish-real-estate-agency-begins-accepting-bitcoin-payments-for-properties-in-the-canary-islands.html saved.
     - etc-group-ether-etp-deutsche-borses-xetra-bitcoin-etp-1-billion-aum.html saved.
@@ -881,7 +887,7 @@ for url in urls:
     - 3-bitcoin-etfs-approved-north-america.html saved.
     - ternoa-caps-transmit-your-memories-and-private-data-thanks-to-the-blockchain.html saved.
     - jp-morgan-launching-crypto-investment-product-stocks-bitcoin-exposure.html saved.
-    
+
     https://news.bitcoin.com/page/19/
     - 21shares-launches-bitcoin-cash-and-ethereum-etps-on-deutsche-boerses-xetra.html saved.
     - german-bank-donner-reuschel-to-offer-crypto-custody-services-in-response-to-a-high-market-demand-in-the-country.html saved.
@@ -892,7 +898,7 @@ for url in urls:
     - norwegian-oil-billionaire-kjell-inge-rokke-btc-worth-millions-dollars-liquid-assets-bitcoin.html saved.
     - soros-fund-new-york-life-morgan-stanley-investors-200-million-bitcoin-investment-firm.html saved.
     - nigeria-to-pay-1-2-cents-for-each-dollar-remitted-to-the-country-to-combat-cryptocurrency-use.html saved.
-    
+
     https://news.bitcoin.com/page/20/
     - private-blockchain-project-funding-accelerates-as-companies-race-to-address-new-needs.html saved.
     - south-korean-crypto-transactions-command-an-average-of-7-billion-per-day-on-domestic-exchanges.html saved.
@@ -903,7 +909,7 @@ for url in urls:
     - burned-banksy-nft-sale-captures-close-to-400k-critics-claim-buyers-are-morons.html saved.
     - indian-government-cryptocurrencies-crypto-regulation.html saved.
     - us-court-sentences-another-centra-tech-co-founder-to-8-years-in-jail.html saved.
-    
+
     https://news.bitcoin.com/page/21/
     - critics-claim-tesla-should-sell-bitcoin-position-electric-vehicle-firms-shares-down-30-since-buying.html saved.
     - george-ball-crypto-hedge-against-currency-debasement-1-9-trillion-stimulus-bill.html saved.
@@ -914,7 +920,7 @@ for url in urls:
     - ripples-asia-pacific-business-flourishing-despite-sec-lawsuit-says-ceo.html saved.
     - suze-orman-i-love-bitcoin-advises-how-to-buy-btc-paypal.html saved.
     - goldman-sachs-huge-institutional-demand-bitcoin-btc-price-100k.html saved.
-    
+
     https://news.bitcoin.com/page/22/
     - crypto-infused-professional-sports-league-billionaires-blockchain-committee-nba.html saved.
     - selling-social-media-posts-for-1-5-million-blockchain-certified-tweet-sales-spark-nft-controversy.html saved.
@@ -925,7 +931,7 @@ for url in urls:
     - 1-million-per-btc-in-10-years-in-terms-of-dollars-bitcoin-is-going-to-infinity-says-kraken-ceo.html saved.
     - south-korean-moms-are-taking-the-lead-in-buying-bitcoin-despite-the-coronavirus-pandemic.html saved.
     - 2-billion-merger-bitcoin-miner-cipher-mining-going-public-fidelity-morgan-stanley.html saved.
-    
+
     https://news.bitcoin.com/page/23/
     - galileo-exchange-presents-the-glt-token-and-introduces-zero-edge-trading.html saved.
     - microstrategy-acquires-another-10-million-in-bitcoin-company-balance-sheet-nears-100k-btc.html saved.
@@ -936,7 +942,7 @@ for url in urls:
     - the-many-facts-pointing-to-cypherpunk-len-sassaman-being-satoshi-nakamoto.html saved.
     - jim-rogers-bitcoin-warns-governments-outlaw-cryptocurrencies.html saved.
     - mark-cuban-bitcoin-better-than-gold-peter-schiff-gold-is-dead.html saved.
-    
+
     https://news.bitcoin.com/page/24/
     - dogecoin-adoption-rises-bitpay-merchants-accept-doge-coinflip-1800-atms-list-crypto.html saved.
     - thai-financial-regulator-claims-controversial-crypto-rule-proposal-was-just-to-gauge-public-opinion.html saved.
@@ -947,7 +953,7 @@ for url in urls:
     - banks-customer-deposits-negative-interest-rates-germany.html saved.
     - north-americas-first-bitcoin-etf-11000-btc.html saved.
     - could-bitcoin-reach-100k-to-288k-prices-in-2021-stock-to-flow-models-suggest-it-could.html saved.
-    
+
     https://news.bitcoin.com/page/25/
     - citigroup-bitcoin-tipping-point-preferred-currency-international-trade.html saved.
     - biden-sec-chairman-gary-gensler-policies-bitcoin-cryptocurrency-regulation.html saved.
@@ -958,7 +964,7 @@ for url in urls:
     - ethereum-web3-sidechain-bitcoin-cash.html saved.
     - chinas-inner-mongolia-plans-to-shut-down-bitcoin-mining-operations-by-april-this-year.html saved.
     - the-largest-us-options-exchange-cboe-applies-to-list-vanecks-bitcoin-etf.html saved.
-    
+
     https://news.bitcoin.com/page/26/
     - winner-cashes-out-160000-from-bitcoin-com-games-with-a-13870x-multiplier.html saved.
     - crypto-bank-expands-india-government-will-approve-legitimate-use-cryptocurrencies.html saved.
@@ -969,7 +975,7 @@ for url in urls:
     - hyperbitcoinizations-small-minority-economist-says-bitcoins-growing-success-will-lead-to-perverse-consequences.html saved.
     - defi-bitcoin-cash-smart-money-startup-general-protocols-3-million-investors.html saved.
     - stablecoin-issuer-tether-says-it-is-a-victim-of-a-500-btc-ransom-demand-infoleak-threat.html saved.
-    
+
     https://news.bitcoin.com/page/27/
     - spanish-court-orders-the-investigation-of-possible-computer-fraud-on-bittrex-exchange-after-a-user-loses-1-3-btc.html saved.
     - online-retail-giant-rakuten-allows-people-to-load-payment-app-with-cryptocurrencies.html saved.
@@ -980,7 +986,7 @@ for url in urls:
     - 20-bitcoin-block-rewards-from-2010-moved-today-mystery-miner-spent-400-million-in-btc-since-black-thursday.html saved.
     - report-asias-cryptocurrency-landscape-the-most-active-most-populous-region-has-an-outsize-role.html saved.
     - jpmorgan-investors-1-portfolios-bitcoin-poor-hedge.html saved.
-    
+
     https://news.bitcoin.com/page/28/
     - harvard-professor-kenneth-rogoff-warns-central-banks-will-never-allow-bitcoin-mainstream.html saved.
     - institutional-investors-crypto-exchange-traded-products-assets.html saved.
@@ -991,7 +997,7 @@ for url in urls:
     - chinese-authorities-warn-on-sophisticated-digital-yuan-themed-scam-promotes-access-to-a-186m-secret-government-fund.html saved.
     - chinas-bitcoin-mining-rig-manufacturers-pressed-by-demand-advance-orders-devices-sold-out.html saved.
     - 177-year-old-swiss-bank-bordier-to-offer-bitcoin-and-other-crypto-trading-services.html saved.
-    
+
     https://news.bitcoin.com/page/29/
     - from-gold-to-greenbacks-a-look-at-the-us-dollars-devaluation-manipulation-and-militant-backing.html saved.
     - dubai-based-crypto-investment-fund-to-convert-750-million-worth-of-btc-into-ada-and-dot-tokens.html saved.
@@ -1002,7 +1008,7 @@ for url in urls:
     - berkshire-hathaways-charlie-munger-advises-investors-never-buy-bitcoin-or-gold.html saved.
     - simplex-and-skrill-broaden-cryptocurrency-convenience-by-launching-new-onramp-solutions.html saved.
     - crypto-users-claim-popular-bitcoin-paper-wallet-generator-is-compromised-millions-allegedly-stolen.html saved.
-    
+
     https://news.bitcoin.com/page/30/
     - cryptocurrency-adoption-passes-another-milestone-surpassing-100-million-users.html saved.
     - craig-wright-plans-to-take-legal-action-against-btc-developers-hopes-to-recover-over-3b-in-stolen-bitcoin.html saved.
@@ -1013,7 +1019,7 @@ for url in urls:
     - new-crypto-rules-in-thailand-could-require-traders-to-show-income-before-opening-trading-accounts.html saved.
     - bitcoin-futures-open-interest-hits-19-billion-harsh-intraday-swings-analyst-says-fresh-rally-expected.html saved.
     - bitcoin-has-no-intrinsic-value-asset-is-too-volatile-says-bank-of-korea-governor.html saved.
-    
+
     https://news.bitcoin.com/page/31/
     - us-judge-dismisses-motion-against-bancor-after-finding-allegations-inadequate-to-give-it-jurisdiction.html saved.
     - bitcoin-dump-exchange-inflow-whale-sells-2700-coins-f2pool-hawks-3633-btc.html saved.
@@ -1024,7 +1030,7 @@ for url in urls:
     - report-bitcoin-mining-firm-northern-data-ag-plans-for-a-500-million-ipo.html saved.
     - bitfinex-and-tether-fined-18-5m-in-settlement-with-ny-attorney-general-both-firms-barred-from-trading-in-the-city.html saved.
     - jigstack-dao-acquires-icorating-com-platform-to-strengthen-its-token-launch-pad-lemonade.html saved.
-    
+
     https://news.bitcoin.com/page/32/
     - topps-garbage-pail-kids-blockchain-collectibles-can-be-bought-at-target-and-walmarts.html saved.
     - federal-reserve-pro-bitcoin-chief-innovation-officer.html saved.
@@ -1035,7 +1041,7 @@ for url in urls:
     - thailand-authorities-are-targeting-japanese-crypto-holders-to-boost-tourism.html saved.
     - speechwriter-for-former-us-president-george-bush-says-btc-rally-driven-by-historically-low-interest-rates.html saved.
     - pteria-to-mars-celebrates-a-new-all-time-high.html saved.
-    
+
     https://news.bitcoin.com/page/33/
     - cape-cods-largest-hospital-gets-bitcoin-donations-worth-800k.html saved.
     - binance-suspends-ethereum-and-erc-20-token-withdrawals-before-quickly-reversing-course.html saved.
@@ -1046,7 +1052,7 @@ for url in urls:
     - binance-blamed-for-purposely-choking-ethereums-network.html saved.
     - nvidia-limits-the-efficiency-of-mining-ether-using-its-gpus-by-50.html saved.
     - russian-bill-cryptocurrencies-property.html saved.
-    
+
     https://news.bitcoin.com/page/34/
     - cyberfi-an-intelligent-trading-and-automation-platform-for-defi.html saved.
     - bitcoin-hashrate-hits-180-exahash-mining-difficulty-climbs-higher-pools-jump-by-35.html saved.
@@ -1057,7 +1063,7 @@ for url in urls:
     - pricing-gold-food-and-altcoins-with-the-btc-denominator-how-to-measure-an-assets-worth-in-bitcoin.html saved.
     - chinese-tea-retailer-joins-the-crypto-mining-industry-after-hiring-two-roles-to-lead-its-bitcoin-business-plan.html saved.
     - elon-musk-bitcoin-less-dumb-than-cash-disputes-peter-schiffs-money-btc.html saved.
-    
+
     https://news.bitcoin.com/page/35/
     - day-trader-dave-portnoy-bitcoin-price-never-buy-btc.html saved.
     - bill-gates-bitcoin-cryptocurrency.html saved.
@@ -1068,7 +1074,7 @@ for url in urls:
     - study-top-tier-cryptocurrency-exchanges-increased-their-market-share-by-13-since-october-2020.html saved.
     - imf-representative-of-nigeria-calls-for-caution-over-the-use-of-cryptocurrencies.html saved.
     - paid-in-bitcoin-nfl-offensive-tackle-russell-okung-considered-the-highest-paid-in-the-league.html saved.
-    
+
     https://news.bitcoin.com/page/36/
     - janet-yellen-crypto-regulation-bitcoin-illicit-transactions.html saved.
     - blackrock-investing-bitcoin-why-btc-price-up.html saved.
@@ -1079,7 +1085,7 @@ for url in urls:
     - tezos-major-upgrade-network-functionality.html saved.
     - us-shut-down-crypto-trading-platform-defrauding-thousands-investors.html saved.
     - us-government-expands-charges-against-north-korean-hackers-authorities-describe-them-as-the-worlds-leading-bank-robbers.html saved.
-    
+
     https://news.bitcoin.com/page/37/
     - more-valuable-than-gold-the-motley-fool-announces-5-million-investment-into-bitcoin.html saved.
     - btc-transaction-stuck-bitcoin-cash-accelerators-can-speed-up-transfer.html saved.
@@ -1090,7 +1096,7 @@ for url in urls:
     - pionex-is-a-crypto-exchange-with-built-in-automated-trading-tools-you-can-trust.html saved.
     - token-driven-karaoke-platform-gets-a-boost-in-south-korea-as-pandemic-hits-over-2100-singing-rooms.html saved.
     - elon-musk-tesla-conflict-of-interest-1-5-billion-bitcoin-purchase.html saved.
-    
+
     https://news.bitcoin.com/page/38/
     - german-cannabis-bitcoin-massive-currency-devaluation.html saved.
     - publicly-listed-chinese-lottery-firm-acquires-bitcoin-mining-pool-btc-com.html saved.
@@ -1101,7 +1107,7 @@ for url in urls:
     - dubai-government-licensing-entity-now-accepts-bitcoin-for-payments.html saved.
     - blockchain-firm-asks-nevada-state-for-permission-to-build-a-crypto-smart-city-in-storey-county.html saved.
     - the-man-behind-wallex-and-eurst.html saved.
-    
+
     https://news.bitcoin.com/page/39/
     - spanish-treasury-secretary-says-cryptocurrencies-carry-a-risk-of-default-repeats-bank-of-spains-lack-of-regulation-rhetoric.html saved.
     - polkadot-lays-out-its-plans-for-parachain-rollout-as-the-tokens-price-climbs.html saved.
@@ -1112,7 +1118,7 @@ for url in urls:
     - microstrategy-to-sell-600-million-worth-of-convertible-notes-to-buy-more-bitcoin.html saved.
     - bitcoin-hits-50k-crypto-asset-jumps-200-in-3-months-usd-shorts-touch-a-decade-high.html saved.
     - elon-musk-dogecoin-whales-dump-coins.html saved.
-    
+
     https://news.bitcoin.com/page/40/
     - argentinean-prosecutor-investigates-an-alleged-bitcoin-scam-ganancias-deportivas.html saved.
     - bluezelle-is-resisting-censorship-with-a-new-developer-grant-interview-with-neeraj-muraka.html saved.
@@ -1123,7 +1129,7 @@ for url in urls:
     - allianz-economic-advisor-bitcoin-companies-btc-form-of-payment.html saved.
     - morgan-stanley-cryptocurrencies-asset-class-bitcoin-replace-dollar.html saved.
     - bitcoin-snaps-back-after-slight-dip-current-btc-chart-is-near-identical-to-august-2017.html saved.
-    
+
     https://news.bitcoin.com/page/41/
     - bitcoin-games-releases-the-angry-banker-hosts-a-12000-tournament.html saved.
     - us-government-corporates-replacing-dollars-bitcoin.html saved.
@@ -1134,7 +1140,7 @@ for url in urls:
     - indian-official-cryptocurrency-bill-transition-period-crypto-holders.html saved.
     - darknet-market-jokers-stash-retires-after-raking-in-1-billion-in-cryptocurrencies.html saved.
     - mirror-trading-international-named-biggest-crypto-scam-of-the-year-after-raking-in-589-million.html saved.
-    
+
     https://news.bitcoin.com/page/42/
     - elon-musk-sec-investigation-teslas-bitcoin-buy.html saved.
     - mayor-andrew-yang-new-york-city-bitcoin-hub.html saved.
@@ -1145,7 +1151,7 @@ for url in urls:
     - amazon-works-on-digital-currencies-solutions-pilot-project-set-to-launch-in-mexico.html saved.
     - south-korean-court-orders-bithumb-to-compensate-users-for-an-accidental-btc-withdrawal-case-in-2018.html saved.
     - colombias-financial-superintendent-approves-nine-crypto-platforms-to-work-with-national-banks.html saved.
-    
+
     https://news.bitcoin.com/page/43/
     - 2021-crypto-market-stats-other-coins-gained-more-than-bitcoin.html saved.
     - bitcoin-etf-approved-first-north-american-bitcoin-etf-toronto-stock-exchange.html saved.
@@ -1156,7 +1162,7 @@ for url in urls:
     - massive-70-mw-bitcoin-mining-rig-shipped-to-russia.html saved.
     - market-cap-of-exchange-issued-tokens-surpasses-43-billion-binances-bnb-token-surges-150.html saved.
     - sandbox-games-and-nfts-microsoft-and-enjin-issue-minecraft-compatible-blockchain-collectibles.html saved.
-    
+
     https://news.bitcoin.com/page/44/
     - belgium-energy-ministers-twitter-account-hacked-fake-ethereum-giveaway-advertised.html saved.
     - mysterious-address-with-3-billion-in-dogecoin-sends-cryptic-binary-messages-to-elon-musk.html saved.
@@ -1167,7 +1173,7 @@ for url in urls:
     - analysts-companies-follow-tesla-hold-bitcoin-twitter.html saved.
     - ecb-christine-lagarde-central-banks-hold-bitcoin.html saved.
     - major-malaysian-bank-kenanga-acquires-19-stake-in-crypto-exchange.html saved.
-    
+
     https://news.bitcoin.com/page/45/
     - europol-arrests-10-members-of-a-sim-swapping-criminal-gang-that-stole-cryptocurrencies-worth-100-million.html saved.
     - musk-shoots-down-crypto-wallet-app-freewallet-after-it-tried-to-ride-his-dogecoin-fame.html saved.
@@ -1178,7 +1184,7 @@ for url in urls:
     - the-many-facts-pointing-to-chainlinks-sergey-nazarov-being-satoshi-nakamoto.html saved.
     - un-north-korea-stockpiles-316-million-cryptocurrencies-cyberattacks.html saved.
     - haunted-by-past-elon-musk-predictions-gold-bug-peter-schiff-tears-into-teslas-btc-acquisition.html saved.
-    
+
     https://news.bitcoin.com/page/46/
     - indian-finance-minister-cryptocurrency-plans-ban-proposal.html saved.
     - central-bank-of-nigeria-denies-it-has-placed-new-restrictions-on-cryptocurrencies-uses-debunked-claims-to-justify-new-directive.html saved.
@@ -1189,7 +1195,7 @@ for url in urls:
     - bitcoin-futures-open-interest-15-billion-cme-33-million-eth-futures.html saved.
     - expert-warns-hackers-are-targeting-russian-governments-it-infrastructure-to-mine-cryptocurrencies.html saved.
     - mad-money-jim-cramer-tesla-paypal-mastercard-bitcoin-mainstream.html saved.
-    
+
     https://news.bitcoin.com/page/47/
     - bitcoin-taps-48k-traders-discuss-overheated-stats-and-a-possible-chinese-new-year-dump.html saved.
     - free-ton-and-dune-network-to-merge-following-successful-vote-free-ton-gains-top-researchers.html saved.
@@ -1200,7 +1206,7 @@ for url in urls:
     - etoros-gooddollar-basic-income-initiative-will-fund-1-million-new-users-with-new-referral-program.html saved.
     - estonias-government-still-wants-to-implement-stricter-rules-for-licensing-crypto-firms.html saved.
     - cordoba-becomes-the-first-argentinean-province-to-impose-taxes-on-crypto-related-activities.html saved.
-    
+
     https://news.bitcoin.com/page/48/
     - human-rights-foundations-alex-gladstein-calls-bitcoin-an-escape-hatch-from-tyranny.html saved.
     - linkin-parks-mike-shinoda-auctions-his-first-non-fungible-token.html saved.
@@ -1211,7 +1217,7 @@ for url in urls:
     - crypto-patent-alliance-questions-craig-wrights-white-paper-copyright-claim.html saved.
     - asset-manager-stone-ridge-nydig-wall-of-money-bitcoin-institutions-btc.html saved.
     - pro-bitcoin-lawmaker-cynthia-lummis-senate-banking-committee-janet-yellen-btc-great-store-of-value.html saved.
-    
+
     https://news.bitcoin.com/page/49/
     - bill-miller-multibillion-dollar-hedge-fund-bitcoin-exposure-gbtc.html saved.
     - cryptocurrency-hedge-funds-defraud-100-million-investors-founder-20-years-prison.html saved.
@@ -1222,7 +1228,7 @@ for url in urls:
     - bit-coms-daily-volume-for-bitcoin-cash-options-doubled-every-day-since-launch.html saved.
     - online-sleuths-believe-satoshi-nakamotos-bitcoin-stash-is-a-blockchain-treasure-hunt-meant-to-be-found.html saved.
     - bitcoin-bull-run-boosts-sales-of-a-french-premium-wine-retailer-despite-the-coronavirus-pandemic.html saved.
-    
+
     https://news.bitcoin.com/page/50/
     - grayscales-crypto-assets-30-billion-institutions.html saved.
     - central-bank-of-nigeria-orders-banks-to-close-accounts-of-crypto-clients-as-remittances-via-traditional-corridors-drop-by-97.html saved.
@@ -1233,7 +1239,7 @@ for url in urls:
     - youtuber-logan-paul-releases-a-limited-edition-of-his-nft-artwork-ahead-of-mayweathers-fight.html saved.
     - paypal-launches-business-unit-dedicated-to-cryptocurrency.html saved.
     - an-aggregated-list-of-cryptocurrency-fair-values-in-2021-gives-a-different-perspective.html saved.
-    
+
     https://news.bitcoin.com/page/51/
     - blockchain-innovation-done-the-polkadot-way-according-to-gavin-wood.html saved.
     - south-african-regulator-warns-crypto-investors-to-be-prepared-to-lose-all-no-legal-recourse-for-victims-of-scams.html saved.
@@ -1244,7 +1250,7 @@ for url in urls:
     - crypto-friendly-travel-firm-travala-becomes-the-first-merchant-to-offer-binance-pay-as-a-payment-method.html saved.
     - former-south-korean-social-media-giant-to-relaunch-its-business-by-creating-a-new-ethereum-based-token.html saved.
     - guggenheim-investments-bitcoin-fair-value-btc-price-600k.html saved.
-    
+
     https://news.bitcoin.com/page/52/
     - spanish-treasury-releases-guidelines-to-minimize-the-risk-of-tax-evasion-with-cryptocurrencies.html saved.
     - crypto-centric-vc-fund-lures-in-billionaire-investor-paul-tudor-jones-and-rapper-ll-cool-j.html saved.
@@ -1255,7 +1261,7 @@ for url in urls:
     - doge-token-pumps-after-elon-musk-tweets-dogecoin-is-the-peoples-crypto.html saved.
     - south-african-taxpayers-who-fail-to-disclose-income-from-cryptocurrency-trading-face-possible-jail-time.html saved.
     - report-bitcoin-overtakes-gold-in-the-u-s-as-the-4th-most-popular-investment-vehicle.html saved.
-    
+
     https://news.bitcoin.com/page/53/
     - bitcoin-for-corporations-michael-saylor-expects-an-avalanche-of-firms-to-own-bitcoin.html saved.
     - mark-cuban-tells-stock-traders-that-btc-hodlers-are-a-great-example-to-follow.html saved.
@@ -1266,7 +1272,7 @@ for url in urls:
     - founder-cryptocurrency-scam-steven-seagal-charged-member-arrested-us.html saved.
     - pulse-defi-ltd-provides-a-full-range-of-financial-services-with-decentralization-at-the-forefront.html saved.
     - darknet-markets-1-7-billion-in-crypto-revenue-in-2020-set-a-new-record.html saved.
-    
+
     https://news.bitcoin.com/page/54/
     - swiss-companies-issue-first-tokenized-asset-for-trading-under-new-national-blockchain-rules.html saved.
     - report-declining-btc-stablecoin-supply-ratio-suggests-exchanges-are-highly-liquid-ready-to-buy-crypto-assets.html saved.
@@ -1277,7 +1283,7 @@ for url in urls:
     - pnetwork-launches-wrapped-eos-on-ethereum-to-connect-the-two-biggest-defi-ecosystems.html saved.
     - publicly-listed-air-purifier-manufacturer-adds-dogecoin-as-a-form-of-payment-amid-tokens-popularity.html saved.
     - gamestop-shares-and-reddit-fueled-stocks-plummet-crypto-fans-say-bitcoin-is-the-only-true-attack.html saved.
-    
+
     https://news.bitcoin.com/page/55/
     - michael-saylor-predicts-massive-investor-shift-from-gold-to-bitcoin-after-buying-another-10m-worth-of-btc.html saved.
     - elon-musk-robinhood-restricting-trades-hot-stocks-gamestop.html saved.
@@ -1288,7 +1294,7 @@ for url in urls:
     - us-federal-reserve-seeking-manager-to-research-cbdcs-and-stablecoins.html saved.
     - silver-squeeze-goes-viral-ounce-of-ag-jumps-above-30-wallstreetbets-fans-question-trends-legitimacy.html saved.
     - dogecoin-cofounder-faces-harassment-while-meme-coin-hype-trends-among-investors.html saved.
-    
+
     https://news.bitcoin.com/page/56/
     - halving-burns-on-bitgesell-the-optimal-combination-for-scarcity-and-value-in-the-crypto-age.html saved.
     - rockstar-and-kiss-bassist-gene-simmons-tells-fans-he-bought-bitcoin-and-other-cryptocurrencies.html saved.
@@ -1299,7 +1305,7 @@ for url in urls:
     - ubs-cryptocurrency-fundamental-flaw-bitcoins-fixed-supply-value-collapse.html saved.
     - us-lawmaker-likes-bitcoin-policymakers-innovation-regulation.html saved.
     - goldman-and-interactive-brokers-execs-claim-wallstreetbets-trend-could-take-down-the-system.html saved.
-    
+
     https://news.bitcoin.com/page/57/
     - ripple-responds-sec-allegations-xrp.html saved.
     - visa-ceo-says-payments-giant-set-to-introduce-cryptocurrency-trading-on-its-network.html saved.
@@ -1310,7 +1316,7 @@ for url in urls:
     - cryptocurrency-fund-manager-5m-ponzi-scheme-30-years-us-prison.html saved.
     - federal-court-rejects-motion-filed-by-crypto-developer-virgil-griffith-to-dismiss-charges-on-aiding-north-korea.html saved.
     - indian-parliament-bill-digital-rupee-banning-cryptocurrencies.html saved.
-    
+
     https://news.bitcoin.com/page/58/
     - ukraine-to-set-up-a-large-scale-crypto-mining-data-center-in-a-nuclear-power-plant.html saved.
     - coinbase-opts-out-of-ipo-routine-chooses-popular-direct-listing-route.html saved.
@@ -1321,7 +1327,7 @@ for url in urls:
     - 180-million-bitcoin-investment-fund-ipo-canadian-stock-exchange.html saved.
     - elon-musk-twitter-profile-bitcoin-tweet-btc-price-skyrockets.html saved.
     - dutch-bitcoin-exchange-files-preliminary-injunction-to-suspend-wallet-verification-rule-enacted-by-the-netherlands.html saved.
-    
+
     https://news.bitcoin.com/page/59/
     - international-operation-disrupts-ransomware-group-netwalker-by-tracing-cryptos-with-the-help-of-blockchain-analysis.html saved.
     - bis-chief-banker-criticizes-bitcoin-as-inherently-risky-says-btc-vulnerable-to-51-attack.html saved.
@@ -1332,7 +1338,7 @@ for url in urls:
     - skybridge-capital-cofounder-says-gamestop-activity-is-more-proof-that-bitcoin-will-work.html saved.
     - bitcoin-inflows-in-past-30-days-exceed-btcs-total-market-cap-in-2017-and-2019-says-report.html saved.
     - network-attached-storage-nas-devices-infected-by-bitcoin-mining-malware.html saved.
-    
+
     https://news.bitcoin.com/page/60/
     - crypto-user-builds-a-mining-rig-in-the-back-of-his-bmw-hybrid-car-with-six-graphic-cards.html saved.
     - gaming-platform-enjin-and-metaverseme-merge-nfts-with-augmented-reality-to-enhance-gaming-experience.html saved.
@@ -1343,7 +1349,7 @@ for url in urls:
     - fincen-cryptocurrency-rulemaking-senate-confirms-janet-yellen.html saved.
     - research-proves-recent-transfers-of-8000-ten-year-old-forgotten-bitcoins-were-sold-to-coinbase.html saved.
     - former-uk-cyber-intelligence-official-pushes-for-law-change-to-stop-bitcoin-ransomware-payments.html saved.
-    
+
     https://news.bitcoin.com/page/61/
     - spanish-crypto-exchange-2gether-wont-reimburse-all-stolen-funds-from-the-2020-hack.html saved.
     - iran-finds-scapegoat-in-easy-victim-bitcoin-as-officials-shut-down-1600-mining-farms.html saved.
@@ -1354,7 +1360,7 @@ for url in urls:
     - philippine-central-bank-cryptocurrency-regulation-growth-crypto.html saved.
     - bank-of-england-governor-cryptocurrencies.html saved.
     - cashing-out-bitcoin-using-atms-popular-youtuber-successfully-turns-16k-in-btc-into-cash.html saved.
-    
+
     https://news.bitcoin.com/page/62/
     - goldman-sachs-ceo-regulator-hyperventilating-bitcoin-success.html saved.
     - california-man-loses-27000-in-bitcoin-after-falling-prey-to-crypto-scammers.html saved.
@@ -1365,7 +1371,7 @@ for url in urls:
     - russia-prohibits-government-officials-owning-crypto-dump-holdings-april.html saved.
     - jp-morgan-bitcoin-investment-portfolios.html saved.
     - 21-bitcoin-block-rewards-from-2010-wake-up-236m-worth-of-satoshi-era-btc-spent-in-10-months.html saved.
-    
+
     https://news.bitcoin.com/page/63/
     - ddos-attackers-return-with-massive-extortion-campaigns-in-the-wake-of-bitcoin-prices-surging.html saved.
     - usdt-transactions-on-tron-surpassed-ethereum-tether-transactions-every-day-in-2021.html saved.
@@ -1376,7 +1382,7 @@ for url in urls:
     - harvard-economics-professor-governments-will-not-allow-bitcoin-big-scale.html saved.
     - crypto-etf-race-heats-up-in-2021-valkyrie-bitcoin-trust-files-to-list-shares-on-nyse.html saved.
     - global-chip-shortages-disrupt-bitcoin-mining-rig-production-chinas-dominant-position-as-hash-rate-leader-under-threat.html saved.
-    
+
     https://news.bitcoin.com/page/64/
     - nasdaq-listed-cryptocurrency-firm-sued-defrauding-investors-fake-bitcoin-mining-business.html saved.
     - indian-cryptocurrency-exchange-buyucoin-hacked-data-users-leaked.html saved.
@@ -1387,7 +1393,7 @@ for url in urls:
     - crypto-crime-fell-0-3-cryptocurrency-activity.html saved.
     - panamanian-lawmakers-to-hold-discussions-on-regulating-cryptocurrencies-in-the-country.html saved.
     - japanese-police-arrest-30-people-allegedly-having-exchanged-stolen-cryptos-2018-coincheck-hack.html saved.
-    
+
     https://news.bitcoin.com/page/65/
     - premium-on-grayscales-gbtc-drops-as-reports-of-new-trusts-emerge-chinese-crypto-community-unhappy.html saved.
     - montana-county-to-hold-public-hearings-on-zoning-rules-for-crypto-miners-amid-growing-complaints.html saved.
@@ -1398,7 +1404,7 @@ for url in urls:
     - crypto-economy-shaves-100-billion-digital-asset-recover.html saved.
     - joe-biden-freezes-fincen-crypto-wallet-rulemaking-us-cryptocurrency-regulations.html saved.
     - hive-blockchain-buys-6400-bitcoin-miners-from-canaan-capacity-reaches-1229-ph-s.html saved.
-    
+
     https://news.bitcoin.com/page/66/
     - thai-financial-watchdog-asks-local-crypto-exchange-to-fix-issues-after-three-massive-outages.html saved.
     - rick-and-morty-creator-sells-nft-art-collection-for-over-1-million-in-ether.html saved.
@@ -1409,7 +1415,7 @@ for url in urls:
     - bitcoin-websites-asked-to-remove-white-paper-after-craig-wright-claims-copyright-infringement.html saved.
     - blackrock-bitcoin-futures.html saved.
     - clothing-the-naked-emperor-the-blockchain-potential-unleashed-with-prasaga.html saved.
-    
+
     https://news.bitcoin.com/page/67/
     - dubai-financial-watchdog-to-release-consultation-papers-for-a-crypto-regulatory-framework.html saved.
     - former-us-treasury-secretary-larry-summers-says-bitcoin-is-here-to-stay.html saved.
@@ -1420,7 +1426,7 @@ for url in urls:
     - janet-yellen-bitcoin-cryptocurrencies-illicit-financing.html saved.
     - hip-hop-star-soulja-boy-examines-crypto-considers-creating-his-own-nft-collectibles.html saved.
     - bitcoin-now-the-most-crowded-trade-labelled-a-bubble-bank-of-america-survey.html saved.
-    
+
     https://news.bitcoin.com/page/68/
     - analyst-lyn-alden-says-ethereum-is-still-an-unfinished-project.html saved.
     - major-darknet-marketplace-for-stolen-cards-shuts-down-after-making-over-1-billion-in-bitcoin.html saved.
@@ -1431,7 +1437,7 @@ for url in urls:
     - australian-bitcoin-trader-sues-banks-for-systematic-discrimination.html saved.
     - crypto-derivatives-surge-bitcoin-options-open-interest-climbs-to-9-6-billion.html saved.
     - russian-cryptocurrency-exchange-shuts-down-exit-scam.html saved.
-    
+
     https://news.bitcoin.com/page/69/
     - european-parliament-petitioned-to-create-crypto-crime-compensation-fund.html saved.
     - ex-real-madrid-football-player-spanish-lower-division-club-deal-financed-crypto.html saved.
@@ -1442,7 +1448,7 @@ for url in urls:
     - crypto-prices-consolidate-altcoin-pop-bitcoin-accumulation-addresses-rise.html saved.
     - grayscales-michael-sonnenshein-says-institutional-investors-looking-for-broad-exposure-as-company-raises-700-million-in-one-day.html saved.
     - noise-cash-social-microblogging-app-fueled-by-bitcoin-cash-tips-gathers-traction.html saved.
-    
+
     https://news.bitcoin.com/page/70/
     - steve-forbes-says-bitcoins-fixed-supply-limits-its-ability-to-meet-the-needs-of-a-growing-economy.html saved.
     - demand-crypto-soars-bitcoin-funds-records-goldman-sachs.html saved.
@@ -1453,7 +1459,7 @@ for url in urls:
     - india-seizes-bitcoins-1-2-million-hacker-government-website-crypto-exchanges.html saved.
     - gold-exceeds-us-dollars-in-russias-reserves-putin-de-dollarization.html saved.
     - swiss-stock-exchanges-crypto-trading-volume-record-1-2-billion.html saved.
-    
+
     https://news.bitcoin.com/page/71/
     - digital-currency-money-imf-central-banks-legally-issue-digital-currencies.html saved.
     - a-russian-operation-is-mining-bitcoin-in-the-arctic-circle-for-cheap-electricity.html saved.
@@ -1464,7 +1470,7 @@ for url in urls:
     - venezuelan-president-maduro-promises-2021-boost-usage-of-petro.html saved.
     - 100-swaps-ethereum-dex-volumes-39-billion-despite-insane-fees.html saved.
     - new-jersey-gym-claims-state-seized-173k-from-bank-owner-discusses-cryptocurrency-solutions-with-tucker-carlson.html saved.
-    
+
     https://news.bitcoin.com/page/72/
     - argentine-billionaire-marcos-galperin-bitcoin-a-better-store-of-value-than-gold-officials-plan-to-print-more-pesos.html saved.
     - cryptocurrency-exchange-owner-10-years-prison-multimillion-dollar-scheme-defraud-americans.html saved.
@@ -1475,7 +1481,7 @@ for url in urls:
     - anchorage-obtains-federal-license-to-operate-as-crypto-bank-from-the-occ.html saved.
     - nigerian-youth-propels-the-country-to-the-top-of-google-bitcoin-search-rankings.html saved.
     - etoro-warns-customers-to-brace-for-suspension-of-crypto-buy-orders-due-to-an-unprecedented-demand.html saved.
-    
+
     https://news.bitcoin.com/page/73/
     - oaktree-capital-chairman-crypto-his-son-owns-bitcoin.html saved.
     - goldman-sachs-bitcoin-market-mature.html saved.
@@ -1486,7 +1492,7 @@ for url in urls:
     - ecb-christine-lagarde-global-bitcoin-regulation-btc.html saved.
     - pakistan-to-set-up-two-state-owned-bitcoin-mining-farms-to-help-boost-economy.html saved.
     - us-president-elect-biden-to-nominate-mit-blockchain-professor-gary-gensler-as-sec-chairman.html saved.
-    
+
     https://news.bitcoin.com/page/74/
     - proof-of-work-and-yield-farming-binance-and-poolin-launch-tokens-backed-by-bitcoin-hashrate.html saved.
     - rapid-profits-bitcoin-hashrate-accelerates-difficulty-all-time-high.html saved.
@@ -1497,7 +1503,7 @@ for url in urls:
     - mastermind-147-million-cryptocurrency-scam-sentenced-10-years-prison.html saved.
     - darknet-darkmarket-shut-down-operator-arrested.html saved.
     - lawsuit-global-cryptocurrency-scam-india.html saved.
-    
+
     https://news.bitcoin.com/page/75/
     - new-zealand-watchdog-issues-warning-on-crypto-investments-following-bitcoins-latest-price-drop.html saved.
     - xsigma-defi-offers-lucrative-rewards-for-liquidity-providers-whitepaper-released.html saved.
@@ -1508,7 +1514,7 @@ for url in urls:
     - cryptocurrencies-recovery-market-analyst-bitcoin-remains-healthy.html saved.
     - traders-complain-about-exchange-issues-and-downtime-during-bitcoins-volatile-price-swings.html saved.
     - crypto-futures-exchange-bakkt-going-public-at-a-valuation-of-2-1-billion.html saved.
-    
+
     https://news.bitcoin.com/page/76/
     - stacks-2-0-advances-bitcoin-into-the-age-of-defi-and-creates-a-new-way-to-earn-btc.html saved.
     - uk-government-asks-crypto-industry-to-provide-insights-on-its-regulation-approach.html saved.
@@ -1519,7 +1525,7 @@ for url in urls:
     - two-new-york-city-bars-up-for-sale-for-a-total-25-bitcoins.html saved.
     - reddit-user-finds-127-old-bitcoins-at-grandpas-house-pockets-over-4-million-after-selling-the-btc.html saved.
     - the-cftc-asks-court-to-issue-fines-in-excess-of-100m-against-mastermind-of-a-fraudulent-crypto-scheme.html saved.
-    
+
     https://news.bitcoin.com/page/77/
     - crypto-advocates-think-joe-bidens-3-trillion-stimulus-plan-will-bolster-bitcoin.html saved.
     - mad-moneys-jim-cramer-how-to-invest-in-bitcoin.html saved.
@@ -1530,7 +1536,7 @@ for url in urls:
     - china-launches-digital-yuan-hard-wallet-card-pilot-program.html saved.
     - eth-fees-surge-to-all-time-high-after-the-crypto-passed-the-1000-mark.html saved.
     - russian-oil-giant-provides-excess-gas-to-operations-powering-bitcoin-mining-devices.html saved.
-    
+
     https://news.bitcoin.com/page/78/
     - ransomware-ryuk-rakes-in-150-million-in-bitcoin.html saved.
     - economist-the-masses-ditch-fiat-currencies-bitcoin.html saved.
@@ -1541,7 +1547,7 @@ for url in urls:
     - crypto-user-loses-over-100k-in-bitcoin-while-transferring-his-wallet.html saved.
     - spanish-police-detain-four-people-allegedly-involved-in-a-15m-crypto-ponzi-scheme.html saved.
     - new-bitcoin-quest-contest-gives-people-a-chance-to-locate-crypto-seeds-hidden-in-pictures.html saved.
-    
+
     https://news.bitcoin.com/page/79/
     - major-south-korean-bank-shinhan-is-set-to-offer-crypto-custody-related-services.html saved.
     - six-digit-bitcoin-prices-stock-to-flow-creator-says-btc-value-model-on-track-like-clockwork.html saved.
@@ -1552,7 +1558,7 @@ for url in urls:
     - as-btc-continues-to-soar-finland-wants-to-cash-in-on-bitcoins-seized-in-2016.html saved.
     - the-eurst-stablecoin-set-the-path-that-major-central-banks-now-want-to-follow.html saved.
     - new-online-system-at-mt-gox-may-be-used-to-facilitate-bitcoin-refunds-to-creditors-says-trustee.html saved.
-    
+
     https://news.bitcoin.com/page/80/
     - south-korean-gaming-giant-buy-crypto-exchange-bithumb-for-460-million.html saved.
     - a-conversation-with-one-of-bitcoin-cashs-most-prolific-developers.html saved.
@@ -1563,7 +1569,7 @@ for url in urls:
     - bitcoin-price-leaps-over-38600-analyst-says-btcs-parabolic-move-highly-abnormal.html saved.
     - jpmorgan-predicts-146k-bitcoin-price-competition-gold.html saved.
     - irs-updates-tax-requirements-cryptocurrency-owners.html saved.
-    
+
     https://news.bitcoin.com/page/81/
     - top-gambling-firm-igt-obtains-us-patent-for-a-system-to-enable-customers-to-fund-their-bets-via-crypto.html saved.
     - bitcoin-trader-robbed-during-an-in-person-transaction-kicked-out-of-car-in-hong-kong.html saved.
@@ -1574,7 +1580,7 @@ for url in urls:
     - regulated-bitcoin-etps-skyrocket-coinshares-cites-unprecedented-interest-from-institutional-investors.html saved.
     - israeli-regulator-designates-utility-tokens-issued-by-companies-as-securities.html saved.
     - south-korean-politicians-wont-be-required-to-disclose-their-crypto-holdings-after-proposals-failed-to-pass-the-national-assembly.html saved.
-    
+
     https://news.bitcoin.com/page/82/
     - cryptocurrency-regulation-serbia-trading-mining-legalized.html saved.
     - iran-shuts-down-1620-cryptocurrency-mining-farms.html saved.
@@ -1585,7 +1591,7 @@ for url in urls:
     - the-reported-number-of-stolen-btc-drops-by-92-as-bitcoin-security-appears-to-be-improving.html saved.
     - kyrgyzstan-central-bank-is-set-to-introduce-bills-to-monitor-crypto-exchanges-activities-and-forcing-them-to-apply-for-permits.html saved.
     - onboarding-institutional-crypto-investors-coinbase-helps-execute-one-of-the-largest-digital-asset-trades-in-history.html saved.
-    
+
     https://news.bitcoin.com/page/83/
     - skybridge-bitcoin-fund-310-million-btc-worth-535k.html saved.
     - top-us-banking-regulator-banks-public-blockchains-stablecoins-payment-activities.html saved.
@@ -1596,7 +1602,7 @@ for url in urls:
     - colombian-financial-watchdog-says-local-firms-can-use-capital-to-buy-bitcoin.html saved.
     - ghanaian-startup-bitsika-africa-processed-40-million-in-crypto-remittances-in-2020-up-3900-year-on-year.html saved.
     - uk-judge-rejects-us-extradition-requests-for-julian-assange-wikileaks-holds-800k-in-crypto.html saved.
-    
+
     https://news.bitcoin.com/page/84/
     - economics-professor-tyler-cowen-says-cryptos-useful-as-hedges-or-forms-of-payments-not-both.html saved.
     - bitcoin-price-drops-17-large-cme-futures-gap-filled-btc-spot-markets-rebound.html saved.
@@ -1607,7 +1613,7 @@ for url in urls:
     - cant-keep-a-good-dog-down-meme-token-dogecoin-spiked-over-500-this-year.html saved.
     - 1000-decade-old-dormant-bitcoins-moved-today-on-bitcoins-12th-anniversary.html saved.
     - microstrategys-btc-holdings-more-than-double-in-value-to-2-4-billion-four-months-later.html saved.
-    
+
     https://news.bitcoin.com/page/85/
     - crypto-economy-spikes-more-than-11-entire-market-cap-captures-over-800-billion.html saved.
     - while-bitcoin-tapped-new-price-highs-53000-shorts-worth-over-500-million-got-liquidated.html saved.
@@ -1618,7 +1624,7 @@ for url in urls:
     - 9-trillion-vs-100-trillion-billionaire-mike-novogratz-asks-which-cryptocurrency-will-win-the-payments-race.html saved.
     - noxious-poison-bitcoins-market-cap-surpasses-warren-buffets-berkshire-hathaway-valuation.html saved.
     - fincen-regulation-cryptocurrency-holdings-foreign-exchanges.html saved.
-    
+
     https://news.bitcoin.com/page/86/
     - us-government-bitgo-users-bypass-sanctions-cryptocurrency.html saved.
     - number-of-addresses-holding-eth-reaches-a-new-all-time-high-at-the-end-of-2020.html saved.
@@ -1629,7 +1635,7 @@ for url in urls:
     - chinese-miners-migrate-to-nordic-regions-mining-exec-says-hashrate-migration-one-of-the-biggest-developments.html saved.
     - vaneck-bitcoin-etf-sec-new-administration.html saved.
     - bitfinex-cto-tether-is-registered-and-regulated-under-fincen-usdt-not-next-target-of-the-us-sec.html saved.
-    
+
     https://news.bitcoin.com/page/87/
     - gold-bug-peter-schiffs-understanding-of-money-is-flawed-pro-bitcoin-son.html saved.
     - cyberghost-vpn-will-shield-your-bitcoin-transactions-with-a-special-new-year-offer.html saved.
@@ -1640,7 +1646,7 @@ for url in urls:
     - us-treasury-warns-of-increasing-ransomware-campaigns-against-coronavirus-vaccine-research-institutions.html saved.
     - blockchain-projects-detoken-and-anyhedge-launch-bringing-defi-to-bitcoin-cash.html saved.
     - bitcoin-miners-earn-over-1-million-per-hour-revenue-increases-185-since-the-2020-halving.html saved.
-    
+
     https://news.bitcoin.com/page/88/
     - bitcoin-price-touches-28600-crypto-assets-value-gains-over-288-in-2020.html saved.
     - attackers-drain-millions-from-cover-protocol-token-holders-attack-compensation-plan.html saved.
@@ -1651,7 +1657,7 @@ for url in urls:
     - large-bitcoin-futures-gap-causes-temporary-trading-pause-eth-open-interest-hits-all-time-high.html saved.
     - is-defi-coming-to-bitcoin-cash-an-overview-of-detoken-and-the-anyhedge-protocol.html saved.
     - new-york-first-japanese-yen-stablecoin.html saved.
-    
+
     https://news.bitcoin.com/page/89/
     - augmented-reality-firm-nextech-ar-joins-the-bitcoin-treasuries-bandwagon-buys-2-million-btc.html saved.
     - okcoin-and-coinbase-to-halt-xrp-trading-due-to-the-us-sec-lawsuit-against-ripple.html saved.
@@ -1662,7 +1668,7 @@ for url in urls:
     - legal-battle-between-bitmain-co-founders-appears-to-end-with-micree-zhan-taking-control-of-the-company.html saved.
     - vauld-raises-2-million-to-establish-stronghold-in-india.html saved.
     - central-bank-of-iran-official-says-cryptocurrencies-have-made-no-contribution-to-bypassing-sanctions.html saved.
-    
+
     https://news.bitcoin.com/page/90/
     - marathon-buys-70000-high-performance-bitcoin-miners-from-bitmain-for-170-million.html saved.
     - chinas-coal-standoff-causes-power-shortages-chinese-bitcoin-miners-heavily-affected.html saved.
@@ -1673,7 +1679,7 @@ for url in urls:
     - 10-year-old-block-rewards-wake-up-string-of-1000-satoshi-bitcoins-2010-spent-today.html saved.
     - bitcoin-all-time-price-high-surpasses-28k-btcs-half-trillion-market-cap-now-bigger-than-visa.html saved.
     - sec-lawsuit-tierion-refund-investors-25-million.html saved.
-    
+
     https://news.bitcoin.com/page/91/
     - ripple-lawsuit-could-invoke-billions-in-losses-to-innocent-third-parties-says-former-sec-commissioner.html saved.
     - zero-to-318000-proponents-and-detractors-give-a-variety-of-bitcoin-price-predictions-for-2021.html saved.
@@ -1684,7 +1690,7 @@ for url in urls:
     - bitcoin-500k-russian-crypto-exchange-hackers-exit-scam.html saved.
     - major-producer-nornickel-issues-its-first-metal-contract-backed-digital-coins.html saved.
     - israeli-tax-authorities-notify-cryptocurrency-owners-to-disclose-their-holdings-for-taxation-purposes.html saved.
-    
+
     https://news.bitcoin.com/page/92/
     - russian-parliament-foresees-a-wave-of-token-issuance-for-2021-in-the-wake-of-crypto-law-promulgation.html saved.
     - expert-defi-could-be-a-common-term-in-the-financial-industry-in-2021.html saved.
@@ -1695,7 +1701,7 @@ for url in urls:
     - organizations-file-lawsuit-against-new-york-town-to-prevent-bitcoin-mining-facility-expansion.html saved.
     - despite-bitcoins-price-highs-onchain-data-shows-btc-miners-are-not-spending-more-than-usual.html saved.
     - visa-grants-principal-membership-to-crypto-payments-platform-wirex.html saved.
-    
+
     https://news.bitcoin.com/page/93/
     - the-us-sec-fines-shipchain-2-million-for-conducting-an-unregistered-token-offering-company-agrees-to-cease-operations.html saved.
     - localbitcoins-trader-40-years-prison-bitcoin-fraud-schemes.html saved.
@@ -1706,7 +1712,7 @@ for url in urls:
     - ceo-of-mti-bitcoin-ponzi-scheme-flees-south-africa-in-a-possible-exit-scam-funds-blocked.html saved.
     - canadian-company-mojo-invests-1-5-million-in-bitcoin-plans-to-allocate-more-next-year.html saved.
     - skybridge-bitcoin-fund-launches-million-anthony-scaramucci-avalanche-institutional-investors.html saved.
-    
+
     https://news.bitcoin.com/page/94/
     - xrp-crash-burns-other-crypto-asset-values-btc-price-remains-unscathed.html saved.
     - xrp-token-plunges-nearly-40-following-the-announcement-of-sec-charges-against-ripple.html saved.
@@ -1717,7 +1723,7 @@ for url in urls:
     - let-them-eat-cake-congress-approves-a-900-billion-stimulus-package-billions-in-pork-funds-federal-employees-get-a-raise.html saved.
     - free-ton-community-achieves-sufficient-decentralization-with-the-network-becoming-a-defacto-mainnet.html saved.
     - ftx-exchange-launches-pre-ipo-futures-contracts-for-the-coinbase-public-listing.html saved.
-    
+
     https://news.bitcoin.com/page/95/
     - uk-crypto-exchange-exmo-hacked-estimates-presume-platform-lost-10-5-million.html saved.
     - jpmorgan-warns-bitcoin-correction-btc-overbought.html saved.
@@ -1728,7 +1734,7 @@ for url in urls:
     - billion-dollar-wealth-manager-skybridge-capital-plans-to-launch-a-bitcoin-fund.html saved.
     - venezuelas-asonacrip-bitcoin-bull-run-help-boost-usability-cryptos-such-as-petro.html saved.
     - global-equity-head-at-jefferies-investment-bank-will-buy-bitcoin-reduce-exposure-to-gold.html saved.
-    
+
     https://news.bitcoin.com/page/96/
     - ledger-leak-invokes-legal-action-one-customer-allegedly-threatened-with-home-invasion.html saved.
     - microstrategy-buys-29646-more-bitcoins-holds-over-1-billion-btc.html saved.
@@ -1739,7 +1745,7 @@ for url in urls:
     - ledger-wallet-data-leak-dumped-on-raidforums-for-free-company-regrets-the-situation.html saved.
     - mining-rig-makers-race-to-create-next-gen-ethereum-miner-before-staking-only-kicks-in.html saved.
     - genesis-mining-is-converting-excess-bitcoin-datacenter-heat-into-greenhouse-power-in-sweden.html saved.
-    
+
     https://news.bitcoin.com/page/97/
     - goldman-sachs-bitcoin-retail-inflation-hedge-gold.html saved.
     - weekend-market-action-sees-bitcoin-touch-24k-1-billion-in-short-positions-liquidated.html saved.
@@ -1750,7 +1756,7 @@ for url in urls:
     - nicehash-crypto-mining-pool-fully-reimburses-all-users-affected-by-2017-hack.html saved.
     - us-treasury-cryptocurrency-wallet-regulation-experts-break-down-rules.html saved.
     - survey-there-is-significant-room-for-the-nft-market-to-grow-despite-widespread-lack-of-knowledge-among-people.html saved.
-    
+
     https://news.bitcoin.com/page/98/
     - american-express-crypto-incursion-credit-card-issuers-venture-arm-invests-in-a-digital-currency-exchange.html saved.
     - two-rubygems-infected-with-crypto-stealing-feature-malware-spotted-by-researchers.html saved.
@@ -1761,7 +1767,7 @@ for url in urls:
     - bitcoin-addresses-holding-1-million-goes-parabolic-10-of-btc-supply-sits-idle-for-10-years.html saved.
     - bitcoin-options-daily-volume-1-billion-100k-strike-2021.html saved.
     - 1-billion-bitcoin-ether-one-river-hedge-fund-increase-holdings-600-million.html saved.
-    
+
     https://news.bitcoin.com/page/99/
     - guggenheim-investments-bitcoin-worth-400000-scarcity-relative-valuation-to-gold.html saved.
     - mastermind-25-million-crypto-debit-card-scheme-sentenced-to-prison.html saved.
@@ -1772,7 +1778,7 @@ for url in urls:
     - qe-infinity-us-fed-to-keep-rates-at-zero-billion-dollar-bond-purchases-until-economy-recovers.html saved.
     - coinbase-files-paperwork-with-sec-to-launch-public-offering.html saved.
     - imf-cautions-central-banks-may-have-to-rethink-what-constitutes-reserves.html saved.
-    
+
     https://news.bitcoin.com/page/100/
     - new-germany-law-embraces-all-electronic-and-blockchain-crypto-securities.html saved.
     - nigeria-is-worlds-second-biggest-p2p-bitcoin-market-trades-top-566-million-in-five-years.html saved.
@@ -1783,7 +1789,7 @@ for url in urls:
     - christmas-festivities-unfurl-at-bitcoin-games-with-60000-free-spins-giveaway.html saved.
     - millions-of-venezuelans-voted-via-blockchain-in-an-unofficial-anti-maduro-referendum.html saved.
     - 21m-bitcoin-and-the-promise-of-scarcity.html saved.
-    
+
     https://news.bitcoin.com/page/101/
     - bullish-btc-mining-rig-prices-up-35-since-start-of-november-shortages-force-miners-to-turn-to-secondary-market.html saved.
     - report-claims-us-president-trump-considering-clemency-for-ross-ulbricht.html saved.
@@ -1794,7 +1800,7 @@ for url in urls:
     - snowden-reacts-to-bitcoins-new-price-milestone-whistleblower-tweets-one-word-bitcoin.html saved.
     - market-update-bitcoin-price-hits-new-all-time-price-high-over-20k.html saved.
     - lawyer-who-represents-victims-of-alleged-spanish-crypto-ponzi-says-it-could-be-the-biggest-one-in-the-country.html saved.
-    
+
     https://news.bitcoin.com/page/102/
     - bulgarian-electricity-company-unveils-details-of-historic-power-theft-illegal-bitcoin-mining.html saved.
     - mt-gox-trustee-submits-rehabilitation-plan-creditors-may-soon-be-repaid-150000-bitcoins.html saved.
@@ -1805,7 +1811,7 @@ for url in urls:
     - italian-generali-bitcoin-banca-generali-crypto-custody.html saved.
     - sbis-acquisition-crypto-firm-helps-the-asian-giant-create-full-fledged-digital-asset-trading-desk.html saved.
     - bank-of-america-investor-survey-highlights-the-most-crowded-trades-long-tech-short-usd-long-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/103/
     - free-ton-communitys-meritocratic-token-distribution-model-to-revolutionize-tokenomics.html saved.
     - p2p-bitcoin-trading-venezuela-colombia-account-for-over-23-of-total-localbitcoins-volume.html saved.
@@ -1816,7 +1822,7 @@ for url in urls:
     - estonia-revokes-1000-cryptocurrency-firms-licenses.html saved.
     - jpmorgan-600-billion-demand-bitcoin-global-institutional-adoption.html saved.
     - controversial-ukrainian-oligarch-is-reportedly-mining-bitcoin-in-the-us.html saved.
-    
+
     https://news.bitcoin.com/page/104/
     - the-great-reset-agenda-bitcoin-is-a-decentralized-and-rational-strategy-to-opt-out.html saved.
     - flash-loan-attack-origin-protocol-unveils-compensation-plan-that-excludes-founders.html saved.
@@ -1827,7 +1833,7 @@ for url in urls:
     - bitcoin-on-exchanges-drop-to-lows-not-seen-since-2018-long-term-holders-realize-profits.html saved.
     - france-new-cryptocurrency-measures-fight-anonymous-transactions.html saved.
     - authorities-shut-down-darknet-marketplace-sipulimarket-seize-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/105/
     - 8-people-arrested-argentina-onecoin-ponzi-scam.html saved.
     - russian-president-vladimir-putin-signs-order-government-workers-disclose-crypto-holdings.html saved.
@@ -1838,7 +1844,7 @@ for url in urls:
     - popular-browsers-like-google-fail-to-catch-copycat-crypto-sites-scams-make-the-top-results.html saved.
     - cryptocurrency-founder-years-prison-millions-dollars-exit-scam-without-paying-taxes.html saved.
     - morgan-stanley-strategist-bitcoin-replace-us-dollar-worlds-reserve-currency.html saved.
-    
+
     https://news.bitcoin.com/page/106/
     - us-lawmakers-regulations-restricting-use-self-hosted-cryptocurrency-wallets.html saved.
     - microstrategy-completes-650-million-capital-raise-to-fund-more-bitcoin-purchases.html saved.
@@ -1849,7 +1855,7 @@ for url in urls:
     - fox-news-report-highlights-bitcoin-cash-proponents-modern-day-scavenger-hunt.html saved.
     - mastercard-severs-ties-with-pornhub-is-mainstream-crypto-adoption-coming-for-the-porn-industry.html saved.
     - restaurant-chain-that-converted-cash-reserves-into-bitcoin-says-golds-safe-haven-days-are-numbered.html saved.
-    
+
     https://news.bitcoin.com/page/107/
     - venezuelan-government-signs-agreement-to-establish-guidelines-for-granting-licenses-to-crypto-miners.html saved.
     - insurer-massmutual-invests-100-million-in-bitcoin.html saved.
@@ -1860,7 +1866,7 @@ for url in urls:
     - crypto-billionaires-ripples-jed-mccaleb-worlds-40th-richest-person-cofounder-sells-29-million-xrp-last-week.html saved.
     - growing-bitcoin-adoption-hurting-gold-market-gold-price-will-continue-to-weaken-says-jpmorgan.html saved.
     - bitcoin-com-wallet-adds-shareable-payment-link-feature-send-bitcoin-cash-to-anyone-via-text-email-and-social-media.html saved.
-    
+
     https://news.bitcoin.com/page/108/
     - study-over-13-of-all-proceeds-of-crimes-in-bitcoin-passed-through-privacy-wallets-in-2020.html saved.
     - cryptobiz-exchange-launches-in-india.html saved.
@@ -1871,7 +1877,7 @@ for url in urls:
     - indian-crypto-boom-new-traders-exchanges-massive-growth.html saved.
     - fidelity-digital-to-accept-bitcoin-as-collateral-for-cash-loans.html saved.
     - belgian-regulator-warns-crypto-scammers-target-male-tinder-users-with-fake-icos.html saved.
-    
+
     https://news.bitcoin.com/page/109/
     - canadian-crypto-company-increases-its-bitcoin-treasury-holdings-to-3-6-million.html saved.
     - standard-chartered-launch-crypto-custody-service-institutional-investors-next-year.html saved.
@@ -1882,7 +1888,7 @@ for url in urls:
     - venezuela-pays-imports-iran-turkey-bitcoin-evade-sanctions.html saved.
     - crypto-mining-crisis-in-abkhazia-worsens-after-power-substation-caught-fire.html saved.
     - gold-bug-frank-holmes-optimistic-about-btc-prospects-in-2021-says-halving-cushioned-demand.html saved.
-    
+
     https://news.bitcoin.com/page/110/
     - hackers-demand-over-1800-btc-from-electronics-giant-foxconn-after-ransomware-attack.html saved.
     - report-cryptos-set-for-massive-adoption-in-the-us-as-more-americans-embrace-digital-alternatives-to-the-dollar.html saved.
@@ -1893,7 +1899,7 @@ for url in urls:
     - gold-is-rare-but-not-too-rare-bitcoins-supply-limit-hinders-usefulness-says-steve-forbes.html saved.
     - microstrategy-plans-a-400-million-capital-raise-to-buy-more-bitcoin.html saved.
     - record-15-billion-worth-of-cryptos-under-management-after-institutional-investors-pump-429-million-in-one-week.html saved.
-    
+
     https://news.bitcoin.com/page/111/
     - three-years-in-a-bitcoin-cash-update-from-one-of-its-founders.html saved.
     - g7-central-bankers-regulate-cryptocurrencies.html saved.
@@ -1904,7 +1910,7 @@ for url in urls:
     - german-bank-launch-bitcoin-investment-fund-january.html saved.
     - chilean-ngo-prepares-draft-to-include-crypto-in-new-constitution-releases-scam-blacklist.html saved.
     - silk-road-movie-lionsgate.html saved.
-    
+
     https://news.bitcoin.com/page/112/
     - clocking-terahash-three-next-generation-bitcoin-mining-rigs-launched-during-the-last-quarter.html saved.
     - snowden-recalls-his-bitcoin-comment-made-during-the-coronavirus-driven-meltdown-in-crypto-market.html saved.
@@ -1915,7 +1921,7 @@ for url in urls:
     - ron-paul-advises-bitcoin-proponents-to-be-vigilant-of-government-theres-information-collected.html saved.
     - shark-tank-kevin-oleary-5-portfolio-sec-approved-bitcoin-etf.html saved.
     - new-stimulus-proposals-second-stimulus-checks-help-americans.html saved.
-    
+
     https://news.bitcoin.com/page/113/
     - china-airdrops-digital-yuan-3-million-10000-stores-accept-it.html saved.
     - us-banking-regulator-positive-cryptocurrency-regulation.html saved.
@@ -1926,7 +1932,7 @@ for url in urls:
     - okexs-crypto-reserves-nosedived-after-withdrawals-opened.html saved.
     - testnet-of-facebooks-much-vaunted-stablecoin-only-executes-6-transactions-per-second.html saved.
     - billionaire-hedge-fund-manager-paul-tudor-jones-bitcoins-market-cap-500-billion.html saved.
-    
+
     https://news.bitcoin.com/page/114/
     - crypto-friendly-travel-site-travala-revenue-increase-cryptocurrencies.html saved.
     - microstrategy-buys-bitcoin-btc-worth-over-780-million-treasury.html saved.
@@ -1937,7 +1943,7 @@ for url in urls:
     - research-suggests-bitcoin-buying-ramps-up-when-traditional-us-markets-open.html saved.
     - is-spotify-looking-to-add-crypto-as-payment-method-this-job-offer-suggests-it.html saved.
     - unbanked-hong-kong-leader-carrie-lam-i-have-piles-of-cash-at-home.html saved.
-    
+
     https://news.bitcoin.com/page/115/
     - argo-reports-23-monthly-revenue-increase-with-2369-bitcoin-mined-since-january.html saved.
     - a-pakistani-provincial-government-passes-crypto-friendly-draft-resolution.html saved.
@@ -1948,7 +1954,7 @@ for url in urls:
     - financial-analysts-expect-us-dollar-to-soften-further-2021-could-be-the-greenbacks-worst-year-ever.html saved.
     - cryptocurrency-indexes-are-set-to-launch-in-2021-by-sp-dow-jones-indices.html saved.
     - caribbean-crypto-hotbed-more-than-40-businesses-accept-bitcoin-cash-in-antigua.html saved.
-    
+
     https://news.bitcoin.com/page/116/
     - blackrock-ceo-larry-fink-bitcoin-dollar-less-relevant-global-market.html saved.
     - last-month-casascius-physical-bitcoin-owners-redeemed-the-highest-number-of-coins-in-3-years.html saved.
@@ -1959,7 +1965,7 @@ for url in urls:
     - mining-city-a-blueprint-for-success.html saved.
     - angry-peter-schiff-lays-into-grayscale-and-cnbc-claims-conspiracy-to-pump-btc-value.html saved.
     - alliancebernstein-bitcoin-has-role-in-asset-allocation.html saved.
-    
+
     https://news.bitcoin.com/page/117/
     - visa-credit-card-bitcoin-rewards-btc-blockfi.html saved.
     - onchain-researchers-suspect-chinese-government-sold-plustokens-billion-dollar-bitcoin-hoard-last-year.html saved.
@@ -1970,7 +1976,7 @@ for url in urls:
     - trump-economic-advisor-goldman-sachs-gary-cohn-bitcoin-may-fail.html saved.
     - microsoft-report-says-nation-state-hacker-group-is-leveraging-cryptocurrency-techniques-to-stay-under-the-radar.html saved.
     - mastermind-of-bitcoin-mining-ponzi-scheme-extradited-to-the-us-20-million-in-victims-funds-laundered.html saved.
-    
+
     https://news.bitcoin.com/page/118/
     - xsigma-defi-is-a-game-changing-protocol-backed-by-a-nasdaq-listed-company.html saved.
     - crypto-broker-voyagers-q1-revenue-soars-186-assets-under-management-jump-to-150-million.html saved.
@@ -1981,7 +1987,7 @@ for url in urls:
     - gold-sees-largest-weekly-outflow-ever-metal-prices-spiral-lower-analysts-expect-flows-into-bitcoin.html saved.
     - venezuela-army-mining-bitcoin-for-unblockable-income.html saved.
     - bitcoin-crushes-previous-all-time-price-highs-surpassing-2017s-bull-run.html saved.
-    
+
     https://news.bitcoin.com/page/119/
     - guggenheim-investment-fund-to-invest-497-million-in-grayscales-gbtc-seeking-bitcoin-exposure.html saved.
     - fighting-definancialization-cryptologic-methods-like-bitcoin-could-protect-wealth-from-the-great-reset.html saved.
@@ -1992,7 +1998,7 @@ for url in urls:
     - market-update-bull-trap-warnings-after-bitcoin-shoots-above-18k-handle.html saved.
     - no-you-cant-buy-shares-in-bitcoin.html saved.
     - cme-group-outpaces-competition-becoming-the-worlds-largest-bitcoin-futures-market.html saved.
-    
+
     https://news.bitcoin.com/page/120/
     - hash-war-a-mystery-miner-is-making-abcs-new-blockchain-barely-functional.html saved.
     - facebook-libra-cryptocurrency-launch.html saved.
@@ -2003,7 +2009,7 @@ for url in urls:
     - researcher-publishes-never-before-seen-emails-between-satoshi-nakamoto-and-hal-finney.html saved.
     - chinese-police-seize-4-2-billion-in-multiple-cryptocurrencies-from-plustoken-ponzi-clampdown.html saved.
     - a-step-by-step-guide-to-splitting-abc-fork-tokens-from-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/121/
     - cryptocurrency-and-safety-money-bitcoin-vault-breaks-stereotypes.html saved.
     - 100-million-liquidated-on-defi-protocol-compound-following-oracle-exploit.html saved.
@@ -2014,7 +2020,7 @@ for url in urls:
     - former-microsoft-engineer-says-nigerian-expatriates-are-using-bitcoin-to-circumvent-countrys-overvalued-exchange-rate.html saved.
     - asset-manager-vaneck-launches-physically-backed-bitcoin-exchange-traded-note.html saved.
     - new-research-suggests-satoshi-nakamoto-lived-in-london-creating-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/122/
     - lithuania-6-4-million-euros-seized-cryptocurrencies.html saved.
     - australian-investment-firm-gold-bitcoin.html saved.
@@ -2025,7 +2031,7 @@ for url in urls:
     - ethereum-2-0-deposit-threshold-met-proof-of-stake-beacon-chain-starts-in-7-days.html saved.
     - xrp-price-climbed-123-in-30-days-spark-airdrop-pushes-value-higher.html saved.
     - christine-lagarde-the-european-central-bank-cannot-go-bankrupt-or-run-out-of-money.html saved.
-    
+
     https://news.bitcoin.com/page/123/
     - hyperinflation-and-rent-controls-2020s-telltale-signs-of-economic-distress-haunts-many-nations.html saved.
     - ciphertrace-patents-monero-transactions.html saved.
@@ -2036,7 +2042,7 @@ for url in urls:
     - crypto-retirement-us-investment-firm-launches-employer-sponsored-bitcoin-401k-plan.html saved.
     - occ-wants-to-end-banks-discrimination-of-disfavored-businesses-including-crypto-companies.html saved.
     - second-stimulus-checks-new-proposal.html saved.
-    
+
     https://news.bitcoin.com/page/124/
     - coinbase-20-billion-cryptocurrency-custody-institutional-investors.html saved.
     - slow-and-empty-blocks-with-a-mysterious-message-abcs-new-chain-off-to-a-rocky-start.html saved.
@@ -2047,7 +2053,7 @@ for url in urls:
     - silk-road-bitcoin-seizure-analytics-firm-claims-tokens-worth-millions-still-outstanding.html saved.
     - analysts-institutional-investor-interest-fueling-btc-rally-liquidity-crunch-narrative-debunked.html saved.
     - paypal-bought-70-of-all-newly-mined-bitcoin-last-month-as-demand-rockets.html saved.
-    
+
     https://news.bitcoin.com/page/125/
     - market-update-crypto-asset-prices-spike-massively-speculators-claim-altcoin-season-is-here.html saved.
     - blackrock-cryptocurrency-bitcoin-replace-gold.html saved.
@@ -2058,7 +2064,7 @@ for url in urls:
     - blog-author-tipped-10000-peer-to-peer-cash-conviction.html saved.
     - grammy-nominated-hip-hop-star-logic-dropped-6-million-into-bitcoin-last-month.html saved.
     - bitcoin-derivatives-see-record-highs-year-end-btc-options-show-29-chance-price-crosses-20k.html saved.
-    
+
     https://news.bitcoin.com/page/126/
     - airbnb-ipo-prospectus-says-future-success-means-adapting-to-cryptocurrencies.html saved.
     - report-pandemic-response-pushed-global-debt-to-272-trillion-in-q3-5t-in-borrowing-expected-in-q4.html saved.
@@ -2069,7 +2075,7 @@ for url in urls:
     - new-dutch-law-clients-must-explain-why-they-want-to-buy-bitcoin.html saved.
     - occs-brian-brooks-says-china-owns-bitcoin-but-crypto-world-disagrees-chinese-crackdown-pushes-miners-away.html saved.
     - crypto-security-firm-fireblocks-raises-30-million-in-series-b-funding-targets-global-expansion.html saved.
-    
+
     https://news.bitcoin.com/page/127/
     - mexican-billionaire-ricardo-pliego-liquid-portfolio-bitcoin-says-crypto-shields-wealth-expropriation.html saved.
     - control-the-pandemic-fed-chair-jerome-powell-predicts-the-entry-of-a-different-economy.html saved.
@@ -2080,7 +2086,7 @@ for url in urls:
     - origin-defi-protocol-suffers-massive-flash-loan-attack-ousd-stablecoin-value-plunges-85.html saved.
     - bitcoin-unlimited-hosts-week-long-hackathon-to-bolster-the-future-of-finance.html saved.
     - mike-novogratzs-galaxy-digital-to-launch-bitcoin-fund-in-canada.html saved.
-    
+
     https://news.bitcoin.com/page/128/
     - bitcoin-evangelist-andreas-antonopoulos-plans-to-testify-in-billion-dollar-bitcoin-lawsuit.html saved.
     - maisie-williams-bitcoin-elon-musk.html saved.
@@ -2091,7 +2097,7 @@ for url in urls:
     - scaramuccis-billion-dollar-mega-hedge-fund-skybridge-may-hold-positions-in-bitcoin.html saved.
     - us-banks-face-a-massive-commercial-real-estate-crisis-looming-on-the-horizon.html saved.
     - nigerian-authorities-put-mastermind-of-the-inksnation-crypto-scam-on-wanted-list.html saved.
-    
+
     https://news.bitcoin.com/page/129/
     - big-tech-execs-and-bitcoin-skype-cofounder-keeps-personal-wealth-in-crypto-intercom-chairman-firmly-jumps-on-the-bitcoin-wagon.html saved.
     - citibank-executive-says-bitcoin-will-trade-at-318000-by-end-of-2021.html saved.
@@ -2102,7 +2108,7 @@ for url in urls:
     - hash-watch-bitcoin-cash-fork-now-complete.html saved.
     - pakistan-cryptocurrency-regulation.html saved.
     - ripple-forced-to-rebrand-payid-trademark-after-copyright-infringement-lawsuit.html saved.
-    
+
     https://news.bitcoin.com/page/130/
     - btc-options-open-interest-surges-traders-look-to-an-unfilled-bitcoin-futures-gap-at-18k.html saved.
     - akoin-cryptocurrency-kenya-akon-city.html saved.
@@ -2113,7 +2119,7 @@ for url in urls:
     - hedge-fund-manager-brian-kelly-says-increasing-institutional-interest-in-bitcoin-down-to-its-fixed-supply.html saved.
     - s9-resurrection-higher-bitcoin-prices-allow-miners-to-switch-outdated-mining-rigs-back-on.html saved.
     - printing-1-7-trillion-for-climate-change-how-joe-bidens-administration-aims-to-push-the-green-new-deal.html saved.
-    
+
     https://news.bitcoin.com/page/131/
     - bitpay-launches-new-payroll-service-for-companies-that-opt-to-pay-employees-in-crypto.html saved.
     - hackers-drain-2-million-in-dai-from-defi-protocol-akropolis.html saved.
@@ -2124,7 +2130,7 @@ for url in urls:
     - the-undo-button-wallet-tool-gives-users-the-ability-to-reverse-ethereum-transactions.html saved.
     - a-new-bitcoin-mining-pool-claims-it-has-tools-to-censor-blockchain-transactions.html saved.
     - market-update-bitcoin-spikes-over-16k-rsi-levels-warm-up-price-retracts-for-another-attempt.html saved.
-    
+
     https://news.bitcoin.com/page/132/
     - venezuelan-state-electricity-company-reportedly-cuts-power-to-crypto-miners.html saved.
     - report-blockchain-price-oracle-manipulation-produces-millions-in-losses-shows-no-signs-of-slowing.html saved.
@@ -2135,7 +2141,7 @@ for url in urls:
     - pfizers-pandemic-vaccine-news-fails-to-dampen-interest-in-bitcoin.html saved.
     - chinese-bank-bonds-3-billion-bitcoin.html saved.
     - erratic-processing-power-bitcoins-hashrate-gains-45-in-a-day-then-loses-41-exahash.html saved.
-    
+
     https://news.bitcoin.com/page/133/
     - blockchain-backed-election-art-sells-for-66k-animation-changes-after-electoral-college-decision.html saved.
     - stan-druckenmiller-bitcoin.html saved.
@@ -2146,7 +2152,7 @@ for url in urls:
     - 100k-bitcoin-s2f-author-confident-with-his-model-suggests-six-figure-btc-price-by-2021.html saved.
     - grin-network-victim-of-51-attack-unknown-miner-commands-58-of-the-hashrate.html saved.
     - dr-doom-nouriel-roubini-bitcoin-store-of-value.html saved.
-    
+
     https://news.bitcoin.com/page/134/
     - jpmorgan-gold-etfs-bitcoin.html saved.
     - bitcoin-global-launches-p2p-crypto-trading-app-for-mobile-devices.html saved.
@@ -2157,7 +2163,7 @@ for url in urls:
     - 20-more-block-rewards-from-2010-spent-today-why-are-decade-old-bitcoins-waking-up.html saved.
     - argentinian-central-bank-to-lift-freeze-on-bank-fee-increases-sets-the-ceiling-for-future-hikes-at-9.html saved.
     - ethereum-user-spends-9500-in-fees-sending-just-120-in-an-error-to-forget.html saved.
-    
+
     https://news.bitcoin.com/page/135/
     - hash-watch-kraken-announces-bch-fork-plans-bitcoin-abc-reveals-two-pronged-effort.html saved.
     - dutch-crypto-regulation-central-bank.html saved.
@@ -2168,7 +2174,7 @@ for url in urls:
     - stablecoin-savings-circle-launches-high-yield-usdc-accounts-for-businesses.html saved.
     - eth-2-0-scheduled-for-december-vitalik-deposits-1-4m-worth-of-ether-into-phase-0-contract.html saved.
     - swiss-bank-sygnum-begins-storing-crypto-with-taurus-group-launches-staking-service.html saved.
-    
+
     https://news.bitcoin.com/page/136/
     - decentralized-exchanges-that-use-automated-market-makers-now-represent-93-of-the-market.html saved.
     - jeffrey-gundlach-stock-market-crash-bitcoin.html saved.
@@ -2179,7 +2185,7 @@ for url in urls:
     - us-seizes-undetected-silk-road-bitcoins-billion.html saved.
     - 200-million-brazilian-crypto-fraud-scam-the-us-seizes-24-million-worth-of-digital-currencies.html saved.
     - bitcoin-price-spikes-over-9-as-the-crypto-assets-value-nears-15k.html saved.
-    
+
     https://news.bitcoin.com/page/137/
     - 1-billion-silk-road-bitcoin-moves-for-first-time-in-five-years.html saved.
     - gold-price-expected-to-rally-despite-concerns-about-lockdown-2-0.html saved.
@@ -2190,7 +2196,7 @@ for url in urls:
     - us-presidential-election-unlikely-to-alter-bitcoins-path-analyst.html saved.
     - bitcoin-networks-mining-difficulty-sees-largest-epoch-drop-since-2011.html saved.
     - bitcoin-volatility-expected-to-rise-after-the-us-presidential-election.html saved.
-    
+
     https://news.bitcoin.com/page/138/
     - sec-fundraising-rules-crypto-firms.html saved.
     - paypal-crypto-service-venmo.html saved.
@@ -2201,7 +2207,7 @@ for url in urls:
     - court-filing-accuses-bitmex-cofounders-of-looting-440-million-before-the-fed-crackdown.html saved.
     - venezuela-to-incorporate-bitcoin-and-litecoin-wallets-into-national-remittances-platform.html saved.
     - uncollaterized-power-a-makerdao-governance-vote-was-swayed-by-a-defi-flash-loan.html saved.
-    
+
     https://news.bitcoin.com/page/139/
     - second-stimulus-checks-direct-payments-americans.html saved.
     - switzerland-gazprombank-bitcoin-trading-custody.html saved.
@@ -2212,7 +2218,7 @@ for url in urls:
     - satoshi-nakamotos-bitcoin-white-paper-a-12-year-old-summary-of-robust-unstructured-simplicity.html saved.
     - john-mcafee-crypto-prison-tax-fraud-murder.html saved.
     - billion-crypto-ponzi-wotoken-prison-china.html saved.
-    
+
     https://news.bitcoin.com/page/140/
     - occs-brian-brooks-is-against-the-government-issuing-digital-dollar-supports-regulation-of-privately-issued-stablecoins-instead.html saved.
     - bitcoin-com-exchange-reveals-role-in-the-cryptopia-rescue-group.html saved.
@@ -2223,7 +2229,7 @@ for url in urls:
     - crypto-startup-avanti-receives-license-to-operate-as-national-bank-in-wyoming.html saved.
     - report-bitcoin-set-for-its-biggest-breakout-yet.html saved.
     - fidelity-investments-digital-asset-custody-services-arm-expands-to-asia.html saved.
-    
+
     https://news.bitcoin.com/page/141/
     - dutch-police-seize-33-million-in-bitcoin-from-couple-accused-of-money-laundering.html saved.
     - kpmg-crypto-suite-institutional-adoption.html saved.
@@ -2234,7 +2240,7 @@ for url in urls:
     - ecochains-capital-logic-will-transform-the-defi-ecosystem.html saved.
     - coinbase-launches-cryptocurrency-visa-card-in-the-us.html saved.
     - mempool-clog-bitcoin-hashrate-drops-40-backlog-shows-over-100k-unconfirmed-transactions.html saved.
-    
+
     https://news.bitcoin.com/page/142/
     - report-55-of-us-investors-interest-in-bitcoin-investment-covid-19-catalyst.html saved.
     - david-hasselhoff-invented-bitcoin-9-celebrities-wish-bitcoin-a-happy-birthday.html saved.
@@ -2245,7 +2251,7 @@ for url in urls:
     - indian-bank-crypto-banking-services-buy-bitcoin.html saved.
     - covid-19-hit-sub-sahara-africa-gets-16-billion-from-imf-region-still-faces-290b-financing-gap.html saved.
     - the-750-million-pre-halloween-bitcoin-options-expiry-has-started-to-spook-traders.html saved.
-    
+
     https://news.bitcoin.com/page/143/
     - marathon-buys-additional-10000-antminers-to-become-largest-us-bitcoin-miner.html saved.
     - a-look-at-the-fascist-agenda-behind-the-great-reset-and-the-wefs-reboot-propaganda.html saved.
@@ -2256,7 +2262,7 @@ for url in urls:
     - celebrate-this-halloween-with-spookalicious-casino-games-and-get-rewarded.html saved.
     - the-many-facts-pointing-to-john-nash-being-satoshi-nakamoto.html saved.
     - kevin-hart-bitcoin-legit-investment.html saved.
-    
+
     https://news.bitcoin.com/page/144/
     - 250-trillion-assets-bull-case-bitcoin.html saved.
     - defi-protocol-harvest-finance-hacked-for-24-million-attacker-returns-2-5-million.html saved.
@@ -2267,7 +2273,7 @@ for url in urls:
     - hackers-twitter-vpn-problems.html saved.
     - kanye-west-bitcoin-liberation-humanity.html saved.
     - jp-morgan-sees-millennials-bitcoin-preference-over-gold-as-foundation-for-its-long-term-success.html saved.
-    
+
     https://news.bitcoin.com/page/145/
     - us-government-agencies-propose-changes-to-funds-transfer-rules-seek-to-broaden-definition-of-money-to-include-cryptocurrencies.html saved.
     - privacy-focused-brave-users-can-now-purchase-bitcoin-cash-through-bitcoin-com.html saved.
@@ -2278,7 +2284,7 @@ for url in urls:
     - china-law-legalize-digital-yuan.html saved.
     - paypals-crypto-embrace-morgan-stanley-says-move-boon-for-mass-adoption-critics-say-payment-giant-violates-crypto-principles.html saved.
     - voyager-digital-buys-european-crypto-exchange-focused-on-institutional-investors.html saved.
-    
+
     https://news.bitcoin.com/page/146/
     - prepping-for-next-years-travel-rule-25-us-crypto-service-providers-publish-compliance-solutions-paper.html saved.
     - mastermind-of-alleged-billion-dollar-spanish-pyramid-scheme-arrested-faces-16-year-prison-sentence.html saved.
@@ -2289,7 +2295,7 @@ for url in urls:
     - p2p-trading-resumes-on-okex-while-withdrawals-freeze-still-in-effect-tron-foundation-trx-holders.html saved.
     - price-increase-drives-98-of-bitcoin-holders-in-a-state-of-profit.html saved.
     - bitcoin-paypal-crypto-services.html saved.
-    
+
     https://news.bitcoin.com/page/147/
     - goldman-sachs-corruption-2-8-billion.html saved.
     - last-chance-to-get-staked-750-million-hex-payout-november-19th-2020.html saved.
@@ -2300,7 +2306,7 @@ for url in urls:
     - market-update-bitcoin-nears-13000-holds-record-breaking-87-day-streak-above-10k.html saved.
     - payments-giant-paypal-says-its-customers-can-now-buy-and-sell-bitcoin.html saved.
     - hackers-donate-bitcoin-ransomware-attacks.html saved.
-    
+
     https://news.bitcoin.com/page/148/
     - european-commission-opposes-crypto-fraud-compensation-fund-victims-say-commission-cozying-up-to-the-industry.html saved.
     - hotel-bitcoin-atms-swiss-dolder-grand.html saved.
@@ -2311,7 +2317,7 @@ for url in urls:
     - macro-investor-dan-tapiero-says-crypto-adoption-slow-emerging-economies-ahead-of-developed-states.html saved.
     - an-ethereum-vr-game-featuring-atari-and-care-bears-sells-plot-of-virtual-land-for-76k.html saved.
     - monetary-stability-the-imf-and-fed-chair-jerome-powell-discuss-digital-currency-implications.html saved.
-    
+
     https://news.bitcoin.com/page/149/
     - mission-accomplished-worlds-first-bitcoin-bar-shuts-down.html saved.
     - peter-schiffs-euro-pacific-bank-tax.html saved.
@@ -2322,7 +2328,7 @@ for url in urls:
     - stimulus-deadline-second-stimulus-checks.html saved.
     - fsb-report-says-stablecoins-promote-financial-inclusion-urges-regulators-to-tighten-laundering-controls.html saved.
     - yearn-finance-founder-blames-social-actors-for-role-in-the-emn-token-hack.html saved.
-    
+
     https://news.bitcoin.com/page/150/
     - cashfusion-use-increased-by-328-200m-in-bch-fused-and-close-to-20000-fusions.html saved.
     - cryptocurrency-etfs-sec-tokenized-products.html saved.
@@ -2333,7 +2339,7 @@ for url in urls:
     - okex-halts-withdrawals-due-to-out-of-touch-private-key-holder-founder-star-xu-talks-with-police.html saved.
     - foreign-crypto-exchanges-like-paxful-binance-to-pay-1-5-tax-under-kenyas-new-regulations.html saved.
     - shariah-compliance-cryptocurrencies-legit-commodities.html saved.
-    
+
     https://news.bitcoin.com/page/151/
     - bitcoins-intrinsic-value.html saved.
     - bitcoin-mining-rigs-struggle-for-profits-despite-btcs-hashrate-reaching-an-all-time-high.html saved.
@@ -2344,7 +2350,7 @@ for url in urls:
     - fidelity-digital-assets-touts-bitcoin-credentials-as-publicly-traded-companies-now-hold-over-600000-btc.html saved.
     - bitcoin-miner-marathon-agrees-to-deal-that-cuts-electricity-costs-by-38-with-us-power-company.html saved.
     - another-sleeping-bitcoin-block-reward-from-2010-was-caught-waking-up-after-ten-years.html saved.
-    
+
     https://news.bitcoin.com/page/152/
     - hong-kong-crypto-exchange-launches-hardware-wallet-with-fingerprint-recognition.html saved.
     - the-many-facts-pointing-to-paul-le-roux-being-satoshi-nakamoto.html saved.
@@ -2355,7 +2361,7 @@ for url in urls:
     - ripple-ceo-threatens-to-relocate-company-overseas-due-to-unfavorable-us-regulation.html saved.
     - bank-of-england-negative-interest-rates.html saved.
     - grayscales-ethereum-trust-attains-sec-reporting-company-status.html saved.
-    
+
     https://news.bitcoin.com/page/153/
     - hathor-merge-mining-pool-captures-33-of-the-bitcoin-cash-hashrate.html saved.
     - the-silk-road-balance-sheet-discrepancy-bitcoin-worth-4-8-billion-still-missing.html saved.
@@ -2366,7 +2372,7 @@ for url in urls:
     - 6-stimulus-packages-second-direct-payments.html saved.
     - 12m-in-satoshi-era-bitcoins-move-21-block-rewards-from-2010-spent-after-a-decade-of-slumber.html saved.
     - kate-winslet-cryptocurrency-movie-onecoin.html saved.
-    
+
     https://news.bitcoin.com/page/154/
     - q3-crypto-volumes-up-by-155-billion-as-defi-hype-drives-dex-growth-by-197.html saved.
     - here-are-the-top-public-companies-that-have-adopted-bitcoin-as-a-reserve-asset.html saved.
@@ -2377,7 +2383,7 @@ for url in urls:
     - boringdao-raises-1-4m-projects-tokenized-btc-bridge-backed-by-200-collateral.html saved.
     - defi-market-cap-drops-25-1-in-one-day-proponents-say-tokens-self-correcting.html saved.
     - protests-suspension-swift-banking-kyrgyzstan.html saved.
-    
+
     https://news.bitcoin.com/page/155/
     - market-update-bitcoin-captures-11k-flash-buy-signals-bollinger-band-squeeze.html saved.
     - tim-draper-indian-crypto-exchange-unocoin.html saved.
@@ -2388,7 +2394,7 @@ for url in urls:
     - square-bitcoin-50-million.html saved.
     - bitmex-ceo-hayes-steps-down-following-u-s-criminal-charges.html saved.
     - report-bitcoin-surges-with-rising-real-interest-rates-and-economic-stimulus-while-gold-performs-better-with-rising-inflation.html saved.
-    
+
     https://news.bitcoin.com/page/156/
     - 97-of-people-consulted-by-uk-financial-regulator-opposed-crypto-derivatives-ban.html saved.
     - yearn-finance-token-value-slides-67-while-locked-value-loses-over-300m.html saved.
@@ -2399,7 +2405,7 @@ for url in urls:
     - spanish-prosecution-office-investigating-alleged-bitcoin-pyramid-scheme-1-billion-in-investor-funds-reportedly-missing.html saved.
     - uk-bans-sale-of-crypto-derivatives-to-retail-investors-says-move-to-save-69-million-in-losses.html saved.
     - the-search-for-satoshi-nakamoto-a-look-at-7-suspected-bitcoin-creators.html saved.
-    
+
     https://news.bitcoin.com/page/157/
     - uk-1-billion-venezuelan-gold-bank-of-england.html saved.
     - tim-drapers-venture-studio-triple-down-blockchain-25m-fund.html saved.
@@ -2410,7 +2416,7 @@ for url in urls:
     - ethereum-transaction-fees-fall-82-as-defi-hype-eases.html saved.
     - visual-interpretation-of-bitcoins-supply-shows-the-digital-assets-unique-scarcity.html saved.
     - 9-trillion-in-stimulus-injections-the-feds-2020-pump-eclipses-two-centuries-of-usd-creation.html saved.
-    
+
     https://news.bitcoin.com/page/158/
     - crypto-for-congress-bitcoin.html saved.
     - after-banning-icos-chinas-defi-ecosystem-grows-exponential-this-year.html saved.
@@ -2421,7 +2427,7 @@ for url in urls:
     - stablecoin-supply-doubles-in-3-months-as-cumulative-market-cap-surpasses-20b.html saved.
     - eth-volumes-top-125-billion-in-q3-high-risk-dapps-dominate-tron-network.html saved.
     - kucoin-ceo-says-exchange-hack-suspects-found-204-million-recovered.html saved.
-    
+
     https://news.bitcoin.com/page/159/
     - 8-m-worth-sleeping-bitcoin-rewards-2010-black-thursday.html saved.
     - jeff-booth-bitcoin-price-of-tomorrow.html saved.
@@ -2432,7 +2438,7 @@ for url in urls:
     - venezuelas-state-run-defi-crypto-exchange-goes-live-after-maduros-anti-blockade-speech.html saved.
     - stacking-satoshis-leveraging-defi-applications-to-earn-more-bitcoin.html saved.
     - chainalysis-and-integra-win-1-25-million-irs-contract-to-break-monero.html saved.
-    
+
     https://news.bitcoin.com/page/160/
     - open-interest-on-bitmex-drops-16-investors-withdraw-37000-btc-in-less-than-24-hours.html saved.
     - bitmex-criminal-charges-prison.html saved.
@@ -2443,7 +2449,7 @@ for url in urls:
     - bitcoin-posts-a-66-day-consecutive-streak-above-the-10k-price-range.html saved.
     - ico-aftermath-us-rules-in-favour-of-sec-in-100-million-kik-case-salt-to-reimburse-claimants-from-2017-ico.html saved.
     - aurus-disrupts-the-gold-industry-today-its-ecosystem-lists-at-a-value-of-75m.html saved.
-    
+
     https://news.bitcoin.com/page/161/
     - venezuela-to-start-using-bitcoin-in-global-trade-in-efforts-to-fend-off-u-s-sanctions.html saved.
     - 2-6-trillion-stimulus-bill-second-stimulus-checks.html saved.
@@ -2454,7 +2460,7 @@ for url in urls:
     - jpmorgan-fraud-billion-dollar-settlement.html saved.
     - cumulative-ethereum-transaction-fees-in-2020-supersede-bitcoins-by-a-long-shot.html saved.
     - devere-group-ceo-bitcoin-can-replace-gold.html saved.
-    
+
     https://news.bitcoin.com/page/162/
     - uniswap-captures-2-billion-locked-dex-volume-outpaces-second-largest-centralized-exchange.html saved.
     - us-senate-candidate-cynthia-lummis-bitcoin.html saved.
@@ -2465,7 +2471,7 @@ for url in urls:
     - token-projects-to-recover-130m-from-the-kucoin-hack-devs-condemned-for-centralization.html saved.
     - mark-cuban-wants-an-expiration-date-on-stimulus-checks-critics-says-proposal-is-right-out-of-a-banana-republic-playbook.html saved.
     - defi-token-exposed-as-pump-and-dump-scam-in-leaked-telegram-chat.html saved.
-    
+
     https://news.bitcoin.com/page/163/
     - grayscale-investments-scooped-up-over-17000-btc-in-the-last-seven-days.html saved.
     - novogratz-stocks-bitcoin-gold.html saved.
@@ -2476,7 +2482,7 @@ for url in urls:
     - tethers-stablecoin-dominance-drops-below-80-as-audit-controversy-lingers-on-on.html saved.
     - chinese-mining-rig-manufacturer-microbt-announces-offshore-asic-factory.html saved.
     - russia-penalties-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/164/
     - federal-reserve-digital-dollar.html saved.
     - kucoin-hacked-for-150-million-in-bitcoin-bitfinex-and-tether-freeze-33-million-of-the-stolen-funds.html saved.
@@ -2487,7 +2493,7 @@ for url in urls:
     - cambridge-universitys-third-crypto-study-records-101-million-cryptocurrency-users-worldwide.html saved.
     - digital-commodity-exchange-act-of-2020.html saved.
     - indian-crypto-exchange-scam.html saved.
-    
+
     https://news.bitcoin.com/page/165/
     - bitcoin-is-undervalued-fair-value-price-should-be-at-15000-says-analyst.html saved.
     - the-genesis-of-bch-tokenization-over-10000-slp-tokens-built-on-bitcoin-cash.html saved.
@@ -2498,7 +2504,7 @@ for url in urls:
     - venezuela-passes-law-legalizing-crypto-mining-forces-miners-to-join-national-mining-pool.html saved.
     - a-deep-dive-into-polkadot-and-how-dot-became-a-top-ten-crypto-contender.html saved.
     - bch-hash-watch-majority-of-miners-signal-bchn-coinex-exchange-announces-futures.html saved.
-    
+
     https://news.bitcoin.com/page/166/
     - cryptocurrency-etf-nasdaq-hashdex.html saved.
     - paul-tudor-jones-bitcoin.html saved.
@@ -2509,7 +2515,7 @@ for url in urls:
     - tokenized-btc-crosses-1b-notional-ethereum-cements-role-as-bitcoins-main-sidechain.html saved.
     - survey-large-number-of-yield-farmers-cant-read-smart-contracts-despite-high-risk.html saved.
     - craig-wrights-summary-judgment-denied-billion-dollar-bitcoin-lawsuit-heads-to-trial.html saved.
-    
+
     https://news.bitcoin.com/page/167/
     - execs-managing-78b-in-assets-say-institutional-investors-plan-to-allocate-more-cryptocurrencies.html saved.
     - us-banks-can-now-hold-reserves-for-stablecoin-issuers-says-federal-banking-regulator.html saved.
@@ -2520,7 +2526,7 @@ for url in urls:
     - 5-major-banks-exposed-for-moving-trillions-for-mobsters-onecoin-and-drug-cartels.html saved.
     - us-indicts-2-people-stealing-bitcoin-ether-binance-poloniex-gemini-users.html saved.
     - publicly-listed-energy-firm-equinor-exploits-gas-flaring-in-north-dakota-to-mine-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/168/
     - over-40-bitcoin-forks-are-down-more-than-98-since-2017s-forking-fiesta.html saved.
     - bitcoin-bull-microstrategy.html saved.
@@ -2531,7 +2537,7 @@ for url in urls:
     - market-outlook-bitcoin-breaks-11k-whales-refuse-to-sell-downside-risk-remains.html saved.
     - gibraltar-updates-distributed-ledger-framework-to-align-with-fatf-crypto-regulations.html saved.
     - analyst-1500-bitcoins-lost-every-day-less-than-14-million-coins-will-ever-circulate.html saved.
-    
+
     https://news.bitcoin.com/page/169/
     - oneswap-ones-initial-trade-offering-coinex.html saved.
     - nft-digital-art-that-changes-with-bitcoin-price-volatility-sold-for-record-101000.html saved.
@@ -2542,7 +2548,7 @@ for url in urls:
     - argentinas-peso-plunges-after-central-bank-tightens-foreign-exchange-controls-citizens-discuss-bitcoin-adoption.html saved.
     - switchere-buy-crypto-with-cc-pay-with-local-banks-swap-and-sell-coins-online.html saved.
     - south-korean-police-seize-shares-from-major-bithumb-shareholder.html saved.
-    
+
     https://news.bitcoin.com/page/170/
     - gpu-manufacturer-nvidia-buys-chip-maker-arm-for-40-billion.html saved.
     - bitcoin-unlimited-launches-two-option-voting-app-powered-by-bitcoin-cash.html saved.
@@ -2553,7 +2559,7 @@ for url in urls:
     - a-spain-based-crypto-ponzi-scheme-abruptly-freezes-accounts-of-120000-investors.html saved.
     - over-15-of-eth-supply-locked-in-smart-contracts-btc-dominance-declining.html saved.
     - you-are-not-anonymous-on-tor-study-shows-privacy-network-offers-superficial-anonymity.html saved.
-    
+
     https://news.bitcoin.com/page/171/
     - defi-platform-bzx-recovers-stolen-8-1-million-from-hacker.html saved.
     - hydras-complex-drug-delivery-system-in-russia-overshadows-western-darknet-markets.html saved.
@@ -2564,7 +2570,7 @@ for url in urls:
     - us-company-accepts-bitcoin-payments-for-luxury-planes-as-40m-gulfstream-jet-goes-on-sale.html saved.
     - report-market-valuation-of-14-banking-giants-shed-635-billion-this-year.html saved.
     - presidential-candidate-brock-pierce-served-with-lawsuit-for-alleged-ico-fraud.html saved.
-    
+
     https://news.bitcoin.com/page/172/
     - forex-strapped-nigeria-designates-crypto-assets-as-securities.html saved.
     - mad-money-jim-cramer-bitcoin-inflation.html saved.
@@ -2575,7 +2581,7 @@ for url in urls:
     - defi-boom-bubble-fears-grow-as-toxic-community-disagrees-on-way-forward.html saved.
     - bitcoin-options-traders-bet-the-price-of-btc-can-touch-36k-by-december.html saved.
     - defi-protocol-bzx-loses-8-1-million-in-third-hack-this-year.html saved.
-    
+
     https://news.bitcoin.com/page/173/
     - sushiswaps-2-million-token-airdrop-founders-face-accusations-of-making-defi-a-joke-again.html saved.
     - the-moss-piglet-dilemma-paypal-bans-payments-to-merchants-using-the-word-tardigrade.html saved.
@@ -2586,7 +2592,7 @@ for url in urls:
     - tether-recovers-1-million-usdt-sent-to-wrong-defi-address-by-chinese-traders.html saved.
     - bitcoin-hashrate-ramps-to-130-exahash-amid-next-generation-miner-shortage.html saved.
     - morgan-stanley-recommends-bitcoin-money-printing.html saved.
-    
+
     https://news.bitcoin.com/page/174/
     - us-sanctions-russians-cryptocurrency-presidential-election.html saved.
     - bitcoin-tram-ad-campaign-billboards-hong-kong.html saved.
@@ -2597,7 +2603,7 @@ for url in urls:
     - the-700-million-wallet-crack-bitcoins-7th-largest-address-is-under-constant-attack.html saved.
     - judge-dismisses-200m-damages-claim-in-sim-swap-crypto-lawsuit-against-att.html saved.
     - irs-to-pay-625k-to-crack-monero-crypto-proponents-scoff-at-contract.html saved.
-    
+
     https://news.bitcoin.com/page/175/
     - european-crypto-exchange-hacked-for-5-4-million-in-bitcoin.html saved.
     - defi-project-yfdex-finance-vanishes-with-20m-investors-funds-just-two-days-after-launch.html saved.
@@ -2608,7 +2614,7 @@ for url in urls:
     - fiat-devaluation-drives-retail-bitcoin-transfers-in-africa-56-to-316-million-in-a-year-report.html saved.
     - swift-says-criminals-prefer-cash-for-money-laundering-not-cryptocurrency.html saved.
     - 6-members-of-the-multi-billion-dollar-plustoken-scam-charged-with-fraud-in-china.html saved.
-    
+
     https://news.bitcoin.com/page/176/
     - irs-cryptocurrency-owners.html saved.
     - ukraine-russia-south-africa-nigeria-cryptocurrency-adoption.html saved.
@@ -2619,7 +2625,7 @@ for url in urls:
     - crypto-borrowing-here-are-seven-of-the-best-interest-rates-on-the-market.html saved.
     - jim-rogers-predicts-end-dollar-dominance.html saved.
     - latin-america-bitcoin-fiat-currencies.html saved.
-    
+
     https://news.bitcoin.com/page/177/
     - cryptocurrencies-accepted-15000-restaurants-france-just-eat.html saved.
     - crypto-volumes-surge-in-august-binance-largest-spot-exchange-as-huobi-leads-derivatives.html saved.
@@ -2630,7 +2636,7 @@ for url in urls:
     - bitcoin-traded-stock-india.html saved.
     - opium%e2%80%8c-%e2%80%8cprotocol-allows-traders-to-hedge-or-bet-against-the-stablecoin-tethers-solvency.html saved.
     - us-man-pleads-guilty-in-722-million-bitclub-network-ponzi-scheme-case.html saved.
-    
+
     https://news.bitcoin.com/page/178/
     - defis-raw-deal-sushiswap-creator-transfers-multi-sig-control-to-ftx-ceo.html saved.
     - bitcoin-dominance-slides-losing-10-in-the-last-100-days.html saved.
@@ -2641,7 +2647,7 @@ for url in urls:
     - robert-rorschach-20-reasons-not-to-vote.html saved.
     - defi-boom-fueling-eth-gas-fees-threatens-viability-of-smart-contracts.html saved.
     - south-african-man-charged-in-u-s-court-for-fraud-involving-28-million-in-bitcoin-and-forex.html saved.
-    
+
     https://news.bitcoin.com/page/179/
     - tim-draper-heaps-praise-on-bitcoin-cash.html saved.
     - unlimited-qe-and-an-index-portfolio-how-fed-chair-jay-powell-can-pump-his-bags.html saved.
@@ -2652,7 +2658,7 @@ for url in urls:
     - chilean-cryptocurrency-exchange-denies-fraud-allegations-tribunal-set-rule-on-complaint.html saved.
     - privacy-options-underutilized-in-cryptocurrency-usage-report.html saved.
     - yearn-finance-vault-users-lock-139m-farmers-claim-collateralized-eth-gathers-90-apy.html saved.
-    
+
     https://news.bitcoin.com/page/180/
     - 16b-worth-of-dollar-pegged-cryptos-stablecoins-add-100m-a-day-since-mid-july.html saved.
     - long-term-fundamentals-crypto-bull-market.html saved.
@@ -2663,7 +2669,7 @@ for url in urls:
     - canaan-cuts-losses-for-second-successive-quarter-down-to-2-4m-in-q2-demand-remains-weak.html saved.
     - us-hopes-to-confiscate-400m-doj-files-forfeiture-judgment-against-onecoin-launderer.html saved.
     - 1-trillion-in-housing-bonds-us-real-estate-crisis-held-back-by-feds-mortgage-purchases.html saved.
-    
+
     https://news.bitcoin.com/page/181/
     - pornhub-accepts-bitcoin-top-adult-site-cryptocurrency-payment.html saved.
     - microstrategys-250-million-bitcoin-buy-consequential.html saved.
@@ -2674,7 +2680,7 @@ for url in urls:
     - money-market-protocol-aave-settles-300-million-in-defi-flash-loans.html saved.
     - prepping-for-an-airdrop-prominent-bch-community-members-bid-bitcoin-abc-devs-farewell.html saved.
     - akon-6-billion-cryptocurrency-city-wakanda.html saved.
-    
+
     https://news.bitcoin.com/page/182/
     - warren-buffett-inflation-bitcoin-all-time-high.html saved.
     - stock-exchanges-switzerland-germany-austria-bitcoin-etp.html saved.
@@ -2685,7 +2691,7 @@ for url in urls:
     - ciphertace-allegedly-builds-monero-tracing-tools-xmr-proponents-disagree.html saved.
     - venezuela-bitcoin-use-hyperinflation-crypto-adoption.html saved.
     - chainlink-doomsday-predictions-zeus-capital-warns-investors-not-to-get-fooled.html saved.
-    
+
     https://news.bitcoin.com/page/183/
     - total-value-locked-in-defi-jumped-83-in-august-8-billion-in-assets-held.html saved.
     - nigerian-crypto-startup-yellow-card-raises-1-5-million-for-expansion-in-africa.html saved.
@@ -2696,7 +2702,7 @@ for url in urls:
     - lysander-spooner-natural-law-the-science-of-justice.html saved.
     - defi-project-yearn-finance-smashes-records-as-native-token-surpasses-30k.html saved.
     - major-chinese-bank-launches-central-bank-digital-currency-wallet.html saved.
-    
+
     https://news.bitcoin.com/page/184/
     - after-empires-exit-scam-darknet-market-patrons-scramble-to-find-alternatives.html saved.
     - 3-5-million-crypto-wallets-downloaded-in-july-active-users-up-110-in-the-year.html saved.
@@ -2707,7 +2713,7 @@ for url in urls:
     - federal-reserve-inflation-bitcoin-price-500k.html saved.
     - bitcoin-crypto-ranking-chinese-government.html saved.
     - digital-currency-group-pledges-100-million-to-bolster-bitcoin-mining-industry.html saved.
-    
+
     https://news.bitcoin.com/page/185/
     - zimbabwes-mobile-money-on-life-support-as-central-bank-tightens-screws-restrictions-to-affect-p2p-bitcoin-trading.html saved.
     - banks-in-mexico-pose-greater-money-laundering-risk-than-crypto-firms-says-report.html saved.
@@ -2718,7 +2724,7 @@ for url in urls:
     - sec-filing-fidelity-bitcoin-fund.html saved.
     - capturing-petahash-marathon-obtains-3300-bitcoin-mining-rigs-acquires-fastblock-for-22-million.html saved.
     - dash-nigeria-takes-digital-currency-education-campaign-to-regulators-and-key-institutions.html saved.
-    
+
     https://news.bitcoin.com/page/186/
     - korean-police-seize-crypto-exchange-coinbit-over-allegations-of-84-million-in-wash-trades.html saved.
     - crypto-exchange-ftx-buys-blockfolio-for-150-million-in-effort-to-expand-retail-presence.html saved.
@@ -2729,7 +2735,7 @@ for url in urls:
     - minereum-crypto-bond.html saved.
     - official-notice-says-cheap-electricity-to-end-for-inner-mongolian-bitcoin-miners.html saved.
     - hyperinflation-and-currency-collapse-fears-after-zambian-president-fires-central-bank-governor.html saved.
-    
+
     https://news.bitcoin.com/page/187/
     - developers-plan-to-compete-in-bitcoin-cash-fueled-hackathon-bch-devcon-iii.html saved.
     - aave-protocol-outpaces-maker-with-1-4b-locked-defi-project-granted-uk-electronic-money-license.html saved.
@@ -2740,7 +2746,7 @@ for url in urls:
     - venezuela-blocks-opposition-from-disbursing-18-million-to-health-workers-via-bitcoin-exchange-airtm.html saved.
     - the-bitcoin-network-now-consumes-7-nuclear-plants-worth-of-power.html saved.
     - corporate-crypto-reserve-status-software-firm-snappa-swaps-40-cash-reserves-for-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/188/
     - bitmex-restricts-ontario-residents-canadian-regulator.html saved.
     - imf-cryptocurrency-evolution-of-money.html saved.
@@ -2751,7 +2757,7 @@ for url in urls:
     - darknet-giant-empire-market-offline-36-hours-blame-cast-massive-ddos-attack.html saved.
     - re-mining-simulation-shows-satoshi-used-a-single-high-end-pc-to-mine-1-1m-bitcoin.html saved.
     - iran-shuts-down-1100-illegal-bitcoin-miners-whistleblowers-rewarded-2400.html saved.
-    
+
     https://news.bitcoin.com/page/189/
     - 12-bitcoin-cash-fueled-flipstarter-campaigns-raise-1-million.html saved.
     - canada-restaurant-chain-tahinis-cash-reserves-bitcoin.html saved.
@@ -2762,7 +2768,7 @@ for url in urls:
     - grayscales-litecoin-and-bitcoin-cash-trusts-trade-for-tremendous-premiums.html saved.
     - nigerias-foreign-currency-crisis-boon-for-bitcoin-country-tops-wallet-downloads-ahead-of-the-us.html saved.
     - rich-dad-poor-dad-author-says-major-banking-crisis-coming-praises-bitcoin-and-gold.html saved.
-    
+
     https://news.bitcoin.com/page/190/
     - john-mcafee-ghost-crypto-project-fail.html saved.
     - occ-chief-says-americans-gravitating-toward-digital-currencies-urges-banks-to-embrace-innovation.html saved.
@@ -2773,7 +2779,7 @@ for url in urls:
     - yearn-finance-token-jumps-245-in-5-days-defi-token-yfi-worth-more-than-a-single-bitcoin.html saved.
     - us-north-korea-6000-hackers-belarus-china-india-malaysia-russia.html saved.
     - japanese-court-orders-seizure-of-46000-bitcoin-linked-to-coincheck-hack-of-2018.html saved.
-    
+
     https://news.bitcoin.com/page/191/
     - chinas-bitcoin-mining-industry-impacted-the-most-this-year-says-report.html saved.
     - hash-watch-bitcoin-cash-miners-begin-signaling-node-implementations.html saved.
@@ -2784,7 +2790,7 @@ for url in urls:
     - bitmain-retains-only-a-minuscule-lead-over-competitor-microbt-amid-ongoing-power-tussle-says-report.html saved.
     - big-brother-nigeria-housemates-participate-in-bitcoin-quiz-get-500-btc-as-reward.html saved.
     - report-bitcoin-untied-from-the-economic-cycle-largely-uncorrelated-to-other-asset-classes.html saved.
-    
+
     https://news.bitcoin.com/page/192/
     - warren-buffett-gold-panic-buy-bitcoin-50k.html saved.
     - excessive-flooding-in-sichuan-causes-20-hashrate-losses-for-chinese-bitcoin-miners.html saved.
@@ -2795,7 +2801,7 @@ for url in urls:
     - bitcoin-cash-and-litecoin-trusts-from-grayscale-investments-begin-trading.html saved.
     - ethereum-classic-51-attack-okex-crypto-exchange-suffers-5-6-million-loss-contemplates-delisting-etc.html saved.
     - south-african-firms-cease-and-desist-2-us-states-crypto-debit-card-fraud.html saved.
-    
+
     https://news.bitcoin.com/page/193/
     - china-digital-currency-major-cities-beijing-hong-kong.html saved.
     - bitcoins-hashrate-hits-record-high-130-eh-s-as-btc-price-faces-resistance-at-12000.html saved.
@@ -2806,7 +2812,7 @@ for url in urls:
     - 6-billion-akon-city-akoin-cryptocurrency-empower-africans.html saved.
     - 3-people-arrested-hong-kong-cheating-bitcoin-atms.html saved.
     - 217-million-grayscale-crypto-funds-bitcoin-tv-ad-campaign.html saved.
-    
+
     https://news.bitcoin.com/page/194/
     - 4-south-koreas-largest-banks-provide-cryptocurrency-services.html saved.
     - us-regulator-charges-tech-firm-ceo-in-5-million-ico-fraud-case.html saved.
@@ -2817,7 +2823,7 @@ for url in urls:
     - andreas-antonopoulos-hex-team-offered-me-10-btc-to-speak-well-of-their-token.html saved.
     - miner-hut-8-reports-q2-revenue-plunged-67-to-6-9-million-due-to-bitcoin-halving.html saved.
     - us-federal-reserve-reveals-building-a-digital-dollar-codebase-with-mit.html saved.
-    
+
     https://news.bitcoin.com/page/195/
     - nasdaq-listed-firm-marathon-buys-10500-next-gen-bitcoin-miners-for-23m.html saved.
     - market-update-btc-inches-12k-eth-jumps-link-may-see-rough-waters.html saved.
@@ -2828,7 +2834,7 @@ for url in urls:
     - etc-groups-bitcoin-etp-hits-49-million-assets-under-management-in-two-months.html saved.
     - bitcoin-com-wallet-reveals-usdt-support-users-can-swap-and-store-slp-based-tethers.html saved.
     - defi-yam-token-market-plummets-near-zero-founder-failed.html saved.
-    
+
     https://news.bitcoin.com/page/196/
     - 305-venezuelan-municipalities-collect-tax-cryptocurrency-petro.html saved.
     - high-network-fees-make-btc-less-appealing-for-remittances.html saved.
@@ -2839,7 +2845,7 @@ for url in urls:
     - russia-developing-ai-system-monitor-cryptocurrency-transactions.html saved.
     - 4-6-billion-under-management-grayscale-purchased-over-100m-worth-of-bitcoins-last-week.html saved.
     - fusing-with-whales-cashfusion-privacy-mixing-expands-allowing-10x-bigger-coins.html saved.
-    
+
     https://news.bitcoin.com/page/197/
     - kazakhstan-proposes-15-tax-on-bitcoin-mining-to-help-combat-coronavirus.html saved.
     - defcon-speaker-discusses-liberating-300k-worth-of-bitcoin-from-an-encrypted-file.html saved.
@@ -2850,7 +2856,7 @@ for url in urls:
     - chainlink-competitor-band-token-grows-300-in-7-days-setting-new-ath.html saved.
     - bitcoin-transaction-fees-soar-550-in-a-month-as-price-surges-bch-dash-cheapest-networks.html saved.
     - psf-token-invokes-the-first-coin-age-staking-protocol-on-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/198/
     - federal-reserves-inflation-ramp-up-drives-institutional-investors-hedge-with-bitcoin.html saved.
     - market-outlook-btc-trend-targets-15k-bitcoin-bull-raoul-pal-irresponsibly-long.html saved.
@@ -2861,7 +2867,7 @@ for url in urls:
     - chainlink-price-jumped-more-than-45-in-48-hours-and-440-in-twelve-months.html saved.
     - wirex-launching-us-after-receiving-state-money-transmission-license.html saved.
     - nasdaq-listed-company-sued-backing-2-billion-loans-with-83-tons-fake-gold.html saved.
-    
+
     https://news.bitcoin.com/page/199/
     - germany-closing-down-all-unlicensed-bitcoin-atms.html saved.
     - bitfinex-scoffs-at-tether-market-manipulation-lawsuit-bittrex-and-poloniex-file-for-summary-judgment.html saved.
@@ -2872,7 +2878,7 @@ for url in urls:
     - goldman-sachs-cryptocurrency-jpmorgan-facebook.html saved.
     - crypto-adoption-soars-slovenia-1000-locations-accept-cryptocurrencies.html saved.
     - new-kenyan-digital-tax-to-affect-crypto-platforms.html saved.
-    
+
     https://news.bitcoin.com/page/200/
     - blockchain-analytics-show-altcoins-2x-more-prominent-in-east-asia-compared-to-north-america.html saved.
     - reports-claim-uks-financial-conduct-authority-pressurized-to-remove-onecoin-scam-warning.html saved.
@@ -2883,7 +2889,7 @@ for url in urls:
     - grayscale-investments-ethereum-trust-filed-with-the-sec-to-obtain-reporting-status.html saved.
     - bitmain-delays-delivery-of-bitcoin-miners-by-three-months-as-co-founders-battle-for-company-control.html saved.
     - testimony-from-craig-wrights-ex-wife-throws-a-twist-in-the-billion-dollar-bitcoin-lawsuit.html saved.
-    
+
     https://news.bitcoin.com/page/201/
     - 5-6-million-stolen-as-etc-team-finally-acknowledge-the-51-attack-on-network.html saved.
     - square-cash-app-bitcoin-revenue-surges-600-875-million-q2-profit-up-711.html saved.
@@ -2894,7 +2900,7 @@ for url in urls:
     - s2f-price-model-suggests-bitcoin-price-hits-100k-author-claims-model-is-perfectly-on-track.html saved.
     - bitfinex-400-million-rewards-get-back-120000-stolen-bitcoins.html saved.
     - bitcoin-cash-difficulty-algorithm-debate-heats-up-with-fears-of-another-chain-split.html saved.
-    
+
     https://news.bitcoin.com/page/202/
     - genesis-reports-q2-crypto-loans-spiked-118-to-1-4-billion-amid-rising-yield-farming-interest.html saved.
     - ripple-says-over-the-counter-xrp-sales-soared-1700-to-33-million-in-q2.html saved.
@@ -2905,7 +2911,7 @@ for url in urls:
     - government-official-updates-progress-indias-cryptocurrency-law.html saved.
     - over-90-of-eths-supply-profit.html saved.
     - government-swiss-bank-crypto-trading-custody-services.html saved.
-    
+
     https://news.bitcoin.com/page/203/
     - european-bitcoin-exchange-hacked-for-1-4-million-claims-it-cannot-afford-to-repay-users.html saved.
     - bitcoins-10-drop-shrugged-off-traders-expect-more-big-dips-on-the-way-up.html saved.
@@ -2916,7 +2922,7 @@ for url in urls:
     - triple-entry-bookkeeping-how-satoshi-nakamoto-solved-the-byzantine-generals-problem.html saved.
     - china-never-banned-bitcoin-commodity-beijing-arbitration-commission.html saved.
     - india-proposes-amnesty-citizens-holding-unreported-gold.html saved.
-    
+
     https://news.bitcoin.com/page/204/
     - putin-signs-law-cryptocurrency-legal-russia.html saved.
     - us-court-dismisses-claims-against-xrp-report-shows-ripple-paid-moneygram-15-1m-in-q2.html saved.
@@ -2927,7 +2933,7 @@ for url in urls:
     - single-miner-reorgs-ethereum-classic-devs-report-a-chain-split.html saved.
     - block-478559-bitcoin-cash-fans-worldwide-celebrate-the-cryptocurrencys-3rd-anniversary.html saved.
     - coinbase-reviewing-19-crypto-assets-for-listing-including-wrapped-bitcoin-and-paxos-gold.html saved.
-    
+
     https://news.bitcoin.com/page/205/
     - federal-agents-arrest-suspected-17-year-old-twitter-hack-mastermind-in-florida.html saved.
     - us-regulator-zeroes-in-on-binance-chain-as-sec-awards-monitoring-contract-to-ciphertrace.html saved.
@@ -2938,7 +2944,7 @@ for url in urls:
     - stablecoin-cold-storage-backed-by-satoshis-simba-is-a-new-way-of-holding-assets-in-switzerland.html saved.
     - fidelity-digital-assets-quotes-bitcoin-creator-satoshi-nakamoto-in-latest-investment-thesis.html saved.
     - bitcoin-an-option-as-dennis-gartman-says-hes-exiting-crowded-gold-market.html saved.
-    
+
     https://news.bitcoin.com/page/206/
     - bitcoin-cash-games-launches-3k-leaderboard-tournament-to-celebrate-the-3rd-bch-anniversary.html saved.
     - stimulus-is-failing-global-banks-are-about-to-break-support-levels-not-seen-in-decades.html saved.
@@ -2949,7 +2955,7 @@ for url in urls:
     - bybit-presents-world-series-of-trading-wsot-200-btc-prize-pool-up-for-grabs.html saved.
     - tether-prints-300-million-while-xrp-reclaims-third-spot.html saved.
     - zero-collateral-138-million-in-defi-flash-loans-issued-in-24-hours.html saved.
-    
+
     https://news.bitcoin.com/page/207/
     - privacy-enhancing-protocol-cashfusion-completes-security-analysis.html saved.
     - bitcoin-tops-11000-reigniting-interest-in-india.html saved.
@@ -2960,7 +2966,7 @@ for url in urls:
     - power-plants-in-iran-authorized-to-mine-bitcoin.html saved.
     - 93-of-bitcoins-supply-profitable-at-11k-realized-price-recovers-from-black-thursday.html saved.
     - ethereum-price-creates-gpu-shortage-some-manufacturers-blame-nvidia.html saved.
-    
+
     https://news.bitcoin.com/page/208/
     - bitcoins-current-breakout-sets-it-up-for-28000-headed-for-six-figures-max-keiser.html saved.
     - bakkt-futures-volume-hits-122-million-as-bitcoin-reached-new-11-month-high.html saved.
@@ -2971,7 +2977,7 @@ for url in urls:
     - thailand-licensed-13-cryptocurrency-service-providers.html saved.
     - ignorance-greed-sustain-cryptocurrency-scams-nigeria.html saved.
     - hackers-transfer-28-million-worth-of-bitcoin-from-2016-bitfinex-breach.html saved.
-    
+
     https://news.bitcoin.com/page/209/
     - bitcoin-fees-skyrocket-590-since-mid-june-supporters-think-mempool-size-is-bullish.html saved.
     - americans-to-buy-bitcoin-with-their-second-stimulus-checks-after-initial-investment-turned-in-50-profit.html saved.
@@ -2982,7 +2988,7 @@ for url in urls:
     - live-streaming-service-twitch-gives-subscribers-10-discount-if-they-pay-with-cryptocurrency.html saved.
     - lebanon-hyperinflation-food-prices-soar-200-biggest-crisis-civil-war.html saved.
     - exploring-decentraland-a-review-of-the-virtual-world-built-on-ethereum.html saved.
-    
+
     https://news.bitcoin.com/page/210/
     - market-update-crypto-cap-nears-300-billion-btc-hits-10k-eth-rallies-hard.html saved.
     - visa-moving-to-integrate-with-digital-currency-platforms.html saved.
@@ -2993,7 +2999,7 @@ for url in urls:
     - new-coronavirus-relief-package-second-round-stimulus-checks.html saved.
     - 1000-access-twitter-god-mode-130-accounts.html saved.
     - leadership-feud-at-bitmain-10000-antminers-go-missing-in-inner-mongolia.html saved.
-    
+
     https://news.bitcoin.com/page/211/
     - us-federal-court-ruling-bitcoin-is-a-form-of-money.html saved.
     - how-billion-dollar-crypto-scams-lure-victims.html saved.
@@ -3004,7 +3010,7 @@ for url in urls:
     - crypto-scammers-steal-381-million-in-2020-while-twitter-hackers-direct-funds-to-mixers.html saved.
     - nba-point-guard-spencer-dinwiddies-tokenized-contract-raises-1-3-million.html saved.
     - new-russian-law-bans-bitcoin-payments-for-goods-and-services.html saved.
-    
+
     https://news.bitcoin.com/page/212/
     - 2020-monsoon-season-and-dam-stress-threatens-chinese-bitcoin-miners.html saved.
     - crypto-race-heats-up-bitcoins-dominance-ratio-drops-to-lowest-level-in-12-months.html saved.
@@ -3015,7 +3021,7 @@ for url in urls:
     - stablecoin-tether-set-to-eclipse-bitcoins-daily-transaction-value.html saved.
     - south-korea-to-charge-20-tax-on-bitcoin-profits-under-new-law.html saved.
     - eu-leaders-approve-2-1-trillion-budget-us-lawmakers-expect-another-round-of-covid-19-relief-money.html saved.
-    
+
     https://news.bitcoin.com/page/213/
     - chinas-supreme-court-recommends-increasing-crypto-property-rights-protection.html saved.
     - ethereums-2020-defi-boom-doubles-active-ether-addresses-but-fees-skyrocket.html saved.
@@ -3026,7 +3032,7 @@ for url in urls:
     - new-satoshi-stash-estimate-claims-creator-mined-10-5b-worth-of-bitcoin.html saved.
     - grayscale-investments-bitcoin-cash-trust-approved-public-trading.html saved.
     - y-curve-interest-rates-reach-2000-assets-under-management-grows-tenfold-after-token-launch.html saved.
-    
+
     https://news.bitcoin.com/page/214/
     - telecom-argentina-s-a-hit-by-major-ransomware-attack-criminals-demand-7-5m-worth-of-monero.html saved.
     - amir-taaki-knocks-bitcoin-coinjoin-schemes-calls-methods-absolute-garbage.html saved.
@@ -3037,7 +3043,7 @@ for url in urls:
     - wirex-approved-to-issue-mastercard-backed-bitcoin-debit-cards.html saved.
     - 142-million-guests-hackers-attempt-to-sell-mgm-grand-data-dump-for-cryptocurrency.html saved.
     - the-covid-19-crisis-fueled-darknet-markets-a-patrons-biggest-concern-is-mail-disruption.html saved.
-    
+
     https://news.bitcoin.com/page/215/
     - german-court-rules-limit-authorities-access-to-peoples-data.html saved.
     - crypto-social-network-minds-users-twitter-facebook-privacy.html saved.
@@ -3048,7 +3054,7 @@ for url in urls:
     - stablecoin-supply-doubles-to-12-billion-following-a-50-cryptocurrency-market-price-drop.html saved.
     - subhash-chandra-garg-proposes-regulating-crypto-as-commodity-india.html saved.
     - report-cuts-chinas-bitcoin-mining-capacity-to-50-of-world-total-raises-us-to-14.html saved.
-    
+
     https://news.bitcoin.com/page/216/
     - wonder-woman-illustrator-and-british-artist-terry-flaxton-to-sell-ethereum-backed-art.html saved.
     - report-shows-bitcoins-covid-19-recovery-stronger-than-other-markets-with-zero-intervention.html saved.
@@ -3059,7 +3065,7 @@ for url in urls:
     - the-twitter-hack-fiasco-compromised-internal-tool-paid-insiders-direct-message-fears.html saved.
     - peter-schiffs-bitcoin-hack-comment-invites-ridicule.html saved.
     - bitcoin-investor-sues-irs-unlawful-seizure-financial-records-crypto-exchanges.html saved.
-    
+
     https://news.bitcoin.com/page/217/
     - market-outlook-crypto-economy-sheds-10b-overnight-exchange-inflow-and-sell-pressure-rises.html saved.
     - grayscale-crypto-investments-1-billion-bitcoin-trust.html saved.
@@ -3070,7 +3076,7 @@ for url in urls:
     - fidelity-digital-assets-to-hold-bitcoin-private-keys-for-kingdom-trust-clients.html saved.
     - popular-nascar-driver-bubba-wallace-will-sport-the-bitcoin-logo-while-racing.html saved.
     - south-africa-proposes-new-rules-regulate-cryptocurrencies-alignment-fatf-standards.html saved.
-    
+
     https://news.bitcoin.com/page/218/
     - investor-charged-covid-19-relief-loan-trade-cryptocurrency.html saved.
     - paypal-cryptocurrency-capabilities.html saved.
@@ -3081,7 +3087,7 @@ for url in urls:
     - aggregate-erc20-market-cap-outpaces-valuation-of-eth-in-circulation-by-2-billion.html saved.
     - panel-of-experts-bitcoin-12948-year-end.html saved.
     - us-army-tools-track-cryptocurrency-transactions.html saved.
-    
+
     https://news.bitcoin.com/page/219/
     - advocacy-group-claims-irs-issued-crypto-warning-letters-violated-taxpayers-rights.html saved.
     - emerging-markets-drive-paxful-first-half-2020-bitcoin-volume-to-1-1-billion.html saved.
@@ -3092,7 +3098,7 @@ for url in urls:
     - bitcoin-difficulty-touches-all-time-high-120-exahash-of-hashpower-remains-strong.html saved.
     - deposition-of-craig-wrights-wife-shows-little-understanding-of-bitcoin-private-keys.html saved.
     - covid-19-forces-indians-to-embrace-digital-payments-but-country-still-lacks-crypto-regulation.html saved.
-    
+
     https://news.bitcoin.com/page/220/
     - crypto-exchange-cashaa-loses-336-bitcoin-worth-3-million-to-hackers.html saved.
     - japanese-listed-company-globalway-plans-to-build-sharing-economy-protocol-and-launch-ieo.html saved.
@@ -3103,7 +3109,7 @@ for url in urls:
     - us-dept-of-homeland-security-buys-coinbase-analytics-software.html saved.
     - 424-million-numismatic-value-only-20000-casascius-bitcoins-left-unspent.html saved.
     - 20000-helbizcoin-investors-accuse-company-of-trying-to-destroy-fraud-evidence-seek-court-injunction.html saved.
-    
+
     https://news.bitcoin.com/page/221/
     - zimbabwes-battle-to-control-currency-inadvertently-boosts-bitcoin-profile.html saved.
     - christophe-cieters-monopoly-money.html saved.
@@ -3114,7 +3120,7 @@ for url in urls:
     - japanese-broker-monex-launches-crypto-based-cfds-with-2x-leverage.html saved.
     - bitfinex-must-face-new-yorks-accusations-over-the-loss-of-850m-in-co-mingled-funds.html saved.
     - bitcoin-bull-mike-novogratz-hold-more-gold-than-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/222/
     - romanian-programmer-admits-conspiring-to-create-722m-bitclub-ponzi-scheme.html saved.
     - malaysian-shariah-council-cryptocurrency-investing-trading.html saved.
@@ -3125,7 +3131,7 @@ for url in urls:
     - avalanche-launch-fumbles-a-highly-sophisticated-ddos-attack-derailed-token-sale.html saved.
     - centre-obliges-government-request-freezes-address-with-100000-usdc.html saved.
     - chinas-giant-ride-hailing-service-didi-to-pilot-the-central-banks-digital-yuan.html saved.
-    
+
     https://news.bitcoin.com/page/223/
     - south-african-crypto-investment-company-issued-cease-and-desist-order-in-texas.html saved.
     - 1-4m-in-bitcoin-transactions-new-high-for-argentina-as-confidence-in-the-peso-tanks.html saved.
@@ -3136,7 +3142,7 @@ for url in urls:
     - permissionless-software-foundation-aims-to-foster-open-source-software-with-bitcoin-cash.html saved.
     - 90-bitcoin-investors-worried-fate-of-their-assets-after-death.html saved.
     - market-update-crypto-assets-slowly-gather-gains-bitcoin-needs-capital-inflow-ada-jumps-85.html saved.
-    
+
     https://news.bitcoin.com/page/224/
     - india-tcs-launches-cryptocurrency-trading-banks.html saved.
     - crypto-facilities-gets-fca-nod-to-set-up-crypto-futures-venue.html saved.
@@ -3147,7 +3153,7 @@ for url in urls:
     - us-india-banning-tiktok-chinese-social-media-apps.html saved.
     - bitcoin-com-wallet-launches-new-portfolio-breakdown-and-stablecoin-swap-features.html saved.
     - south-african-investors-lose-13-million-bitcoin-scammer-bankrupt.html saved.
-    
+
     https://news.bitcoin.com/page/225/
     - crypto-derivatives-volumes-crash-36-to-393-billion-in-june-a-low-for-2020.html saved.
     - developer-reveals-layer-two-private-messaging-and-payment-system-on-bitcoin-cash.html saved.
@@ -3158,7 +3164,7 @@ for url in urls:
     - bitcoin-entrepreneur-brock-pierce-joins-the-2020-us-presidential-election.html saved.
     - a-new-price-valuation-model-says-10-670-fair-value-of-bitcoin.html saved.
     - encryption-crackdown-private-phone-network-60000-users-dismantled.html saved.
-    
+
     https://news.bitcoin.com/page/226/
     - cryptocurrency-focused-docuseries-airs-to-millions-of-viewers-via-the-discovery-science-channel.html saved.
     - food-and-cash-shortages-push-cubans-toward-permissionless-cryptocurrencies.html saved.
@@ -3169,7 +3175,7 @@ for url in urls:
     - over-2500-austrian-merchants-can-now-accept-cryptocurrency-payments.html saved.
     - john-perry-barlow-a-declaration-of-the-independence-of-cyberspace.html saved.
     - irs-requesting-information-privacy-centric-cryptocurrencies.html saved.
-    
+
     https://news.bitcoin.com/page/227/
     - despite-covid-19-negativity-crypto-prediction-markets-say-trump-wins-the-2020-election.html saved.
     - investment-firm-arcane-crypto-to-go-public-via-33-million-reverse-merger.html saved.
@@ -3180,7 +3186,7 @@ for url in urls:
     - mining-company-ebangs-stock-listed-on-nasdaq-down-11-firm-plans-to-launch-offshore-exchange.html saved.
     - demand-for-bitcoin-will-see-a-dramatic-shift-in-8-years-retail-addresses-to-eat-up-entire-new-supply.html saved.
     - running-drivenet-benefits-of-drivechain-versus-lightning-network.html saved.
-    
+
     https://news.bitcoin.com/page/228/
     - localbitcoins-2019-revenue-rises-10-to-29-6-million-amid-increased-paxful-competition.html saved.
     - 11-trillion-offshore-assets-100-countries-84-million-bank-accounts.html saved.
@@ -3191,7 +3197,7 @@ for url in urls:
     - brewdog-tokyo-accepts-bitcoin-cash-payments-local-bch-meetup-gathers-to-celebrate.html saved.
     - gold-industry-83-tons-fake-gold-bars-secure-2-billion-loans-china.html saved.
     - bitcoin-miner-hut-8-to-add-275-ph-s-of-mining-capacity-with-8-3m-capital-raise.html saved.
-    
+
     https://news.bitcoin.com/page/229/
     - bitcoins-5-drop-in-value-puts-pressure-on-btc-mining-operations-and-older-asic-rigs.html saved.
     - bamboozled-gavin-andresen-says-he-could-have-been-fooled-by-craig-wright-bsv-supporters-speak-out.html saved.
@@ -3202,7 +3208,7 @@ for url in urls:
     - us-miner-core-scientific-buys-17600-bitcoin-miners-bitmain.html saved.
     - gifts-remittances-bitcoin-coms-tools-send-bch-via-email.html saved.
     - visualize-crypto-transaction-privacy-scores-with-blockchairs-privacy-o-meter.html saved.
-    
+
     https://news.bitcoin.com/page/230/
     - sophisticated-hacker-plunders-450000-from-defi-protocol-balancer.html saved.
     - bitcoin-org-maintainer-calls-for-the-removal-of-cobra-website-owner-then-fires-him.html saved.
@@ -3213,7 +3219,7 @@ for url in urls:
     - jim-rogers-mark-cuban-peter-schiff-bitcoin-max-keiser.html saved.
     - popular-analyst-reveals-new-bitcoin-pricing-model-prediction-suggests-bullish-run-a-month-away.html saved.
     - casino-jack-abramoff-charged-aml-bitcoin-cryptocurrency-prison.html saved.
-    
+
     https://news.bitcoin.com/page/231/
     - us-real-estate-market-crisis-4-3-million-mortgage-delinquencies-commercial-properties-sink-in-value.html saved.
     - timothy-c-may-libertaria-in-cyberspace.html saved.
@@ -3224,7 +3230,7 @@ for url in urls:
     - over-1b-in-bitcoin-options-set-to-expire-today-crypto-speculators-expect-massive-shakeup.html saved.
     - review-crypto-coms-ruby-steel-prepaid-visa-card.html saved.
     - self-proclaimed-satoshi-claims-hes-autistic-judge-tosses-out-sanctions-against-craig-wright.html saved.
-    
+
     https://news.bitcoin.com/page/232/
     - wirecard-2-billion-scandal-firm-files-for-insolvency-ex-ceo-arrested-user-funds-safe.html saved.
     - lawful-access-to-encrypted-data-act-backdoor.html saved.
@@ -3235,7 +3241,7 @@ for url in urls:
     - leveraged-tokens-soon-available-on-the-bitcoin-com-exchange.html saved.
     - 6-privacy-enhancing-tools-that-place-bitcoin-cash-transactions-ahead-of-the-pack.html saved.
     - bitcoin-mining-chip-manufacturer-ebang-to-list-on-nasdaq-this-week.html saved.
-    
+
     https://news.bitcoin.com/page/233/
     - 83-of-bitcoin-addresses-currently-profitable-says-glassnode.html saved.
     - ethereum-network-fees-jump-above-bitcoin-transaction-fees-for-two-weeks-straight.html saved.
@@ -3246,7 +3252,7 @@ for url in urls:
     - new-zealand-police-seize-91-million-from-russian-bitcoin-exchange-operator.html saved.
     - bitcoin-asic-miner-manufacturing-domination-bitmain-and-microbt-battle-for-top-positions.html saved.
     - wirecard-ceo-quits-as-crypto-card-firm-reveals-missing-2-1-billion-does-not-exist.html saved.
-    
+
     https://news.bitcoin.com/page/234/
     - breaking-bitcoin-crypto-proponents-discuss-honeywells-6-qubit-quantum-computer.html saved.
     - meet-mistcoin-the-first-mineable-slp-token-implementation-launched-on-bitcoin-cash.html saved.
@@ -3257,7 +3263,7 @@ for url in urls:
     - simple-ledger-protocol-universe-is-thriving-lottery-mint-atms-over-8500-slp-tokens-created.html saved.
     - elon-musk-bitcoin-giveaway-scam-millions-dollars-btc.html saved.
     - only-3-5-million-bitcoin-is-traded-worldwide-majority-of-btc-held-long-term-as-digital-gold-says-chainalysis.html saved.
-    
+
     https://news.bitcoin.com/page/235/
     - benjamin-r-tucker-why-i-am-an-anarchist.html saved.
     - akon-city-akoin-cryptocurrency.html saved.
@@ -3268,7 +3274,7 @@ for url in urls:
     - bitcoins-rise-driven-by-institutional-trading-says-research-and-investor-sentiment.html saved.
     - bitcoin-whale-transfers-2-2-billion-worth-of-btc-for-just-7.html saved.
     - how-bitcoin-of-americas-robust-compliance-program-made-possible-the-restitution-of-half-a-million-dollars-to-fraud-victims.html saved.
-    
+
     https://news.bitcoin.com/page/236/
     - bitcoin-games-launches-midsummer-promotion-as-sweden-looks-toward-launching-its-own-digital-currency.html saved.
     - crypto-card-issuer-wirecard-missing-2-1-billion-cash.html saved.
@@ -3279,7 +3285,7 @@ for url in urls:
     - wisdomtree-files-etf-with-5-bitcoin-exposure-amid-sec-resistance.html saved.
     - bitcoin-mining-heats-up-high-difficulty-adjustment-pool-consolidation-less-concentration-in-china.html saved.
     - irs-tells-couple-with-7-million-in-bitcoin-to-liquidate-crypto-assets-and-pay-off-tax-debt.html saved.
-    
+
     https://news.bitcoin.com/page/237/
     - fed-chair-warns-unsustainable-budget-national-debt-26-trillion.html saved.
     - demand-for-charter-cities-during-covid-19-pandemic-grows-exponential-people-desire-semi-autonomous-zones.html saved.
@@ -3290,7 +3296,7 @@ for url in urls:
     - bitcoin-whale-population-spikes-to-1882-highest-level-in-three-years.html saved.
     - satoshi-nakamoto-paul-le-roux-start-bitcoin-mining-business.html saved.
     - ethermine-mining-pool-cashes-in-2-6-million-ethereum-fee-windfall.html saved.
-    
+
     https://news.bitcoin.com/page/238/
     - crypto-101-how-to-send-and-receive-bitcoin-cash-via-the-bitcoin-com-wallet.html saved.
     - chinese-banks-legal-crypto-traders-accounts-frozen.html saved.
@@ -3301,7 +3307,7 @@ for url in urls:
     - bitcoin-friendly-top-us-banking-regulator-solve-banks-problems-with-decentralization.html saved.
     - bitmains-cofounder-accused-of-hindering-next-gen-bitcoin-mining-rig-shipments.html saved.
     - documents-show-craig-wright-claims-to-own-a-bitcoin-address-with-80000-btc-stolen-from-mt-gox.html saved.
-    
+
     https://news.bitcoin.com/page/239/
     - spacex-bitcoin-scam-btc-giveaway-elon-musk-nasa-launch.html saved.
     - ayn-rand-francisco-danconias-speech-on-money.html saved.
@@ -3312,7 +3318,7 @@ for url in urls:
     - japanese-court-upheld-former-mt-gox-ceos-conviction-for-manipulating-data.html saved.
     - us-financial-services-committee-hearing-discusses-the-creation-of-a-digital-dollar.html saved.
     - canadian-regulator-collapsed-crypto-exchange-quadrigacx.html saved.
-    
+
     https://news.bitcoin.com/page/240/
     - singapores-three-arrows-capital-buys-6-of-grayscales-3-5-billion-bitcoin-fund.html saved.
     - indian-government-banning-cryptocurrency.html saved.
@@ -3323,7 +3329,7 @@ for url in urls:
     - human-rights-foundation-donates-50k-bitcoin-mixing.html saved.
     - 80-us-european-institutional-investors-cryptocurrency-appealing.html saved.
     - nightmare-come-true-user-pays-2-6-million-in-transaction-fees-to-send-134-of-ether.html saved.
-    
+
     https://news.bitcoin.com/page/241/
     - market-update-bitcoin-train-inches-toward-10k-wild-predictions-trillion-dollar-crypto-economy.html saved.
     - a-number-of-small-bitcoin-mining-farms-are-quitting-as-older-mining-rigs-become-worthless.html saved.
@@ -3334,7 +3340,7 @@ for url in urls:
     - chinese-authority-freezes-cryptocurrency-traders-bank-accounts.html saved.
     - coca-cola-machines-accept-bitcoin.html saved.
     - 2020-libertarian-presidential-candidate-jo-jorgensen-talks-bitcoin-endless-wars-covid-19-response.html saved.
-    
+
     https://news.bitcoin.com/page/242/
     - poloniex-bittrex-named-in-lawsuit-involving-the-alleged-tether-fueled-crypto-pump.html saved.
     - leaked-pentagon-war-game-shows-gen-z-using-bitcoin-to-battle-the-corrupt-state.html saved.
@@ -3345,7 +3351,7 @@ for url in urls:
     - bitcoin-hashrate-difficulty-drops-allowing-miners-rejoin-competition.html saved.
     - bitcoin-trader-google-helps-scam-crypto-trading-app-look-legit-reviews.html saved.
     - carl-watner-the-tragedy-of-political-government.html saved.
-    
+
     https://news.bitcoin.com/page/243/
     - bonus-army-occupiers-2020-uprising-bitcoins-peaceful-protest-is-pure-civil-disobedience.html saved.
     - patoshi-researcher-says-altruistic-satoshi-will-never-spend-his-1-1m-bitcoin.html saved.
@@ -3356,7 +3362,7 @@ for url in urls:
     - bitcoin-to-rise-to-20k-this-year-spurred-by-government-money-printing-and-covid-19-bloomberg.html saved.
     - a-number-of-hong-kong-vending-machines-support-bitcoin-cash-payments-over-btc.html saved.
     - chinese-government-crackdowns-and-cheap-hydropower-miners-migrate-from-north-to-south-china.html saved.
-    
+
     https://news.bitcoin.com/page/244/
     - eidoo-to-burn-80-of-companys-token-holdings-to-kickstart-one-of-the-biggest-daos-in-defi.html saved.
     - japanese-finance-minister-shoots-down-plan-to-cut-bitcoin-tax-to-20-cites-crypto-divide.html saved.
@@ -3367,7 +3373,7 @@ for url in urls:
     - us-government-prediction-economy-10-year-recovery-8-trillion-loss-coronavirus.html saved.
     - bitcoins-flash-rally-to-10400-was-fake-short-the-cryptocurrency-warns-renowned-trader-bollinger.html saved.
     - travala-booking-revenue-travel-demand-60-paid-cryptocurrencies.html saved.
-    
+
     https://news.bitcoin.com/page/245/
     - us-law-enforcement-promises-5m-for-the-capture-of-venezuelas-superintendent-of-cryptocurrencies.html saved.
     - hackers-move-another-800k-in-btc-stolen-from-the-2016-bitfinex-breach.html saved.
@@ -3378,7 +3384,7 @@ for url in urls:
     - market-update-bullish-bitcoin-s2f-chart-6-digit-prices-liquidations-prime-crypto-values.html saved.
     - india-significantly-increase-crypto-market-share.html saved.
     - uk-government-seizes-million-dormant-bank-accounts-crisis-relief.html saved.
-    
+
     https://news.bitcoin.com/page/246/
     - with-riots-erupting-in-us-cities-using-tools-of-peaceful-protest-can-be-more-meaningful.html saved.
     - amid-youtube-censorship-individuals-flock-to-decentralized-video-sharing-apps-like-lbry-tv.html saved.
@@ -3389,7 +3395,7 @@ for url in urls:
     - bitpay-has-no-current-plans-to-support-liquid-or-the-lightning-network.html saved.
     - south-korea-to-start-taxing-bitcoin-profits-in-2021.html saved.
     - grayscale-bitcoin-trust-buys-1-5-times-total-btc-mined.html saved.
-    
+
     https://news.bitcoin.com/page/247/
     - jpmorgan-pay-2-5-million-settle-lawsuit-overcharging-crypto-fees.html saved.
     - the-many-facts-pointing-to-adam-back-being-satoshi.html saved.
@@ -3400,7 +3406,7 @@ for url in urls:
     - trump-threatens-close-down-social-media-twitter.html saved.
     - bitmain-cofounder-allegedly-expelled-could-face-litigation-for-operation-interference.html saved.
     - bitwage-and-gemini-partner-to-launch-bitcoin-based-retirement-plan-for-employees.html saved.
-    
+
     https://news.bitcoin.com/page/248/
     - bull-run-imminent-hodl-waves-chart-shows-60-of-bitcoin-hasnt-moved-in-a-year.html saved.
     - bitcoin-risks-turning-bearish-due-to-declining-market-health-says-glassnode.html saved.
@@ -3411,7 +3417,7 @@ for url in urls:
     - bitamp-the-next-new-open-source-wallet.html saved.
     - rbi-confirms-no-ban-cryptocurrency-exchanges-businesses-traders-india.html saved.
     - goldman-sachs-bitcoin-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/249/
     - eight-countries-that-dont-tax-your-bitcoin-gains.html saved.
     - over-a-hundred-10-year-old-bitcoin-addresses-signed-calling-craig-wright-a-fraud.html saved.
@@ -3422,7 +3428,7 @@ for url in urls:
     - hacker-attempts-to-sell-data-allegedly-tied-to-ledger-trezor-bnktothefuture-customers.html saved.
     - market-outlook-golden-cross-invalidated-andreessen-horowitz-predicts-fourth-crypto-cycle.html saved.
     - russia-law-criminalizes-buying-bitcoin-7-years-jail.html saved.
-    
+
     https://news.bitcoin.com/page/250/
     - carl-menger-the-nature-and-origin-of-money.html saved.
     - iranian-president-calls-for-launching-a-cryptocurrency-mining-strategy.html saved.
@@ -3433,7 +3439,7 @@ for url in urls:
     - bitcoin-hashrate-slides-33-since-halving-difficulty-drops-issues-in-sichuan-china.html saved.
     - south-africa-leads-crypto-revolution-in-africa-challenges-spur-and-slow-adoption.html saved.
     - gox-rising-offers-800-per-bitcoin-claim-buy-out-mt-gox-creditors.html saved.
-    
+
     https://news.bitcoin.com/page/251/
     - bitcoin-futures-options-and-open-interest-crypto-derivatives-break-records-after-the-halving.html saved.
     - trump-signs-deregulation-order.html saved.
@@ -3444,7 +3450,7 @@ for url in urls:
     - generations-of-debt-us-taxpayers-held-liable-for-federal-reserves-6-9-trillion-balance.html saved.
     - exposure-to-1x-the-daily-performance-bitcoin-com-exchange-adds-inverse-token-btcshort.html saved.
     - bitcoin-miners-double-revenue-fees-have-spiked-over-200-in-10-days-since-the-halving.html saved.
-    
+
     https://news.bitcoin.com/page/252/
     - hyperblock-bitcoin-mining-servers-and-datacenter-infrastructure-to-be-auctioned-off-in-public-sale.html saved.
     - bitcoin-sentiment-on-twitter-highest-level-in-3-years.html saved.
@@ -3455,7 +3461,7 @@ for url in urls:
     - india-worst-recession-ever-lockdown-extension.html saved.
     - venezuelans-can-now-use-bitcoin-to-pay-for-goods-at-20000-pos-terminals.html saved.
     - from-buenos-aires-to-beirut-covid-19-excuse-restricts-millions-of-citizens-from-withdrawing-their-own-money.html saved.
-    
+
     https://news.bitcoin.com/page/253/
     - bitcoin-coms-mining-video-censored-the-tale-of-youtubes-blatant-censorship-and-propaganda.html saved.
     - germany-recession-banks-charge-negative-interest-rates.html saved.
@@ -3466,7 +3472,7 @@ for url in urls:
     - bitcoin-loophole-scam.html saved.
     - 20-blockchain-surveillance-firms-monitor-crypto-networks-but-some-apps-show-inaccuracies.html saved.
     - how-investors-are-presented-with-bitcoin-a-new-decentralized-monetary-asset-akin-to-gold.html saved.
-    
+
     https://news.bitcoin.com/page/254/
     - crypto-derivatives-exchange-ftx-launches-bitcoin-hashrate-futures.html saved.
     - bitcoin-cash-upgrade-complete-3-new-features-added-to-consensus-rules.html saved.
@@ -3477,7 +3483,7 @@ for url in urls:
     - bitcoin-miners-revenue-plunge-48-as-halving-impact-kicks-in.html saved.
     - more-than-220m-in-bitcoin-withdrawn-from-crypto-exchanges-since-the-halving.html saved.
     - new-3-trillion-coronavirus-relief-bill-second-stimulus-checks.html saved.
-    
+
     https://news.bitcoin.com/page/255/
     - 17000-quadrigacx-users-seek-307m-from-the-failed-canadian-crypto-exchange.html saved.
     - 2-days-after-the-bitcoin-halving-network-remains-strong-higher-fees-bullish-sentiment.html saved.
@@ -3488,7 +3494,7 @@ for url in urls:
     - buying-corporate-bonds-and-etfs-us-federal-reserve-continues-to-bailout-too-big-to-fail.html saved.
     - bitcoin-cash-upgrade-3-days-away-new-opcode-support-chain-limit-extension-sigchecks.html saved.
     - jpmorgan-chase-bitcoin-businesses.html saved.
-    
+
     https://news.bitcoin.com/page/256/
     - up-to-30-of-bitcoin-miners-close-shop-as-business-turns-unprofitable-after-halving.html saved.
     - bitcoins-third-halving-complete-reward-cut-surprisingly-faster-than-previous-time-estimates.html saved.
@@ -3499,7 +3505,7 @@ for url in urls:
     - bitcoin-mining-ebangs-41m-deficit-bitmains-alleged-2020-revenue.html saved.
     - chinese-court-bitcoin-asset-protected-by-law.html saved.
     - devon-brewer-rediscovering-the-golden-rule.html saved.
-    
+
     https://news.bitcoin.com/page/257/
     - award-winning-filmmaker-torsten-hoffmann-launches-bitcoin-documentary-cryptopia.html saved.
     - cointext-cto-reveals-a-new-protocol-that-aims-to-bolster-a-censorship-resistant-economy-for-bitcoin-cash.html saved.
@@ -3510,7 +3516,7 @@ for url in urls:
     - squares-cash-app-reports-btc-quarterly-revenue-exceeds-fiats-soaring-367-to-306-million.html saved.
     - bitcoin-price-touches-10k-amid-2020s-macroeconomic-storm-and-covid-19-fears.html saved.
     - decentralized-finance-startup-focused-on-bitcoin-cash-raises-1-million-for-expansion.html saved.
-    
+
     https://news.bitcoin.com/page/258/
     - iran-currency-inflation-us-sanctions.html saved.
     - dollar-vigilante-founder-talks-covid-19-and-economic-crisis-the-modern-financial-system-is-at-the-end-of-its-rope.html saved.
@@ -3521,7 +3527,7 @@ for url in urls:
     - us-central-bank-blamed-for-2020-financial-crash-the-fed-is-lawless-economic-government-unto-itself.html saved.
     - indian-crypto-boom.html saved.
     - bitcoin-atm-locations.html saved.
-    
+
     https://news.bitcoin.com/page/259/
     - bitcoin-to-peak-at-115000-in-august-next-year-says-pantera-capital-ceo.html saved.
     - bitcoin-com-wallet-users-can-now-purchase-10k-worth-of-cryptocurrency.html saved.
@@ -3532,7 +3538,7 @@ for url in urls:
     - lebanese-currency-collapse-economic-meltdown.html saved.
     - us-real-estate-market-shudders-experts-predict-40-lower-sales-march-contracts-dip-by-21.html saved.
     - 90-million-more-people-can-now-spend-crypto-with-tenx.html saved.
-    
+
     https://news.bitcoin.com/page/260/
     - onecoin-lawsuit-continues-judge-lifts-stay-order-investigators-search-for-crypto-queen.html saved.
     - countries-growth-cryptocurrency-coinmarketcap.html saved.
@@ -3543,7 +3549,7 @@ for url in urls:
     - ecb-emergency-mode-eurozone.html saved.
     - player-hits-250000-29-btc-slots-jackpot-staying-at-home.html saved.
     - uk-cryptocurrency-firms-turn-to-equity-funding-as-ico-coffers-plunge-70.html saved.
-    
+
     https://news.bitcoin.com/page/261/
     - 12-months-of-onchain-data-bitcoin-whales-hundreds-of-btc-from-small-fish.html saved.
     - cointracking-launches-two-powerful-free-plug-ins-for-crypto-traders.html saved.
@@ -3554,7 +3560,7 @@ for url in urls:
     - justin-amash-reveals-third-party-presidential-bid-pro-bitcoin-libertarian-candidate-targets-trumps-seat.html saved.
     - bitcoin-lender-genesis-global-issues-2-billion-in-loans-during-record-quarter.html saved.
     - famed-economist-speaks-us-coronavirus-bailout-scam-american-imperialism-de-dollarization.html saved.
-    
+
     https://news.bitcoin.com/page/262/
     - telegram-to-pay-back-investors-110-after-gram-token-launch-fails-again.html saved.
     - cryptocurrency-malaysia-economy.html saved.
@@ -3565,7 +3571,7 @@ for url in urls:
     - drawbacks-of-cryptocurrency-exchanges-how-non-custodial-services-are-the-solution.html saved.
     - 1-cent-per-kilowatt-hour-chinas-sichuan-province-encourages-hydro-powered-bitcoin-mining.html saved.
     - chinese-court-ethereum-legal.html saved.
-    
+
     https://news.bitcoin.com/page/263/
     - bitcoin-halving-theories-whale-says-price-rise-is-a-nonsensical-narrative-weiss-ratings-expects-massive-crypto-superboom.html saved.
     - switzerlands-famed-crypto-valley-seeks-103-million-government-bailout.html saved.
@@ -3576,7 +3582,7 @@ for url in urls:
     - trillion-traded-cryptocurrency-spot-futures-markets.html saved.
     - purse-io-returns-company-reveals-crypto-marketplace-is-here-to-stay.html saved.
     - 2k-per-month-for-every-american-andrew-yang-begs-congress-to-pass-basic-income.html saved.
-    
+
     https://news.bitcoin.com/page/264/
     - bitcoin-car-virtual-nascar-race.html saved.
     - bitcoin-mining-equipment-maker-ebang-us-ipo.html saved.
@@ -3587,7 +3593,7 @@ for url in urls:
     - boomer-generation-in-for-a-rude-awakening-macro-economist-predicts-1m-bitcoin-by-2025.html saved.
     - bitcoin-soars-to-its-highest-level-since-crashing-in-march.html saved.
     - bitcoin-email-scams-2020.html saved.
-    
+
     https://news.bitcoin.com/page/265/
     - liquidity-crisis-the-fed-is-sending-billions-of-emergency-dollars-to-usd-dependent-nations.html saved.
     - dydx-processed-billion-cryptocurrency-loans.html saved.
@@ -3598,7 +3604,7 @@ for url in urls:
     - petro-dollar-system-crumbles-us-dollar-could-collapse-from-the-worlds-oil-wars.html saved.
     - ripple-sues-youtube-for-allowing-scams-that-promised-returns-up-to-1-million.html saved.
     - jpmorgan-bank-of-america-wells-fargo-sued-paycheck-protection-program.html saved.
-    
+
     https://news.bitcoin.com/page/266/
     - stablecoins-and-crosschain-loans-2-projects-attempt-to-bring-defi-solutions-to-bitcoin.html saved.
     - consensys-cuts-hundreds-of-jobs-this-year-about-25-of-its-staff-slashed.html saved.
@@ -3609,7 +3615,7 @@ for url in urls:
     - cftc-cryptocurrency-derivatives-bitnomial-bitcoin-futures.html saved.
     - americans-purchase-1200-worth-of-bitcoin-while-7-banks-fumble-with-stimulus-payments.html saved.
     - cryptocurrency-markets-federal-reserve.html saved.
-    
+
     https://news.bitcoin.com/page/267/
     - americas-banks-can-simply-bail-themselves-out-now-thanks-to-the-feds-blackrock-deal.html saved.
     - making-money-on-lockdown-5-effortless-ways-to-earn-cryptocurrencies-online.html saved.
@@ -3620,7 +3626,7 @@ for url in urls:
     - 5-bitcoin-cash-full-node-teams-to-raise-funds-with-the-noncustodial-flipstarter-app.html saved.
     - microbt-reveals-two-next-generation-mining-rigs-with-speeds-up-to-112-terahash.html saved.
     - seeking-profits-a-large-number-of-crypto-exchanges-mine-and-stake-digital-assets.html saved.
-    
+
     https://news.bitcoin.com/page/268/
     - crypto-marketplace-purse-io-to-dissolve-operations-after-6-years.html saved.
     - facebook-libra-new-cryptocurrency.html saved.
@@ -3631,7 +3637,7 @@ for url in urls:
     - 2000-month-us-lawmakers-basic-income-covid-19-economy.html saved.
     - bitcoin-com-exchange-now-supports-reserves-stablecoin-rsv-and-the-utility-token-rsr.html saved.
     - bitcoin-miners-concerns-shipment-delays-bitcoin-halving.html saved.
-    
+
     https://news.bitcoin.com/page/269/
     - google-cryptocurrency-wallet-browser.html saved.
     - black-thursday-liquidations-sparks-28m-lawsuit-against-maker-foundation.html saved.
@@ -3642,7 +3648,7 @@ for url in urls:
     - craig-wright-lawsuit-adam-back-pays-thousands.html saved.
     - ross-ulbrichts-price-analysis-bitcoin-below-3000.html saved.
     - china-crypto-ranking-coronavirus.html saved.
-    
+
     https://news.bitcoin.com/page/270/
     - charges-of-fraudulent-pretense-us-court-unseals-onecoin-cofounders-indictment.html saved.
     - banks-negative-interest-rates-germany.html saved.
@@ -3653,7 +3659,7 @@ for url in urls:
     - free-market-think-tank-fee-now-accepts-bitcoin-cash-donations.html saved.
     - developer-launches-noncustodial-bitcoin-cash-powered-authorization-platform.html saved.
     - bitcoins-third-halving-survey-shows-50-of-miners-expect-a-price-increase.html saved.
-    
+
     https://news.bitcoin.com/page/271/
     - bitcoin-going-industrial-new-york-based-natural-gas-provider-sells-fully-compliant-hashpower-contract.html saved.
     - bitcoin-evolution-prince-harry-meghan-markle.html saved.
@@ -3664,7 +3670,7 @@ for url in urls:
     - eidoo-card-is-available-for-pre-order-seamlessly-connect-your-fiat-and-crypto-wallets.html saved.
     - btc-inr-bitcoin-india.html saved.
     - tether-icos-craig-wright-new-details-billion-crypto-lawsuits.html saved.
-    
+
     https://news.bitcoin.com/page/272/
     - wrapped-bitcoin-platform-transact-btc-tezos.html saved.
     - novogratz-buy-bitcoin.html saved.
@@ -3675,7 +3681,7 @@ for url in urls:
     - swedens-response-to-coronavirus-no-masks-keep-economy-going.html saved.
     - traders-buck-trend-crypto-market-cap-200-billion.html saved.
     - hyperbitcoinization-post-covid-19-shadow-economy.html saved.
-    
+
     https://news.bitcoin.com/page/273/
     - s2f-models-analysts-question-stock-to-flow.html saved.
     - us-banks-failed-coronavirus.html saved.
@@ -3686,7 +3692,7 @@ for url in urls:
     - buy-bitcoin-india-cryptocurrency.html saved.
     - freebitco-in-gaming-launches-covid-19-relief-fund.html saved.
     - politicians-wall-street-ceos-expected-market-crash-before-covid-19.html saved.
-    
+
     https://news.bitcoin.com/page/274/
     - malaysia-cryptocurrency-covid-19.html saved.
     - pandemic-cryptocurrency-venezuela.html saved.
@@ -3697,7 +3703,7 @@ for url in urls:
     - russia-cryptocurrency.html saved.
     - bfp-encrypt-send-encrypted-data-bitcoin-cash.html saved.
     - merchant-gambling-darknets-coronavirus-stunts-cryptocurrency-spending.html saved.
-    
+
     https://news.bitcoin.com/page/275/
     - anyhedge-to-launch-blockchain-enforced-synthetic-derivatives-for-bitcoin-cash.html saved.
     - tiger-kings-arch-nemesis-big-cat-rescue-accepts-bitcoin.html saved.
@@ -3708,7 +3714,7 @@ for url in urls:
     - film-reels-github-bitcoin-code-1000-years.html saved.
     - many-facts-wei-dai-being-satoshi.html saved.
     - bitcoin-revolution.html saved.
-    
+
     https://news.bitcoin.com/page/276/
     - india-ministry-cryptocurrency.html saved.
     - financial-bazookas-revealed-market-strategists-believe-the-fed-will-purchase-stocks-soon.html saved.
@@ -3719,7 +3725,7 @@ for url in urls:
     - stablecoin-market-caps-7-billion-volumes-most-pairs.html saved.
     - egypt-limits-bank-atm-withdrawals-cash-outflow-coronavirus.html saved.
     - bitcoin-mining-roundup-btc-regains-100-exahash-miners-close-shop-pre-halving-shake-up.html saved.
-    
+
     https://news.bitcoin.com/page/277/
     - imf-declares-global-recession.html saved.
     - market-update-uncertainty-remains-thick-as-bears-claw-bitcoin-price-below-6k.html saved.
@@ -3730,7 +3736,7 @@ for url in urls:
     - microsoft-cryptocurrency-system.html saved.
     - 400-kraken-survey-respondents-bitcoin-price-22k-2020.html saved.
     - us-lawmaker-claims-stimulus-fed-secrecy-wall-street-bailouts.html saved.
-    
+
     https://news.bitcoin.com/page/278/
     - trump-relief-bill-stimulus-checks.html saved.
     - bull-may-not-come-bitcoin-halving-bitmains-jihan-wu.html saved.
@@ -3741,7 +3747,7 @@ for url in urls:
     - bitcoin-miners-selling-faster-than-they-generate.html saved.
     - market-update-unknown-coins-considerable-gains-black-thursday.html saved.
     - coronavirus-relief-aid-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/279/
     - 15-million-bounty-maduro-drug-trafficking.html saved.
     - bitcoin-hashrate-second-largest-difficulty-drop.html saved.
@@ -3752,7 +3758,7 @@ for url in urls:
     - making-bitcoin-go-viral-hyperbitcoinization.html saved.
     - order-food-using-cryptocurrency.html saved.
     - china-digital-currency.html saved.
-    
+
     https://news.bitcoin.com/page/280/
     - how-to-quickly-cash-out-from-crypto-to-fiat.html saved.
     - mt-gox-bitcoins-distribute-btc-bch-liquidate-forks.html saved.
@@ -3763,7 +3769,7 @@ for url in urls:
     - anonymous-bitcoin-sv-miners-capture-bsv-hashrate.html saved.
     - crisis-cash-shortages-bank-closures.html saved.
     - how-to-buy-weed-with-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/281/
     - shelter-in-place-cash-us-congress-digital-dollars.html saved.
     - wall-street-twitter-trends-people-fed-up-banks-oligarchs.html saved.
@@ -3774,7 +3780,7 @@ for url in urls:
     - 2x-moon-bitcoin-live.html saved.
     - institutional-players-cme-cboe-bakkt-influence-bitcoin-price.html saved.
     - liquid-gold-vs-digital-gold-why-bitcoin-beats-oil.html saved.
-    
+
     https://news.bitcoin.com/page/282/
     - internet-next-victim-coronavirus.html saved.
     - while-youre-under-quarantine-check-these-sites-for-remote-crypto-jobs.html saved.
@@ -3785,7 +3791,7 @@ for url in urls:
     - us-real-estate-jeopardy-housing-market-crash.html saved.
     - 10-loan-providers-taking-crypto-as-collateral.html saved.
     - indian-cryptocurrency-regulation.html saved.
-    
+
     https://news.bitcoin.com/page/283/
     - 1-2-million-italians-can-now-buy-bitcoin-from-their-bank.html saved.
     - bitcoin-sell-off-fueled-by-new-investors.html saved.
@@ -3796,7 +3802,7 @@ for url in urls:
     - how-long-will-the-market-downturn-last.html saved.
     - scramble-for-dollars-emergency-cash-injections-in-250-trillion-global-debt-place-the-fiat-ponzi-on-ventilator.html saved.
     - tether-slp.html saved.
-    
+
     https://news.bitcoin.com/page/284/
     - maduro-venezuelan-bank-closures-coronavirus-scare.html saved.
     - tax-expert-irs-crypto-question-unconstitutional.html saved.
@@ -3807,7 +3813,7 @@ for url in urls:
     - us-cash-crisis-withdrawal-limits-bank-run-fear.html saved.
     - bitcoin-live-how-to-watch-the-next-price-run-or-crash-in-real-time.html saved.
     - binance-lending-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/285/
     - indian-government-bitcoin-businesses.html saved.
     - crypto-vaults-will-help-you-hodl.html saved.
@@ -3818,7 +3824,7 @@ for url in urls:
     - bitcoin-com-exchange-splinterlands.html saved.
     - hashrate-follows-price-bitcoin-halving.html saved.
     - bitcoin-games-st-patricks-day.html saved.
-    
+
     https://news.bitcoin.com/page/286/
     - bitcoin-reacts-to-feds-0-rate-drop.html saved.
     - crypto-market-tokens-mooned.html saved.
@@ -3829,7 +3835,7 @@ for url in urls:
     - illinois-unclaimed-cryptocurrencies.html saved.
     - these-stores-will-sell-you-masks-gloves.html saved.
     - indian-banks-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/287/
     - grayscale-bitcoin-trust-slides-30.html saved.
     - crypto-networks-stress-tested-during-bitcoins-wild-week.html saved.
@@ -3840,7 +3846,7 @@ for url in urls:
     - edward-snowden-buying-bitcoin-market-bottom.html saved.
     - coronavirus-disney-justify-financial-reset.html saved.
     - facebook-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/288/
     - darknet-markets-keep-shipping.html saved.
     - gold-bitcoin-markets-tested.html saved.
@@ -3851,7 +3857,7 @@ for url in urls:
     - tokyo-police-arrest-2-men-for-buying-cryptocurrency-tied-to-530m-coincheck-hack.html saved.
     - 10-million-bitcoin-com-wallets.html saved.
     - craig-wright-new-deadline-forgery.html saved.
-    
+
     https://news.bitcoin.com/page/289/
     - crypto-investments-india.html saved.
     - bitcoin-group-bitcoin-revolution-google.html saved.
@@ -3862,7 +3868,7 @@ for url in urls:
     - cryptocurrency-act-of-2020.html saved.
     - the-government-cant-stand-bitcoin.html saved.
     - bitcoin-money-cryptocurrencies.html saved.
-    
+
     https://news.bitcoin.com/page/290/
     - ethereum-controversial-progpow-proposal.html saved.
     - bitcoin-com-lottery.html saved.
@@ -3873,7 +3879,7 @@ for url in urls:
     - industry-execs-freshly-minted-virgin-bitcoins.html saved.
     - satoshi-nakamoto-founder-of-bitcoin.html saved.
     - is-twitter-helping-justin-sun.html saved.
-    
+
     https://news.bitcoin.com/page/291/
     - cryptocurrency-tamil-bitcoin-india.html saved.
     - nigerians-can-buy-bitcoin-with-cash.html saved.
@@ -3884,7 +3890,7 @@ for url in urls:
     - crypto-bulls-roadshow-india.html saved.
     - airport-gold-seizure-amsterdam-bitcoin-utility.html saved.
     - dark-web-in-india.html saved.
-    
+
     https://news.bitcoin.com/page/292/
     - crypto-encryption-and-the-quest.html saved.
     - bitcoin-history-25.html saved.
@@ -3895,7 +3901,7 @@ for url in urls:
     - rbi-supreme-court-cryptocurrency.html saved.
     - cryptocurrency-airdrops-giveaways.html saved.
     - natural-gas-bitcoin-mining-operation.html saved.
-    
+
     https://news.bitcoin.com/page/293/
     - the-algorithms-that-control-the-cryptocurrency-market.html saved.
     - bitcoin-legal-india-supreme-court-verdict-cryptocurrency.html saved.
@@ -3906,7 +3912,7 @@ for url in urls:
     - coronavirus-fed-interest-stocks-gold-bitcoin.html saved.
     - relm-launches-insurance-coverage-for-cryptocurrency-and-cannabis-groups-in-tough-regulatory-climate.html saved.
     - indian-supreme-court-cryptocurrency-rbi-ban-lifted.html saved.
-    
+
     https://news.bitcoin.com/page/294/
     - how-to-mix-your-bitcoins-using-coinjoin.html saved.
     - bitcoin-cash-node-upgrade-plans.html saved.
@@ -3917,7 +3923,7 @@ for url in urls:
     - bitcoin-is-financial-instrument-in-germany.html saved.
     - smart-chip-hardware-wallet-slp-tokens.html saved.
     - bitcoin-hashrate-all-time-high.html saved.
-    
+
     https://news.bitcoin.com/page/295/
     - binance-turkey-akbank.html saved.
     - turkey-to-inspect-crypto-exchanges.html saved.
@@ -3928,7 +3934,7 @@ for url in urls:
     - market-update-coronavirus-bitcoin-price-predictions.html saved.
     - crypto-youtuber-rachel-siegel-on-mtv.html saved.
     - 18-visualizations-bitcoin-network.html saved.
-    
+
     https://news.bitcoin.com/page/296/
     - crypto-community-gets-prepping.html saved.
     - this-is-how-much-btc-you-need.html saved.
@@ -3939,7 +3945,7 @@ for url in urls:
     - bitcoin-futures-btc-spot-prices.html saved.
     - court-accepts-crypto-as-security.html saved.
     - bch-devs-bitcoin-cash-node.html saved.
-    
+
     https://news.bitcoin.com/page/297/
     - 13-crypto-debit-cards.html saved.
     - how-to-get-free-bitcoin-in-2020.html saved.
@@ -3950,7 +3956,7 @@ for url in urls:
     - fca-suspends-epayments-onecoin.html saved.
     - court-rejects-ripples-bid-to-dismiss-lawsuit.html saved.
     - lebanon-bitcoin-protests.html saved.
-    
+
     https://news.bitcoin.com/page/298/
     - the-bull-and-bear-case.html saved.
     - bitcoin-rich-6-crypto-billionaire.html saved.
@@ -3961,7 +3967,7 @@ for url in urls:
     - wikileaks-gathers-37m-in-btc-since-2010-over-400k-sent-after-julian-assanges-arrest.html saved.
     - bitcoin-history-part-24.html saved.
     - wendy-mcelroy-book-the-satoshi-revolution.html saved.
-    
+
     https://news.bitcoin.com/page/299/
     - how-to-hide-your-bitcoin.html saved.
     - china-adopts-security-standards-blockchain.html saved.
@@ -3972,7 +3978,7 @@ for url in urls:
     - how-to-anonymously-buy-bitcoin.html saved.
     - g20-cryptocurrencies-2020.html saved.
     - shopify-joins-libra.html saved.
-    
+
     https://news.bitcoin.com/page/300/
     - iota-down-11-days.html saved.
     - 30m-sim-hack.html saved.
@@ -3983,7 +3989,7 @@ for url in urls:
     - defi-flash-loans.html saved.
     - brave-challenges-googles-advertising-power.html saved.
     - bitcoin-halving-countdown.html saved.
-    
+
     https://news.bitcoin.com/page/301/
     - chinese-government-institute-ranking-crypto.html saved.
     - hsbc-job-cuts.html saved.
@@ -3994,7 +4000,7 @@ for url in urls:
     - bitcoin-cash-house-ghana.html saved.
     - brazil-instant-payment-system-pix.html saved.
     - bch-funding-debate-ifp-free-bitcoin-abc.html saved.
-    
+
     https://news.bitcoin.com/page/302/
     - era-bitcoin-ireland-btc-cant-sell-7-years.html saved.
     - virgin-galactic-stock-bitcoin.html saved.
@@ -4005,7 +4011,7 @@ for url in urls:
     - defi-bitcoin-collateral-noncustodial-btc-ethereum.html saved.
     - bitcoin-halving-golden-cross-gbtc-premium.html saved.
     - how-to-mine-bitcoin-in-2020.html saved.
-    
+
     https://news.bitcoin.com/page/303/
     - lightning-network-drivechain-bitcoin-scaling.html saved.
     - mike-bloomberg-strict-bitcoin-regulations.html saved.
@@ -4016,7 +4022,7 @@ for url in urls:
     - cannabis-regulations-cash-shortage-cryptocurrency.html saved.
     - china-central-bank-stimulus-300b.html saved.
     - keiser-bitcoin-price-alex-jones.html saved.
-    
+
     https://news.bitcoin.com/page/304/
     - dex-volume-soars-bzx-exploit.html saved.
     - 50-cent-nas-bitcoin-millionaires.html saved.
@@ -4027,7 +4033,7 @@ for url in urls:
     - more-on-ramps-liquidity-options.html saved.
     - steemit-for-sale-tron.html saved.
     - pboc-digital-currency.html saved.
-    
+
     https://news.bitcoin.com/page/305/
     - crypto-reserve-currency.html saved.
     - india-voting.html saved.
@@ -4038,7 +4044,7 @@ for url in urls:
     - btc-market-share-dominance-slides.html saved.
     - tax-rules-hit-brazilian-crypto-exchanges.html saved.
     - craig-wrights-100b-theft-btc-bch-database.html saved.
-    
+
     https://news.bitcoin.com/page/306/
     - iota-network-still-down.html saved.
     - bitcoin-cash-george-donnelly-bch-latam.html saved.
@@ -4049,7 +4055,7 @@ for url in urls:
     - 10k-bitcoin-prompts-bull-market.html saved.
     - xrp-plummets-56.html saved.
     - bitcoin-cryptocurrency-federal-reserve.html saved.
-    
+
     https://news.bitcoin.com/page/307/
     - mnuchin-cryptocurrency.html saved.
     - north-korea-xmr-mining.html saved.
@@ -4060,7 +4066,7 @@ for url in urls:
     - altcoin-season-link-xtz-700.html saved.
     - fed-china.html saved.
     - cred-ltc-earn.html saved.
-    
+
     https://news.bitcoin.com/page/308/
     - bitpay-poynt-payments-crypto-partnership.html saved.
     - bitcoin-cash-10-darknet-sales.html saved.
@@ -4071,7 +4077,7 @@ for url in urls:
     - trump-crypto.html saved.
     - 118-million-of-plustoken-btc.html saved.
     - brussels-asks-europeans-about-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/309/
     - how-to-buy-bitcoin-5-ways.html saved.
     - banks-germany-crypto.html saved.
@@ -4082,7 +4088,7 @@ for url in urls:
     - crypto-exchanges-australia.html saved.
     - xmr-privacy-coins-mixers.html saved.
     - altcoins-why-over-5000.html saved.
-    
+
     https://news.bitcoin.com/page/310/
     - crypto-banking-average-people.html saved.
     - bch-merchant-4300-bitcoin-cash.html saved.
@@ -4093,7 +4099,7 @@ for url in urls:
     - facebook-china-fed-cbdc-dollar.html saved.
     - ethereum-tron-defi-viral-tweet.html saved.
     - germany-in-risk-of-recession.html saved.
-    
+
     https://news.bitcoin.com/page/311/
     - cryptocurrency-futures-markets-trump-wins-election.html saved.
     - 1000-client-identification-threshold.html saved.
@@ -4104,7 +4110,7 @@ for url in urls:
     - tax-agents-confiscate-bitcoin.html saved.
     - bitcoin-tesla-stock-warren-buffett.html saved.
     - saint-kitts-tax-crypto-bill.html saved.
-    
+
     https://news.bitcoin.com/page/312/
     - buy-bitcoin-philippines.html saved.
     - theres-no-such-thing-as-tainted-bitcoins.html saved.
@@ -4115,7 +4121,7 @@ for url in urls:
     - 4-bitcoin-contenders-zero.html saved.
     - cryptos-dotcom-era-begins-as-handshake-launches-decentralized-domains.html saved.
     - bitspark-shuts-down.html saved.
-    
+
     https://news.bitcoin.com/page/313/
     - market-update-bitcoin-cash-shines.html saved.
     - uk-crypto-startups-2000-fee.html saved.
@@ -4126,7 +4132,7 @@ for url in urls:
     - mint-bot-telegram-tip-slp-token.html saved.
     - craig-wright-bonded-courier-attorney.html saved.
     - crypto-investors-become-greedy.html saved.
-    
+
     https://news.bitcoin.com/page/314/
     - blockchair-release-monitor.html saved.
     - government-bitcoins.html saved.
@@ -4137,7 +4143,7 @@ for url in urls:
     - 5-mining-50-btc-hashrate.html saved.
     - china-stocks-plummet.html saved.
     - coronavirus-outbreak-forces-chinese.html saved.
-    
+
     https://news.bitcoin.com/page/315/
     - zengo-keyless-noncustodial-bitcoin-wallet.html saved.
     - line-link-japan-launch.html saved.
@@ -4148,7 +4154,7 @@ for url in urls:
     - us-ban-encryption.html saved.
     - banks-negative-interest-rates.html saved.
     - irs-crypto-tax.html saved.
-    
+
     https://news.bitcoin.com/page/316/
     - bitcoin-code-doubler-autotrader-scam.html saved.
     - trading-app-bison-to-add-bitcoin-cash.html saved.
@@ -4159,7 +4165,7 @@ for url in urls:
     - deutsche-bank-reports-e5-3-billion-in-net-loss.html saved.
     - these-are-the-most-traded-tokens.html saved.
     - hierarchies-of-money-reserve-currency.html saved.
-    
+
     https://news.bitcoin.com/page/317/
     - ethereums-value-transfer.html saved.
     - google-coinbase.html saved.
@@ -4170,7 +4176,7 @@ for url in urls:
     - another-crypto-exchange-discourages-the-use-of-bitcoin-mixing-services.html saved.
     - bank-frick-bitcoin-cash.html saved.
     - zermatt-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/318/
     - zebpay-relaunch-india.html saved.
     - how-to-using-bitcoin-beginner.html saved.
@@ -4181,7 +4187,7 @@ for url in urls:
     - new-chainalysis-report-sheds-light-on-darknet.html saved.
     - uphold-app-trade-all-assets-directly.html saved.
     - india-rbi-digital-currency.html saved.
-    
+
     https://news.bitcoin.com/page/319/
     - deutsche-bank-report-digital-yuan.html saved.
     - singapore-introduces-licensing-for-crypto-platforms.html saved.
@@ -4192,7 +4198,7 @@ for url in urls:
     - supreme-court-crypto-vs-rbi.html saved.
     - swiss-bank-julius-baer-offers-new-digital-asset-services.html saved.
     - localcryptos-lets-you-cash-out-btc-p2p-minus-the-kyc.html saved.
-    
+
     https://news.bitcoin.com/page/320/
     - governments-and-enterprises-cant-get-enough-of-blockchain.html saved.
     - heated-debate-continues-over-bitcoin-cash-infrastructure-funding-plan.html saved.
@@ -4203,7 +4209,7 @@ for url in urls:
     - bitcoin-gold-51-attacked-network-loses-70000-in-double-spends.html saved.
     - dubai-launching-crypto-valley-tax-free-zone.html saved.
     - everybodys-staking-but-whos-using-proof-of-stake-blockchains.html saved.
-    
+
     https://news.bitcoin.com/page/321/
     - indian-prime-minister-modi-awards-young-entrepreneur-cryptocurrency-app.html saved.
     - bch-community-leaders-bitcoin-com-and-jonald-fyookball-clarify-positions-on-funding-proposal.html saved.
@@ -4214,7 +4220,7 @@ for url in urls:
     - iran-issues-more-than-1000-cryptocurrency-mining-licenses.html saved.
     - bitpay-users-can-now-purchase-crypto-with-fiat-in-app.html saved.
     - alexander-vinnik-accused-of-laundering-billions-through-btc-e-extradited-to-france.html saved.
-    
+
     https://news.bitcoin.com/page/322/
     - how-to-obscure-bitcoin-cash-transaction-data-by-leveraging-cashfusion.html saved.
     - ecb-keeps-subzero-interest-rates-and-open-ended-qe-worth-e20b-a-month-but-launches-policy-review.html saved.
@@ -4225,7 +4231,7 @@ for url in urls:
     - millennial-and-male-3-crypto-card-issuers-profile-their-average-user.html saved.
     - paypal-pullout-prompts-pornhub-to-add-tether-as-payment-option-for-its-adult-models.html saved.
     - bitcoin-cash-miner-jiang-zhuoer-answers-infrastructure-funding-questions.html saved.
-    
+
     https://news.bitcoin.com/page/323/
     - bitcoin-games-celebrates-lunar-new-year-2020-with-introduction-of-free-spins.html saved.
     - bch-script-meeting-aims-to-enhance-the-programming-language-in-bitcoin-cash.html saved.
@@ -4236,7 +4242,7 @@ for url in urls:
     - bitcoin-cash-miners-plan-6m-development-fund-by-leveraging-block-rewards.html saved.
     - demand-for-crypto-derivatives-swells-as-cmes-bitcoin-volume-rises.html saved.
     - 6-bankers-accused-of-earning-e30m-in-bonuses-from-german-fraud-tax-lawyer-out-on-e4m-bail.html saved.
-    
+
     https://news.bitcoin.com/page/324/
     - crypto-vs-rbi-exchange-counsel-rbi-take-center-stage-supreme-court.html saved.
     - vodafone-becomes-8th-company-to-exit-libra-association.html saved.
@@ -4247,7 +4253,7 @@ for url in urls:
     - rbi-confirms-crypto-not-banned-in-india.html saved.
     - popular-crypto-wallet-imtoken-adds-bitcoin-cash-support.html saved.
     - indian-minister-blockchain-center-of-excellence.html saved.
-    
+
     https://news.bitcoin.com/page/325/
     - these-online-stores-are-bitcoin-only.html saved.
     - bitcoin-com-releases-slp-indexer-server-for-high-performance-token-services.html saved.
@@ -4258,7 +4264,7 @@ for url in urls:
     - lawsuit-against-ripple-may-decide-the-fate-of-xrp-but-regulators-have-the-final-say.html saved.
     - cypherpunk-bitstream-hosts-share-importance-of-payments-dropgangs-and-meatspace-allies.html saved.
     - bitcoin-com-partners-with-mecon-cash-to-enable-bitcoin-cash-to-korean-won-withdrawal-at-over-13000-atms-across-south-korea.html saved.
-    
+
     https://news.bitcoin.com/page/326/
     - an-in-depth-look-at-the-multi-currency-cold-storage-card-ballet.html saved.
     - peter-schiff-forgets-bitcoin-wallet-password-blames-bitcoin.html saved.
@@ -4269,7 +4275,7 @@ for url in urls:
     - crypto-employment-abounds-with-more-than-8000-jobs-in-2020.html saved.
     - new-guidelines-subject-canadian-crypto-exchanges-to-securities-laws.html saved.
     - fatf-holds-global-forum-to-discuss-crypto-supervision.html saved.
-    
+
     https://news.bitcoin.com/page/327/
     - crypto-vs-rbi-3-days-of-intense-supreme-court-hearings.html saved.
     - monopoly-is-a-tiny-darknet-market-with-big-aspirations.html saved.
@@ -4280,7 +4286,7 @@ for url in urls:
     - btc-miami-blockchain-conference-kicks-off-its-seventh-year.html saved.
     - direct-democracy-party-to-solve-issues-with-crypto-rights-in-russia.html saved.
     - 4-bitcoin-mixers-for-the-privacy-conscious.html saved.
-    
+
     https://news.bitcoin.com/page/328/
     - unnecessary-evil-how-government-regulations-kill-crypto-startups-and-encourage-crime.html saved.
     - silvergate-bank-and-bitstamp-launch-bitcoin-collateralized-loans.html saved.
@@ -4291,7 +4297,7 @@ for url in urls:
     - sec-issues-alert-against-initial-exchange-offerings.html saved.
     - gavin-andresen-speaks-about-ethereums-tornado-and-wallet-privacy.html saved.
     - indian-supreme-court-hears-in-depth-arguments-against-rbi-ban.html saved.
-    
+
     https://news.bitcoin.com/page/329/
     - kraken-acquires-australian-crypto-platform-bit-trade.html saved.
     - iif-report-predicts-global-debt-will-reach-new-all-time-high-of-257t-in-2020.html saved.
@@ -4302,7 +4308,7 @@ for url in urls:
     - coinme-adds-btc-purchase-function-to-over-100-coinstar-kiosks-in-california.html saved.
     - china-issues-digital-currency-guide-for-party-cadres.html saved.
     - nba-star-spencer-dinwiddie-just-tokenized-his-own-contract.html saved.
-    
+
     https://news.bitcoin.com/page/330/
     - online-bullion-marketplace-onegold-sees-50-million-in-crypto-payments.html saved.
     - close-to-11-million-btc-havent-moved-in-over-a-year.html saved.
@@ -4313,7 +4319,7 @@ for url in urls:
     - white-house-market-wants-to-become-the-darknets-toughest-dnm.html saved.
     - cointext-cto-vin-armani-talks-content-reveals-the-real-bitcoin-in-new-video.html saved.
     - institutional-and-retail-bitcoin-futures-demand-continues-to-climb.html saved.
-    
+
     https://news.bitcoin.com/page/331/
     - us-and-european-regulators-crypto-priority.html saved.
     - eastern-europe-sees-more-fiat-options-for-trading-crypto.html saved.
@@ -4324,7 +4330,7 @@ for url in urls:
     - eu-countries-commence-crypto-regulations.html saved.
     - hacker-group-lazarus-uses-fake-exchanges-telegram-groups-in-latest-malware-attacks.html saved.
     - bithumb-pledges-8m-to-south-koreas-regulation-free-blockchain-zone.html saved.
-    
+
     https://news.bitcoin.com/page/332/
     - mining-giant-canaan-faces-stiff-competition-after-ipo-shares-slump.html saved.
     - video-games-giant-ubisoft-is-looking-for-blockchain-startups-to-support.html saved.
@@ -4335,7 +4341,7 @@ for url in urls:
     - ethereum-tron-and-eos-control-98-of-all-dapp-volume.html saved.
     - this-company-sets-out-to-prove-crypto-mining-has-a-place-in-your-home.html saved.
     - researchers-scathing-lightning-network-analysis-finds-flaws.html saved.
-    
+
     https://news.bitcoin.com/page/333/
     - ecb-wants-active-role-in-crypto-will-not-deter-private-solutions.html saved.
     - kerala-outlines-plans-to-become-indias-blockchain-hub.html saved.
@@ -4346,7 +4352,7 @@ for url in urls:
     - binance-donates-1-million-in-crypto-for-australian-bushfire-relief.html saved.
     - korean-presidential-committee-pushes-to-make-cryptocurrency-mainstream.html saved.
     - bank-closures-and-withdrawal-restrictions-anger-lebanese-citizens.html saved.
-    
+
     https://news.bitcoin.com/page/334/
     - kraken-reveals-49-increase-in-law-enforcement-investigations.html saved.
     - honk-launches-token-sale-to-fund-slp-powered-sports-betting-site.html saved.
@@ -4357,7 +4363,7 @@ for url in urls:
     - how-to-sell-anything-for-bitcoin-on-your-website.html saved.
     - the-top-50-crypto-memes-of-all-time.html saved.
     - meet-the-multi-cryptocurrency-pos-device-eletropay.html saved.
-    
+
     https://news.bitcoin.com/page/335/
     - turkey-prepares-to-increase-oversight-in-the-crypto-space.html saved.
     - chipmaking-giant-samsung-reveals-3nm-semiconductor-prototype.html saved.
@@ -4368,7 +4374,7 @@ for url in urls:
     - john-mcafee-plans-to-tokenize-all-535-members-of-us-congress.html saved.
     - travala-scores-33-revenue-growth-with-60-of-bookings-paid-with-crypto.html saved.
     - subhash-chandra-garg-on-the-future-of-crypto.html saved.
-    
+
     https://news.bitcoin.com/page/336/
     - telegram-rejects-sec-request-to-hand-over-bank-records-for-ton.html saved.
     - new-slp-telegram-bots-introduced-to-bitcoin-cash-supporters.html saved.
@@ -4379,7 +4385,7 @@ for url in urls:
     - scottish-novelist-andrew-ohagan-asked-to-testify-in-kleiman-v-wright-lawsuit.html saved.
     - hsbc-closes-2-branches-following-new-protests-in-hong-kong.html saved.
     - proof-of-keys-day-returns-on-bitcoins-11th-birthday.html saved.
-    
+
     https://news.bitcoin.com/page/337/
     - a-deep-dive-into-satoshis-11-year-old-bitcoin-genesis-block.html saved.
     - ticker-tool-uses-the-bch-blockchain-to-provide-reliable-rate-data.html saved.
@@ -4390,7 +4396,7 @@ for url in urls:
     - was-youtubes-christmas-crypto-purge-illegal.html saved.
     - google-restores-metamask-app-after-community-uproar.html saved.
     - why-nick-szabo-probably-isnt-satoshi.html saved.
-    
+
     https://news.bitcoin.com/page/338/
     - tron-based-tether-has-ballooned-to-over-900-million-tokens-almost-22-of-total-supply.html saved.
     - government-confirms-crypto-profits-not-taxable-in-south-korea.html saved.
@@ -4401,7 +4407,7 @@ for url in urls:
     - china-takes-another-step-away-from-usd-hegemony.html saved.
     - etoro-ceo-yoni-assia-on-reaching-12-million-users-and-why-cryptos-are-a-gateway-to-stocks.html saved.
     - veriblock-captured-close-to-60-of-btcs-op-return-transactions-in-2019.html saved.
-    
+
     https://news.bitcoin.com/page/339/
     - live-streaming-platform-dlive-joins-bittorrent-ecosystem.html saved.
     - a-tor-integrated-cashfusion-build-for-bitcoin-cash-is-coming.html saved.
@@ -4412,7 +4418,7 @@ for url in urls:
     - south-korea-imposes-69m-tax-obligation-on-crypto-exchange-bithumb.html saved.
     - ethereum-proponent-virgil-griffith-deemed-a-flight-risk-judge-denies-bail.html saved.
     - wazirx-ceo-on-2020-outlook-rbi-ban-crypto-regulation-for-india.html saved.
-    
+
     https://news.bitcoin.com/page/340/
     - coinbase-wallet-removing-mobile-dapp-browser-to-comply-with-apple.html saved.
     - central-bank-gold-hoarding-hits-50-year-high.html saved.
@@ -4423,7 +4429,7 @@ for url in urls:
     - indian-governments-institute-offers-blockchain-training-in-multiple-cities.html saved.
     - french-gov-social-media-stl-crypto-is-consensual-money-fiat-is-violent.html saved.
     - cloud-token-and-the-rise-of-mlm-crypto-projects.html saved.
-    
+
     https://news.bitcoin.com/page/341/
     - authorities-in-sichuan-go-after-miners-to-save-electricity-in-the-dry-season.html saved.
     - harsh-laws-make-bitcoin-holders-consider-renunciation-or-dual-citizenship.html saved.
@@ -4434,7 +4440,7 @@ for url in urls:
     - 4-beijing-regulators-issue-new-crypto-activity-warning.html saved.
     - cryptos-counterpunch-to-u-s-hegemony-and-empire.html saved.
     - germans-rush-to-buy-gold-as-draft-bill-threatens-to-restrict-purchases.html saved.
-    
+
     https://news.bitcoin.com/page/342/
     - shenzhen-stock-exchange-launches-index-of-top-50-blockchain-public-companies.html saved.
     - bitcoin-gained-8-9-million-percent-over-the-last-decade.html saved.
@@ -4445,7 +4451,7 @@ for url in urls:
     - close-to-14000-google-scholar-articles-mentioned-bitcoin-in-2019.html saved.
     - 7-steel-crypto-wallets-that-withstand-extreme-fire-and-water-damage.html saved.
     - someone-redeemed-a-100-btc-casascius-bar-worth-over-700k.html saved.
-    
+
     https://news.bitcoin.com/page/343/
     - a-bitcoin-war-is-brewing-over-kyc.html saved.
     - banking-platform-cashaa-sees-indian-trading-volume-soar-adding-5-more-cryptocurrencies.html saved.
@@ -4456,7 +4462,7 @@ for url in urls:
     - getting-in-and-out-of-the-cryptocurrency-economy-can-be-costly.html saved.
     - wirex-ceo-pavel-matveev-shares-expansion-plans-for-2020.html saved.
     - cashshuffle-and-the-slp-token-universe-shined-brightly-in-2019.html saved.
-    
+
     https://news.bitcoin.com/page/344/
     - speculation-abounds-regarding-youtubes-removal-of-crypto-content.html saved.
     - crypto-confronts-social-justice-warriors.html saved.
@@ -4467,7 +4473,7 @@ for url in urls:
     - regulatory-roundup-new-us-crypto-bill-frances-1st-approved-ico-muslim-crypto.html saved.
     - lawmakers-want-answers-from-irs-citing-major-issues-with-crypto-tax-guidance.html saved.
     - pboc-official-chinas-digital-yuan-wont-be-a-speculative-currency-like-bitcoin.html saved.
-    
+
     https://news.bitcoin.com/page/345/
     - only-375-days-left-for-mcafees-1m-bitcoin-price-wager.html saved.
     - these-myth-busting-articles-dispel-common-bitcoin-myths.html saved.
@@ -4478,7 +4484,7 @@ for url in urls:
     - bybit-ceo-ben-zhou-on-crypto-derivatives-and-market-predictions-for-2020.html saved.
     - craig-wright-attempts-to-reveal-the-origin-of-satoshi-nakamotos-name.html saved.
     - fomo3d-team-launch-new-dapp-thats-not-just-a-game.html saved.
-    
+
     https://news.bitcoin.com/page/346/
     - judge-rules-snowden-must-give-book-proceeds-to-us-government.html saved.
     - p2p-crypto-trading-app-allows-you-to-protect-your-privacy.html saved.
@@ -4489,7 +4495,7 @@ for url in urls:
     - the-many-facts-pointing-to-ian-grigg-being-satoshi.html saved.
     - bch-is-an-a-class-crypto-for-auditability.html saved.
     - you-can-earn-lead-tokens-by-becoming-a-crypto-community-champion.html saved.
-    
+
     https://news.bitcoin.com/page/347/
     - two-reports-criticize-bitcoin-sv-miners-and-the-chains-upcoming-fork.html saved.
     - cybersecurity-firm-cybavo-adds-slp-token-support-to-its-wallet-management-platforms.html saved.
@@ -4500,7 +4506,7 @@ for url in urls:
     - sec-crypto-investments-accredited-investor.html saved.
     - france-approves-first-ico.html saved.
     - whales-control-most-of-litecoin-many-ethereum-tokens.html saved.
-    
+
     https://news.bitcoin.com/page/348/
     - bailouts-from-asia-to-the-eu-signal-recession-and-potential-crypto-opportunity.html saved.
     - bitcoin-history-part-22-the-new-wealthy-elite.html saved.
@@ -4511,7 +4517,7 @@ for url in urls:
     - indian-crypto-community-gathers-to-dispel-confusion-about-regulation.html saved.
     - fidelity-launching-crypto-services-in-europe-citing-significant-interest.html saved.
     - indian-state-of-kerala-to-produce-20000-blockchain-specialists-in-2-years.html saved.
-    
+
     https://news.bitcoin.com/page/349/
     - kleiman-estate-asks-judge-to-overrule-craig-wrights-objections.html saved.
     - plustoken-cash-outs-could-be-behind-btc-price-drop-says-report.html saved.
@@ -4522,7 +4528,7 @@ for url in urls:
     - regulatory-roundup-crypto-inevitable-in-india-china-rankings-ny-streamlines-policy.html saved.
     - dna-of-things-technology-can-store-bitcoin-passwords-in-everyday-objects.html saved.
     - german-banks-increasingly-charging-retail-clients-negative-interest-rates.html saved.
-    
+
     https://news.bitcoin.com/page/350/
     - uphold-users-gain-access-to-salts-crypto-backed-loans.html saved.
     - heres-what-happens-when-you-use-lightning-network-for-the-first-time.html saved.
@@ -4533,7 +4539,7 @@ for url in urls:
     - indian-lawmaker-says-cryptocurrency-is-inevitable.html saved.
     - european-aml-directive-pushes-crypto-startup-bottle-pay-out-of-business.html saved.
     - bloxroute-releases-blockchain-distribution-network-for-ethereum-and-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/351/
     - russias-hydra-darknet-marketplace-plans-146m-token-sale.html saved.
     - this-week-in-bitcoin-8-billion-btc-trust-and-maximalists-misbehaving.html saved.
@@ -4544,7 +4550,7 @@ for url in urls:
     - searching-for-synthetix-which-token-will-be-next-years-50x-winner.html saved.
     - lightning-network-wiki-page-faces-removal-for-lack-of-notability.html saved.
     - lagarde-sees-demand-for-stablecoins-plans-to-put-ecb-ahead-of-the-curve.html saved.
-    
+
     https://news.bitcoin.com/page/352/
     - iran-hong-kong-india-failed-protests-point-to-need-for-crypto-anarchy-second-realms.html saved.
     - mainstream-investment-vehicles-tied-to-cryptocurrencies-grow-exponentially.html saved.
@@ -4555,7 +4561,7 @@ for url in urls:
     - ny-regulator-proposes-relaxing-new-coin-listing-requirements.html saved.
     - ideg-reports-launch-of-new-bitcoin-trusts-in-asia-with-coinbase-as-custodian.html saved.
     - chinas-inflation-hits-a-record-4-5-as-beijing-prepares-to-test-digital-yuan.html saved.
-    
+
     https://news.bitcoin.com/page/353/
     - slp-token-market-cap-surpasses-50-million.html saved.
     - ai-research-reveals-crypto-leaders-are-angry-and-depressed.html saved.
@@ -4566,7 +4572,7 @@ for url in urls:
     - the-state-encourages-ico-fraud-the-free-market-minimizes-it.html saved.
     - ross-ulbricht-uses-elliot-waves-to-predict-bitcoins-trajectory-from-behind-bars.html saved.
     - italians-love-cash-but-are-growing-fond-of-crypto-new-stats-suggest.html saved.
-    
+
     https://news.bitcoin.com/page/354/
     - cbd-coffee-company-leverages-censorship-resistant-nature-of-crypto.html saved.
     - accused-onecoin-co-conspirators-fight-criminal-charges-in-the-us.html saved.
@@ -4577,7 +4583,7 @@ for url in urls:
     - up-alliance-members-to-lock-mega-utility-tokens-for-a-year.html saved.
     - bitcoin-mining-operations-offer-new-strategies-before-reward-reduction.html saved.
     - 23-days-until-a-bonded-courier-supposedly-delivers-keys-to-8-billion-in-btc.html saved.
-    
+
     https://news.bitcoin.com/page/355/
     - nexo-now-offers-bitcoin-cash-instant-crypto-credit-lines.html saved.
     - irs-now-requires-tax-filers-to-disclose-crypto-activities.html saved.
@@ -4588,7 +4594,7 @@ for url in urls:
     - beam-bch-and-zcash-will-join-btc-in-halving-their-mining-rewards.html saved.
     - deutsche-bank-strategist-predicts-crypto-could-replace-fiat-money.html saved.
     - buy-presents-or-a-christmas-trip-using-gift-cards-purchased-with-crypto.html saved.
-    
+
     https://news.bitcoin.com/page/356/
     - bitcoin-cash-represents-93-of-novembers-crypto-spending-in-australia.html saved.
     - the-crypto-anarchist-manifesto.html saved.
@@ -4599,7 +4605,7 @@ for url in urls:
     - chicago-company-mines-at-oil-wells-educates-producers-about-bitcoin.html saved.
     - bitcoin-cash-2019-year-in-review.html saved.
     - eu-finance-ministers-place-defacto-ban-on-libra.html saved.
-    
+
     https://news.bitcoin.com/page/357/
     - venture-capitalists-have-invested-over-200m-in-stablecoins.html saved.
     - asic-chip-maker-ebang-next-in-line-to-file-for-us-ipo.html saved.
@@ -4610,7 +4616,7 @@ for url in urls:
     - crypto-focused-lender-blockfi-launches-trading-platform.html saved.
     - rbi-governor-discusses-crypto-and-central-bank-digital-currency.html saved.
     - crypto-startups-to-get-up-to-75000-from-the-government-of-ukraine.html saved.
-    
+
     https://news.bitcoin.com/page/358/
     - circle-warns-poloniex-us-customer-assets-may-be-sent-to-the-government.html saved.
     - cryptocurrency-exchanges-are-fighting-to-escape-binances-shadow.html saved.
@@ -4621,7 +4627,7 @@ for url in urls:
     - banks-are-cutting-75700-jobs-worldwide.html saved.
     - european-banks-struggle-with-low-interest-rates-and-strict-regulations.html saved.
     - japan-now-has-21-approved-crypto-exchanges.html saved.
-    
+
     https://news.bitcoin.com/page/359/
     - new-list-claims-1-9-million-bitcoin-held-by-centralized-exchanges.html saved.
     - wisdomtrees-physically-backed-bitcoin-etp-goes-live-on-six-stock-exchange.html saved.
@@ -4632,7 +4638,7 @@ for url in urls:
     - vertcoin-network-sabotaged-by-another-51-attack.html saved.
     - regulatory-roundup-germany-to-let-banks-sell-and-store-crypto-laws-changing-in-asia.html saved.
     - how-the-upcoming-bitcoin-halving-compares-to-previous-cycles.html saved.
-    
+
     https://news.bitcoin.com/page/360/
     - skrill-now-lets-you-swap-btc-for-bch.html saved.
     - the-jim-bell-system.html saved.
@@ -4643,7 +4649,7 @@ for url in urls:
     - film-reveals-never-before-seen-information-about-the-silk-road-case.html saved.
     - canadian-regulator-green-lights-bitcoin-fund-ipo.html saved.
     - 459-days-until-btc-hits-its-longest-streak-without-a-new-all-time-high.html saved.
-    
+
     https://news.bitcoin.com/page/361/
     - sideshift-slp-token-sai-gains-over-30-in-less-than-24-hours.html saved.
     - crypto-community-erupts-over-ethereum-foundation-members-arrest.html saved.
@@ -4654,7 +4660,7 @@ for url in urls:
     - coinbase-patents-ai-compliance-system-to-automatically-flag-accounts.html saved.
     - is-plustoken-to-blame-for-bitcoins-sell-off.html saved.
     - despite-st-louis-branch-warnings-new-york-fed-pumps-108-billion-into-us-economy.html saved.
-    
+
     https://news.bitcoin.com/page/362/
     - despite-st-louis-branch-warnings-new-york-fed-pumps-108-billion-into-us-economy.html saved.
     - us-judge-denies-customers-plea-to-quash-irs-bitstamp-inquiry.html saved.
@@ -4665,7 +4671,7 @@ for url in urls:
     - attorney-fees-stack-up-as-craig-wright-fights-court-order.html saved.
     - as-halving-interest-grows-spectators-discuss-miner-hoards-and-capitulation.html saved.
     - bitfinex-and-tether-receive-another-class-action-lawsuit-in-us-courts.html saved.
-    
+
     https://news.bitcoin.com/page/363/
     - european-crypto-exchange-bitbay-ends-monero-trading-due-to-anonymity-features.html saved.
     - i-designed-bitcoi-gold-the-many-facts-pointing-to-nick-being-satoshi.html saved.
@@ -4676,7 +4682,7 @@ for url in urls:
     - another-research-paper-finds-flaws-with-the-lightning-network.html saved.
     - travala-partners-with-booking-com-90000-crypto-accepting-destinations-added.html saved.
     - gold-and-silver-follow-similar-trend-to-bitcoin-influenced-by-china.html saved.
-    
+
     https://news.bitcoin.com/page/364/
     - bankrupt-dx-exchange-reportedly-didnt-pay-israeli-suppliers-and-employees.html saved.
     - dont-blame-china-why-btc-still-cant-compete-with-fiat.html saved.
@@ -4687,7 +4693,7 @@ for url in urls:
     - market-update-uncertainty-strikes-crypto-traders-after-week-long-downtrend.html saved.
     - gocrypto-slp-token-starts-trading-on-bitcoin-com-exchange.html saved.
     - libra-testnet-fails-to-impress-as-new-legislation-looms.html saved.
-    
+
     https://news.bitcoin.com/page/365/
     - how-bitcoin-applies-to-the-sovereign-individual-thesis.html saved.
     - after-blockstacks-regulated-offering-where-now-for-us-token-sales.html saved.
@@ -4698,7 +4704,7 @@ for url in urls:
     - localethereum-becomes-localcryptos-and-adds-btc-trading.html saved.
     - bakkts-bitcoin-futures-shatters-records-amid-spot-market-turmoil.html saved.
     - what-indian-crypto-exchanges-are-doing-to-protect-p2p-users.html saved.
-    
+
     https://news.bitcoin.com/page/366/
     - shift-cryptosecurity-reveals-new-tamper-evident-packaging.html saved.
     - how-to-navigate-the-minefield-of-cryptocurrency-taxation.html saved.
@@ -4709,7 +4715,7 @@ for url in urls:
     - new-cypherpunk-podcast-debuts-discussing-cryptoanarchy.html saved.
     - developer-launches-bch-powered-paywall-service.html saved.
     - in-2019-cryptocurrency-exchanges-diversified.html saved.
-    
+
     https://news.bitcoin.com/page/367/
     - crypto-swapping-app-sideshift-ai-drops-access-code-requirement.html saved.
     - bitcoin-emits-less-carbon-than-previously-claimed-new-study-finds.html saved.
@@ -4720,7 +4726,7 @@ for url in urls:
     - paypal-ceo-admits-he-owns-bitcoin-2.html saved.
     - devs-reveal-bch-cashchannels-and-simple-escrow-contracts.html saved.
     - cash-games-adds-dozens-of-new-options-for-you-to-play.html saved.
-    
+
     https://news.bitcoin.com/page/368/
     - bitcoin-com-to-launch-200-million-bch-ecosystem-investment-fund.html saved.
     - the-many-facts-pointing-to-hal-finney-being-satoshi.html saved.
@@ -4731,7 +4737,7 @@ for url in urls:
     - lost-coins-study-estimates-btcs-true-supply.html saved.
     - cointext-founder-publishes-new-postage-specs-for-slp-tokens.html saved.
     - chinese-authorities-scrutinize-and-report-on-crypto-exchanges.html saved.
-    
+
     https://news.bitcoin.com/page/369/
     - crypto-debit-card-targets-generation-z-with-a-promise-of-financial-freedom.html saved.
     - indian-supreme-court-wraps-up-crypto-hearing-for-the-year.html saved.
@@ -4742,7 +4748,7 @@ for url in urls:
     - with-christmas-approaching-here-are-some-travel-sites-accepting-crypto.html saved.
     - crisis-fears-rise-as-global-debt-hits-a-record-250-trillion.html saved.
     - governments-viewing-crypto-as-a-threat-will-be-left-behind.html saved.
-    
+
     https://news.bitcoin.com/page/370/
     - irs-dispels-crypto-tax-confusion.html saved.
     - market-update-crypto-prices-improve-after-3-week-downtrend.html saved.
@@ -4753,7 +4759,7 @@ for url in urls:
     - global-trend-against-cash-intensifies-as-china-joins-the-squeeze.html saved.
     - royal-bank-of-canada-patents-point-to-crypto-exchange-launch.html saved.
     - the-crypto-companies-reinventing-the-wallet.html saved.
-    
+
     https://news.bitcoin.com/page/371/
     - international-law-enforcement-conference-addresses-crypto-and-the-criminal-economy.html saved.
     - bitcoin-cash-upgrade-complete-2-new-protocol-changes-added.html saved.
@@ -4764,7 +4770,7 @@ for url in urls:
     - instant-crypto-exchange-changelly-secures-access-to-slp-tokens.html saved.
     - pornhub-suggests-crypto-payments-after-paypal-censors-model-payouts.html saved.
     - ohio-crypto-program-hits-a-snag-attorney-general-finds-it-illegal.html saved.
-    
+
     https://news.bitcoin.com/page/372/
     - indian-government-programs-add-new-crypto-courses.html saved.
     - bitcoin-com-wallet-app-marks-over-five-million-wallets-created.html saved.
@@ -4775,7 +4781,7 @@ for url in urls:
     - 2-new-blog-sites-that-allow-users-to-earn-cryptocurrencies.html saved.
     - south-korean-exchange-ceo-sentenced-to-16-years-in-prison.html saved.
     - walk-like-nakamoto-7-anonymous-personalities-in-the-crypto-space.html saved.
-    
+
     https://news.bitcoin.com/page/373/
     - swiss-crypto-bank-seba-launches-with-range-of-services.html saved.
     - bitcoin-history-part-20-btc-reaches-1.html saved.
@@ -4786,7 +4792,7 @@ for url in urls:
     - jailed-deepdotweb-admin-denies-earning-15m-from-darknet-links.html saved.
     - 6-months-before-halving-signs-indicate-bitcoin-miners-are-hoarding.html saved.
     - from-fud-to-fomo-china-state-newspaper-says-bitcoin-is-successful.html saved.
-    
+
     https://news.bitcoin.com/page/374/
     - generation-qe-how-central-banks-create-money-from-thin-air.html saved.
     - crypto-jobs-on-the-rise-thousands-listed.html saved.
@@ -4797,7 +4803,7 @@ for url in urls:
     - tax-agencies-worldwide-plan-to-crack-down-on-dozens-of-crypto-tax-evaders.html saved.
     - bitcoin-cash-house-launches-crypto-hub-in-venezuela.html saved.
     - how-to-start-with-bitcoin-at-no-cost.html saved.
-    
+
     https://news.bitcoin.com/page/375/
     - corrupt-cbi-officer-booked-for-extorting-vigilante-bitcoiner.html saved.
     - what-to-expect-from-the-next-bitcoin-cash-protocol-upgrade.html saved.
@@ -4808,7 +4814,7 @@ for url in urls:
     - holders-of-the-digital-yuan-will-not-be-paid-interest.html saved.
     - crypto-tax-guidelines-leave-more-questions-than-answers.html saved.
     - activist-larken-rose-weighs-in-on-bitcoin-anarchy-and-the-importance-of-permissionless-cash.html saved.
-    
+
     https://news.bitcoin.com/page/376/
     - crypto-friendly-silvergate-bank-ipo-debuts-on-nyse.html saved.
     - congressional-hopeful-agatha-bacelar-talks-silk-road-on-the-bitcoin-com-podcast.html saved.
@@ -4819,7 +4825,7 @@ for url in urls:
     - bitcoin-history-part-19-wikileaks-and-the-hornets-nest.html saved.
     - hong-kong-now-offers-opt-in-regulation-to-crypto-exchanges.html saved.
     - meet-flowee-the-hub-a-feature-rich-bitcoin-cash-validator.html saved.
-    
+
     https://news.bitcoin.com/page/377/
     - kim-dotcom-token-sale-postponed-over-regulatory-uncertainty.html saved.
     - conceal-and-reveal-the-evolution-of-privacy-coin-technology.html saved.
@@ -4830,7 +4836,7 @@ for url in urls:
     - canadian-regulator-seizes-troubled-crypto-exchange.html saved.
     - bitcoin-cash-captured-90-of-octobers-crypto-spending-in-australia.html saved.
     - new-hire-to-head-digital-currency-research-at-the-us-fed.html saved.
-    
+
     https://news.bitcoin.com/page/378/
     - uk-based-electric-bike-company-launches-slp-reward-token.html saved.
     - no-inflation-here-it-is-hidden-in-plain-sight.html saved.
@@ -4841,7 +4847,7 @@ for url in urls:
     - britains-tax-authority-updates-crypto-guidelines.html saved.
     - central-bank-blockchains-and-corporate-ledgers-are-still-vaporware.html saved.
     - crypto-winter-claims-another-victim-as-dx-exchange-closes.html saved.
-    
+
     https://news.bitcoin.com/page/379/
     - bad-loans-at-big-british-banks-jump-over-50-in-a-year.html saved.
     - cryptosteel-capsule-will-keep-your-wallet-seed-safe-and-out-of-sight.html saved.
@@ -4852,7 +4858,7 @@ for url in urls:
     - cred-merchant-solutions-to-help-unbanked-business-sectors.html saved.
     - another-chinese-lender-bailed-out-after-bank-run.html saved.
     - cme-group-publishes-bitcoin-options-specifications.html saved.
-    
+
     https://news.bitcoin.com/page/380/
     - 23-central-banks-divulge-their-digital-currency-requirements.html saved.
     - andrew-yangs-freedom-dividend-is-not-only-unnecessary-its-unethical.html saved.
@@ -4863,7 +4869,7 @@ for url in urls:
     - ecb-president-we-should-be-happier-to-have-a-job-than-to-have-our-savings-protected.html saved.
     - will-bitcoin-double-in-price-after-the-halving-miners-have-their-say.html saved.
     - do-you-know-the-newspeak-of-the-looming-nirp-economic-meltdown.html saved.
-    
+
     https://news.bitcoin.com/page/381/
     - how-bitcoins-peer-to-peer-cash-system-was-revealed-11-years-ago.html saved.
     - korean-presidential-committee-pushes-to-legalize-crypto.html saved.
@@ -4874,7 +4880,7 @@ for url in urls:
     - satoshis-final-messages-leave-tantalizing-clues-to-his-disappearance.html saved.
     - argentinas-example-shows-that-you-dont-own-your-money.html saved.
     - cryptophyl-exchange-reveals-fiat-on-ramp-to-slp-token-ecosystem.html saved.
-    
+
     https://news.bitcoin.com/page/382/
     - avalon-mining-rig-maker-canaan-files-for-400m-ipo-on-nasdaq.html saved.
     - more-filthy-fiat-two-dozen-central-banks-ramp-up-the-printing-presses.html saved.
@@ -4885,7 +4891,7 @@ for url in urls:
     - why-central-banks-are-not-designed-for-democracies.html saved.
     - after-breaking-new-records-bakkt-announces-crypto-consumer-app.html saved.
     - stealth-miners-on-the-bch-network-attract-scrutiny.html saved.
-    
+
     https://news.bitcoin.com/page/383/
     - cred-to-demo-global-merchant-solution-at-blockchain-week-kick-off.html saved.
     - bitfinex-claims-to-be-victim-of-fraud-after-crypto-capital-president-arrested.html saved.
@@ -4896,7 +4902,7 @@ for url in urls:
     - low-interest-rates-are-crushing-young-people-and-fueling-global-riots.html saved.
     - is-chinas-new-fascination-with-blockchain-really-good-for-bitcoin.html saved.
     - cash-runs-dry-at-atms-as-protests-escalate-in-chile.html saved.
-    
+
     https://news.bitcoin.com/page/384/
     - bitcoin-com-joins-the-coinex-chain-pre-election-node-process.html saved.
     - mistakes-crypto-owners-and-traders-should-avoid.html saved.
@@ -4907,7 +4913,7 @@ for url in urls:
     - mckinsey-majority-of-banks-may-not-be-economically-viable.html saved.
     - state-bank-of-india-chief-argues-crypto-regulation-is-a-must.html saved.
     - the-demand-for-permissionless-freedom-is-just-getting-started.html saved.
-    
+
     https://news.bitcoin.com/page/385/
     - lebanese-protestors-gather-at-central-bank-as-financial-lockout-continues.html saved.
     - as-crypto-exchanges-exit-the-us-which-trading-platforms-will-enter-the-breach.html saved.
@@ -4918,7 +4924,7 @@ for url in urls:
     - germanys-financial-crisis-invokes-5-year-rent-freeze.html saved.
     - belarusian-bank-gets-the-go-ahead-to-service-crypto-investors.html saved.
     - how-centralized-payment-systems-learned-to-accept-decentralized-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/386/
     - how-fiat-money-fails-deconstructing-the-governments-paper-thin-promise.html saved.
     - malaysia-regulator-approves-international-crypto-exchange-luno.html saved.
@@ -4929,7 +4935,7 @@ for url in urls:
     - how-cryptocurrency-developers-can-earn-bitcoin-cash-with-rest-apis.html saved.
     - credit-suisse-is-latest-bank-to-charge-clients-for-cash-deposits.html saved.
     - smartphone-developers-embrace-crypto-as-opera-integrates-btc-and-trx.html saved.
-    
+
     https://news.bitcoin.com/page/387/
     - cashaa-launches-banking-solution-for-indian-crypto-owners.html saved.
     - 4-cryptocurrency-projects-that-successfully-changed-chains.html saved.
@@ -4940,7 +4946,7 @@ for url in urls:
     - court-postpones-ton-hearing-till-february-impatient-investors-may-get-77-back.html saved.
     - fatf-starts-checking-how-well-countries-implement-crypto-standards.html saved.
     - indian-finance-minister-answers-crypto-questions-at-imf-meeting.html saved.
-    
+
     https://news.bitcoin.com/page/388/
     - mcafee-envisions-dex-in-a-world-where-crypto-wont-be-traded-for-fiat.html saved.
     - bittrex-pulls-out-of-31-markets-citing-regulatory-uncertainty.html saved.
@@ -4951,7 +4957,7 @@ for url in urls:
     - fed-research-considers-negative-interest-rates-effective-policy-tool.html saved.
     - how-to-trade-crypto-in-person-safely.html saved.
     - bitcoin-cash-roundup-adoption-stories-and-new-developments.html saved.
-    
+
     https://news.bitcoin.com/page/389/
     - circle-drops-poloniex-leaving-us-crypto-traders-high-and-dry.html saved.
     - russia-blocks-2-crypto-news-websites.html saved.
@@ -4962,7 +4968,7 @@ for url in urls:
     - global-crisis-looms-as-imf-report-cites-its-own-policy-as-dangerous.html saved.
     - sec-wants-second-look-at-bitwise-bitcoin-etf.html saved.
     - alleged-las-vegas-scammer-charged-for-11-million-crypto-binary-options-ponzi.html saved.
-    
+
     https://news.bitcoin.com/page/390/
     - slp-token-ecosystem-built-on-bitcoin-cash-continues-to-blossom.html saved.
     - 104-addresses-hold-70-of-tether-research-reveals.html saved.
@@ -4973,7 +4979,7 @@ for url in urls:
     - meet-be-cash-an-offline-bitcoin-cash-sending-tool.html saved.
     - survey-chinese-students-want-crypto-jobs-8-own-cryptocurrencies.html saved.
     - rare-joint-statement-from-u-s-regulators-proves-crypto-centralization-is-here.html saved.
-    
+
     https://news.bitcoin.com/page/391/
     - icos-are-dead-but-ico-scammers-are-immortal.html saved.
     - 80-of-crypto-trade-volume-tracked-by-blockchain-surveillance.html saved.
@@ -4984,7 +4990,7 @@ for url in urls:
     - telegram-awaits-court-hearing-on-sec-case-against-its-token-sale.html saved.
     - bitcoins-smallest-unit-satoshi-added-to-oxford-english-dictionary.html saved.
     - europol-predicts-rise-of-criminal-crypto-exchanges-in-digital-underground.html saved.
-    
+
     https://news.bitcoin.com/page/392/
     - bitcoin-is-a-weapon-for-free-speech-in-the-face-of-government-and-corporate-censorship.html saved.
     - indian-supreme-court-postpones-crypto-case-to-november.html saved.
@@ -4995,7 +5001,7 @@ for url in urls:
     - imf-has-another-trick-up-its-sleeve-when-fiat-fails-its-own-coin-sdr.html saved.
     - more-nations-join-the-club-of-crypto-friendly-jurisdictions.html saved.
     - android-tool-lets-you-check-crypto-payment-apps-for-double-spends.html saved.
-    
+
     https://news.bitcoin.com/page/393/
     - bitcoin-cash-outshines-btc-retail-spending-in-australia-by-a-wide-margin.html saved.
     - coinbase-receives-e-money-license-from-the-central-bank-of-ireland.html saved.
@@ -5006,7 +5012,7 @@ for url in urls:
     - visa-mastercard-ebay-stripe-join-paypal-in-leaving-libra.html saved.
     - ukraine-in-a-rush-to-legalize-cryptocurrencies-under-zelensky.html saved.
     - 5-of-the-best-crypto-swapping-services.html saved.
-    
+
     https://news.bitcoin.com/page/394/
     - slovenia-has-the-most-bch-accepting-physical-locations-worldwide.html saved.
     - 4-new-high-powered-bitcoin-miners-revealed.html saved.
@@ -5017,7 +5023,7 @@ for url in urls:
     - turkey-throws-another-wrench-into-the-usds-works-and-joins-russian-swift.html saved.
     - if-youd-bought-these-coins-in-2014-this-is-what-youd-have-made.html saved.
     - u-s-warns-visa-mastercard-to-proceed-with-caution-regarding-libra.html saved.
-    
+
     https://news.bitcoin.com/page/395/
     - realmx-video-game-officially-launches-on-bitcoin-cash.html saved.
     - bitcoin-cash-acceptance-grows-in-southeast-asia-via-alchemys-pos-system.html saved.
@@ -5028,7 +5034,7 @@ for url in urls:
     - irs-issues-new-crypto-tax-guidance-after-5-years-experts-weigh-in.html saved.
     - chinese-bitcoin-miners-migrate-north-after-wet-season.html saved.
     - over-200-venezuelan-taxis-discover-the-benefits-of-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/396/
     - sean-walsh-cryptocurrencies-can-harness-more-of-the-human-energy.html saved.
     - united-nations-agency-unicef-launches-cryptocurrency-fund.html saved.
@@ -5039,7 +5045,7 @@ for url in urls:
     - why-bitcoin-is-better-than-banks-major-credit-card-breach-exposes-60m-accounts.html saved.
     - market-outlook-leading-cryptocurrencies-attempt-to-break-resistance.html saved.
     - economic-turmoil-in-hong-kong-escalates-as-colonial-era-law-is-imposed.html saved.
-    
+
     https://news.bitcoin.com/page/397/
     - 2019s-token-sales-have-produced-a-handful-of-winners.html saved.
     - banking-giant-hsbc-set-to-fire-10000-more-employees.html saved.
@@ -5050,7 +5056,7 @@ for url in urls:
     - bitfinex-braces-for-imminent-lawsuit-alleging-tether-manipulates-crypto-market.html saved.
     - crypto-outpaces-political-donation-laws-in-japan.html saved.
     - bitcoin-cash-proponents-prepare-for-forthcoming-upgrade-features.html saved.
-    
+
     https://news.bitcoin.com/page/398/
     - liechtenstein-adopts-token-act-to-attract-crypto-business.html saved.
     - bitcoin-history-part-18-the-first-bitcoin-wallet.html saved.
@@ -5061,7 +5067,7 @@ for url in urls:
     - protesters-wield-tools-of-freedom-as-hong-kong-imposes-dictatorship.html saved.
     - bitcoin-com-launches-games-stars-leaderboard-win-btc-every-week.html saved.
     - data-shows-institutional-interest-in-bitcoin-has-diminished.html saved.
-    
+
     https://news.bitcoin.com/page/399/
     - russia-regulates-digital-rights-advances-other-crypto-related-bills.html saved.
     - 200000-people-have-signed-ross-ulbrichts-clemency-petition.html saved.
@@ -5072,7 +5078,7 @@ for url in urls:
     - zimbabwe-bans-popular-mobile-money-services-from-paying-out-fiat-cash.html saved.
     - ohio-removes-option-to-pay-taxes-with-crypto-while-local-slp-project-presses-forward.html saved.
     - how-to-create-an-anonymous-digital-identity-using-cryptocurrency.html saved.
-    
+
     https://news.bitcoin.com/page/400/
     - german-bank-predicts-btc-at-90000-after-next-halving.html saved.
     - trump-pressures-fed-for-more-rate-cuts-as-mega-banks-drain-the-balance-sheet.html saved.
@@ -5083,7 +5089,7 @@ for url in urls:
     - 5-educational-resources-that-will-level-up-your-cryptocurrency-knowledge.html saved.
     - how-g20-central-bank-digital-currencies-are-progressing.html saved.
     - shots-fired-as-nancy-pelosi-challenger-bacelar-funds-campaign-with-crypto.html saved.
-    
+
     https://news.bitcoin.com/page/401/
     - sec-imposes-multimillion-dollar-fine-for-unregistered-eos-token-sale.html saved.
     - market-outlook-a-few-cryptocurrencies-rebound-while-fear-grips-central-banks.html saved.
@@ -5094,7 +5100,7 @@ for url in urls:
     - central-banks-in-panic-mode-extreme-tactics-like-helicopter-money-discussed.html saved.
     - bittrex-coinbase-and-kraken-set-up-crypto-rating-council.html saved.
     - darknet-markets-are-thriving-despite-the-mysterious-death-of-dread.html saved.
-    
+
     https://news.bitcoin.com/page/402/
     - massive-layoffs-banks-cutting-nearly-60000-jobs-worldwide.html saved.
     - irs-releases-tax-cheat-info-raising-concerns-about-crypto-theft.html saved.
@@ -5105,7 +5111,7 @@ for url in urls:
     - hidden-lightning-network-bug-allowed-spending-of-fake-bitcoins.html saved.
     - sec-commissioner-speaks-positively-about-digital-assets-despite-recent-enforcement-flurry.html saved.
     - traders-bemoan-new-localbitcoins-identity-requirements.html saved.
-    
+
     https://news.bitcoin.com/page/403/
     - bitcoin-smart-contract-platform-rsk-acquires-latin-americas-fourth-largest-social-network.html saved.
     - venezuelas-central-bank-indicates-plans-to-stockpile-bitcoin.html saved.
@@ -5116,7 +5122,7 @@ for url in urls:
     - protests-led-rbi-to-raise-pmc-banks-withdrawal-limit.html saved.
     - bitflyer-adds-bitcoin-cash-trading-across-europe-and-the-us.html saved.
     - latin-american-payment-app-mercado-pago-can-be-topped-up-with-crypto.html saved.
-    
+
     https://news.bitcoin.com/page/404/
     - the-number-of-cryptocurrency-wallets-is-growing-exponentially.html saved.
     - monex-offers-crypto-rewards-to-shareholders-furthering-japanese-adoption.html saved.
@@ -5127,7 +5133,7 @@ for url in urls:
     - swiss-banks-team-with-fintechs-to-enter-the-crypto-space.html saved.
     - panic-at-137-bank-branches-as-rbi-limits-withdrawals-to-1000.html saved.
     - bitcoin-cash-accepting-mayoral-candidate-nobody-hosts-keenes-420-rally.html saved.
-    
+
     https://news.bitcoin.com/page/405/
     - ellipals-titan-hardware-wallet-is-airgapped-and-easy-to-use.html saved.
     - market-update-low-volumes-and-uncertainty-shake-crypto-traders.html saved.
@@ -5138,7 +5144,7 @@ for url in urls:
     - devs-remove-bip70-payment-protocol-from-bitcoin-cores-default-settings.html saved.
     - bakkt-regulated-bitcoin-futures-now-live-on-major-exchange.html saved.
     - what-googles-quantum-breakthrough-means-for-blockchain-cryptography.html saved.
-    
+
     https://news.bitcoin.com/page/406/
     - iran-is-being-targeted-for-economic-independence-not-terrorism.html saved.
     - 6-noncustodial-crypto-payment-solutions-for-merchants.html saved.
@@ -5149,7 +5155,7 @@ for url in urls:
     - slp-token-environment-built-on-bitcoin-cash-continues-to-expand.html saved.
     - how-did-you-get-into-bitcoin-crypto-twitter-responds.html saved.
     - apps-gone-crypto-popular-apps-are-adding-crypto-capabilities.html saved.
-    
+
     https://news.bitcoin.com/page/407/
     - verdad-is-the-most-dangerous-crypto-bill-to-face-congress-yet.html saved.
     - north-korea-plans-to-launch-a-cryptocurrency-to-bypass-economic-sanctions.html saved.
@@ -5160,7 +5166,7 @@ for url in urls:
     - bitcoin-cash-futures-expected-to-open-up-us-market-by-q1-2020.html saved.
     - snowden-us-seizing-my-book-revenue-is-good-for-bitcoin.html saved.
     - 10-tax-tools-to-help-crypto-owners.html saved.
-    
+
     https://news.bitcoin.com/page/408/
     - meet-nimbus-a-concept-for-enhancing-bch-smart-contracts.html saved.
     - 18000-traders-and-growing-bitcoin-coms-crypto-exchange-shines-brightly.html saved.
@@ -5171,7 +5177,7 @@ for url in urls:
     - how-crypto-became-a-gamblers-paradise.html saved.
     - european-countries-step-up-response-to-facebooks-libra.html saved.
     - htc-adds-native-bitcoin-cash-support-to-its-flagship-smartphone.html saved.
-    
+
     https://news.bitcoin.com/page/409/
     - at-least-19-central-banks-give-way-to-monetary-easing-as-economy-slows.html saved.
     - a-short-history-of-the-worlds-largest-bitcoin-mining-pools.html saved.
@@ -5182,7 +5188,7 @@ for url in urls:
     - local-bitcoin-com-gathers-56k-accounts-and-200m-worth-of-trades-initiated.html saved.
     - big-banks-wont-touch-crypto-clients-but-these-smaller-banks-will.html saved.
     - review-coinfinitys-card-wallet-provides-tamper-proof-cold-storage.html saved.
-    
+
     https://news.bitcoin.com/page/410/
     - developer-reveals-token-reward-platform-fueled-by-bitcoin-cash.html saved.
     - cryptos-forgotten-altcoins-re-emerge-a-look-at-whats-happening.html saved.
@@ -5193,7 +5199,7 @@ for url in urls:
     - market-outlook-uncertainty-builds-with-thin-trade-volumes-and-bitcoin-futures-launch.html saved.
     - connecting-cash-to-the-internet-using-stablecoins.html saved.
     - privacy-network-elixxir-invites-smartphone-users-to-test-private-messaging.html saved.
-    
+
     https://news.bitcoin.com/page/411/
     - bitmain-launches-next-gen-miner-as-bitcoin-hashrate-touches-100-exahash.html saved.
     - plans-to-build-a-50m-bitcoin-cash-tech-park-in-north-queensland-revealed.html saved.
@@ -5204,7 +5210,7 @@ for url in urls:
     - despite-setbacks-darknet-markets-show-continuous-growth-in-2019.html saved.
     - crypto-banking-expands-with-positive-interest-rates-and-new-services.html saved.
     - stablecoins-and-exchange-coins-whats-the-difference-from-the-ol-corporate-bond.html saved.
-    
+
     https://news.bitcoin.com/page/412/
     - 10-useful-browser-plugins-to-help-crypto-users.html saved.
     - avoid-biased-calculations-says-crypto-researcher-after-cherry-picked-chart-debate.html saved.
@@ -5215,7 +5221,7 @@ for url in urls:
     - bitcoin-cash-powered-file-storage-concept-sparks-interest-and-debate.html saved.
     - keene-new-hampshire-is-not-only-a-libertarian-enclave-its-also-a-crypto-mecca.html saved.
     - bitcoin-etf-how-sec-exemptions-help-firms-offer-interim-products.html saved.
-    
+
     https://news.bitcoin.com/page/413/
     - venezuelans-fighting-economic-hardship-discover-cryptos-true-potential.html saved.
     - capital-controls-in-argentina-demonstrate-dangers-of-government-controlled-money.html saved.
@@ -5226,7 +5232,7 @@ for url in urls:
     - cryptocurrency-projects-are-upping-their-privacy-game.html saved.
     - fantasy-sports-giant-fanduel-now-accepts-bitcoin-cash.html saved.
     - indian-governments-new-report-views-crypto-positively.html saved.
-    
+
     https://news.bitcoin.com/page/414/
     - dutch-central-bank-start-regulating-crypto-sector.html saved.
     - worlds-biggest-bitcoin-cash-conference-kicks-off-in-australia-what-to-expect.html saved.
@@ -5237,7 +5243,7 @@ for url in urls:
     - craig-wright-to-challenge-judges-ruling-in-the-billion-dollar-lawsuit.html saved.
     - crypto-needs-less-government-regulation-not-more.html saved.
     - were-going-to-find-you-how-undercover-agents-trade-prison-time-for-bitcoins.html saved.
-    
+
     https://news.bitcoin.com/page/415/
     - bitcoin-coms-premier-cryptocurrency-exchange-is-now-live.html saved.
     - why-the-birth-of-bitcoin-can-be-traced-back-to-1971.html saved.
@@ -5248,7 +5254,7 @@ for url in urls:
     - agorism-and-bitcoin-free-people-dont-ask-maxine-waters-for-permission.html saved.
     - crypto-lending-platforms-prepare-to-assail-the-banking-system.html saved.
     - cryptocurrencies-such-as-bitcoin-cash-shine-during-hong-kong-protests.html saved.
-    
+
     https://news.bitcoin.com/page/416/
     - how-market-makers-inject-liquidity-into-the-cryptoconomy.html saved.
     - crypto-can-boost-indian-economy-banning-will-hurt-it.html saved.
@@ -5259,7 +5265,7 @@ for url in urls:
     - mega-drug-pushers-johnson-johnson-get-away-while-peaceful-silk-road-is-destroyed.html saved.
     - switzerland-approves-bitcoin-banks-but-with-strict-conditions-attached.html saved.
     - court-instructs-craig-wright-to-distribute-billions-to-plaintiffs.html saved.
-    
+
     https://news.bitcoin.com/page/417/
     - the-changing-face-of-cryptocurrency-trading-in-2019.html saved.
     - not-an-audit-irs-notice-could-spell-trouble-for-crypto-traders.html saved.
@@ -5270,7 +5276,7 @@ for url in urls:
     - bitcoin-history-part-16-the-first-mt-gox-hack.html saved.
     - send-token-payouts-with-ease-using-bitcoin-coms-slp-dividend-calculator.html saved.
     - initiative-to-curtail-negative-interest-rates-gains-traction-in-germany.html saved.
-    
+
     https://news.bitcoin.com/page/418/
     - the-white-house-just-blamed-bitcoin-for-americas-opiate-crisis.html saved.
     - doing-what-you-want-with-your-money-is-a-fundamental-right.html saved.
@@ -5281,7 +5287,7 @@ for url in urls:
     - smokescreens-and-mirrors-how-does-a-country-do-an-ico-they-call-it-qe.html saved.
     - major-swedish-bank-orders-negative-interest-rate-on-euro-deposits.html saved.
     - bitcoin-maximalists-embrace-ethereum-after-receiving-an-offer-they-cant-refuse.html saved.
-    
+
     https://news.bitcoin.com/page/419/
     - market-update-prices-drop-as-crypto-sentiment-enters-the-fear-zone.html saved.
     - the-world-banks-blockchain-bond-is-just-a-fancy-way-of-selling-debt.html saved.
@@ -5292,7 +5298,7 @@ for url in urls:
     - how-to-bequeath-your-digital-assets-to-your-descendants.html saved.
     - as-us-expands-subprime-mortgage-program-is-a-new-crisis-looming.html saved.
     - win-big-with-bitcoin-coms-cash-games-stars-leaderboard.html saved.
-    
+
     https://news.bitcoin.com/page/420/
     - another-self-proclaimed-satoshi-fails-to-sway-crypto-community.html saved.
     - fiat-lite-vs-freedom-maximalist-the-two-types-of-bitcoiner.html saved.
@@ -5303,7 +5309,7 @@ for url in urls:
     - bitcoiners-brace-for-more-performance-art-and-another-satoshi-reveal.html saved.
     - passing-the-burden-of-negative-rates-to-bank-clients-opens-door-for-cryptocurrencies.html saved.
     - how-coinbase-quietly-became-the-worlds-biggest-bitcoin-bank.html saved.
-    
+
     https://news.bitcoin.com/page/421/
     - hong-kong-protest-leader-hopes-to-incite-run-on-chinese-banks.html saved.
     - these-portfolio-trackingtools-will-also-prepare-your-crypto-taxes.html saved.
@@ -5314,7 +5320,7 @@ for url in urls:
     - argentinas-peso-collapse-shows-governments-shouldnt-control-money.html saved.
     - social-network-memo-cash-adds-a-decentralized-slp-token-exchange.html saved.
     - anti-corruption-group-proves-cryptos-true-power-you-cant-confiscate-math.html saved.
-    
+
     https://news.bitcoin.com/page/422/
     - rbis-power-over-crypto-challenged-indian-supreme-court.html saved.
     - elon-musk-supports-yang-but-does-andrew-yang-really-support-bitcoin.html saved.
@@ -5325,7 +5331,7 @@ for url in urls:
     - how-bridging-blockchains-unlocks-value-and-unites-crypto-tribes.html saved.
     - normalizing-negative-interest-its-flabbergasting-how-closely-media-parrots-the-government.html saved.
     - crypto-regulations-changing-worldwide-comply-fatf-standards.html saved.
-    
+
     https://news.bitcoin.com/page/423/
     - bitcoin-mining-industrys-exponential-growth-just-wont-stop.html saved.
     - bch-news-roundup-transactions-spike-cashaddr-support-and-developer-congress.html saved.
@@ -5336,7 +5342,7 @@ for url in urls:
     - us-exchanges-race-launch-regulated-physically-delivered-bitcoin-futures.html saved.
     - big-banks-big-troubles-hsbc-deutsche-societe-and-citi-lay-off-thousands-worldwide.html saved.
     - developers-reveal-sandbox-video-game-powered-by-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/424/
     - indian-supreme-court-heard-crypto-case-in-depth.html saved.
     - owning-fiat-just-got-more-expensive-nirp-strikes-again.html saved.
@@ -5347,7 +5353,7 @@ for url in urls:
     - how-to-become-a-blockchain-developer.html saved.
     - how-to-shuffle-bch-and-keep-your-transactions-private-with-cashshuffle.html saved.
     - from-booze-to-bitcoin-mining-why-violent-prohibition-is-always-harmful.html saved.
-    
+
     https://news.bitcoin.com/page/425/
     - more-cities-and-regions-accept-coins-for-taxes-and-services.html saved.
     - currency-war-erupts-as-us-and-china-bring-out-the-big-guns.html saved.
@@ -5358,7 +5364,7 @@ for url in urls:
     - tax-expert-irs-letters-confirm-that-trading-cryptos-is-a-taxable-event.html saved.
     - goldman-backed-apple-card-restricts-cryptocurrency-purchases.html saved.
     - crypto-social-media-is-breaking-free-how-10-blockchain-platforms-pay-you-to-post.html saved.
-    
+
     https://news.bitcoin.com/page/426/
     - research-reports-show-positive-crypto-industry-growth-in-h1-2019.html saved.
     - p2p-crypto-lending-is-on-the-rise.html saved.
@@ -5369,7 +5375,7 @@ for url in urls:
     - us-regulator-plans-to-outsource-running-cryptocurrency-nodes.html saved.
     - uk-judge-strikes-out-craig-wrights-libel-lawsuit-against-roger-ver.html saved.
     - indian-government-updates-parliament-crypto.html saved.
-    
+
     https://news.bitcoin.com/page/427/
     - liquidity-difficulties-in-china-second-bank-bail-out-now-reality.html saved.
     - pre-register-for-bitcoin-coms-new-crypto-exchange-to-win-bitcoin-cash-prizes.html saved.
@@ -5380,7 +5386,7 @@ for url in urls:
     - testing-haven-ob1s-new-social-media-and-crypto-marketplace-app.html saved.
     - when-cash-is-banned-centralized-cryptos-are-not-going-to-save-you.html saved.
     - reddit-roasts-the-irs-have-americas-tax-collectors-gone-crypto-fishing.html saved.
-    
+
     https://news.bitcoin.com/page/428/
     - blockchain-com-launches-high-speed-crypto-exchange-for-retail-traders.html saved.
     - exploring-the-slp-token-universe-built-on-the-bitcoin-cash-chain.html saved.
@@ -5391,7 +5397,7 @@ for url in urls:
     - unbanked-for-buying-bitcoin-how-the-financial-system-criminalizes-crypto.html saved.
     - five-of-the-most-important-use-cases-for-cryptocurrency.html saved.
     - btc-top-ceo-highlights-the-benefits-and-golden-mean-of-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/429/
     - 10000-american-cryptocurrency-owners-will-receive-warning-letters-from-the-irs.html saved.
     - slp-developers-publish-specs-for-a-unique-type-of-non-fungible-tokens.html saved.
@@ -5402,7 +5408,7 @@ for url in urls:
     - consensys-inner-conflicts-spark-legal-action-against-founder.html saved.
     - is-bitcoin-money-revisiting-mises-regression-theorem.html saved.
     - le-roux-biographer-cartel-boss-is-the-most-credible-satoshi-yet.html saved.
-    
+
     https://news.bitcoin.com/page/430/
     - another-self-proclaimed-satoshi-appears-in-the-high-profile-bitcoin-lawsuit.html saved.
     - us-eu-and-japan-could-trigger-cold-currency-war-by-debasing-fiat.html saved.
@@ -5413,7 +5419,7 @@ for url in urls:
     - sorry-i-dont-want-to-pay-for-more-bombs-bitcoin-as-a-hedge-against-funding-war.html saved.
     - privacy-is-a-human-right-worth-fighting-for.html saved.
     - honestnode-founder-discusses-the-first-stablecoin-built-on-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/431/
     - the-myth-of-authority-mnuchin-denies-usd-is-used-criminally.html saved.
     - how-big-hydro-power-partners-with-bitcoin-miners-to-prevent-energy-waste.html saved.
@@ -5424,7 +5430,7 @@ for url in urls:
     - why-you-cant-bet-with-bitcoin-at-online-casinos-in-the-us.html saved.
     - g7-agrees-cryptocurrency-action-plan-facebooks-libra.html saved.
     - bitcoin-cash-milestones-delivered-code-upgrades-and-platform-development.html saved.
-    
+
     https://news.bitcoin.com/page/432/
     - 7-unorthodox-ways-to-mine-bitcoin.html saved.
     - hayeks-1984-rediscovered-footage-shows-austrian-economist-predicting-bitcoin.html saved.
@@ -5435,7 +5441,7 @@ for url in urls:
     - money-laundering-fines-worth-billions-help-bankers-avoid-prosecution-and-unpleasant-labels.html saved.
     - bitcoin-and-voluntaryism-where-libertarian-philosophy-meets-crypto.html saved.
     - ignore-crypto-twitter-life-as-a-nocoiner-isnt-that-bad.html saved.
-    
+
     https://news.bitcoin.com/page/433/
     - lightning-networks-antifraud-methods-inferior-to-nakamoto-consensus-research-shows.html saved.
     - sec-token-offerings.html saved.
@@ -5446,7 +5452,7 @@ for url in urls:
     - complete-indian-cryptocurrency-draft-bill-leaked-experts.html saved.
     - bitcoin-cash-multi-party-escrow-retail-adoption-and-upgrade-discussions.html saved.
     - diamonds-and-the-treasury-debt-ceiling-why-nothing-has-intrinsic-value-in-economics.html saved.
-    
+
     https://news.bitcoin.com/page/434/
     - bitcoin-cash-merchant-adoption-grows-and-exchange-supports-bch-in-the-weekly-video-update.html saved.
     - keep-big-tech-out-of-finance-draft-bill-targets-facebooks-libra.html saved.
@@ -5457,7 +5463,7 @@ for url in urls:
     - georgia-exempts-bitcoin-from-vat-to-become-the-next-country-to-affirm-its-currency-status.html saved.
     - miners-flock-to-iran-where-bitcoin-mining-is-set-to-be-sanctioned.html saved.
     - zimdollar-reboot-bitcoin-fills-liquidity-gaps-as-new-zimbabwe-currency-flounders.html saved.
-    
+
     https://news.bitcoin.com/page/435/
     - win-2019-rugby-world-cup-tickets-when-you-play-at-games-bitcoin-com.html saved.
     - what-are-dollars-used-for-president-trump-the-gun-money-known-as-usd.html saved.
@@ -5468,7 +5474,7 @@ for url in urls:
     - jp-morgan-chase-ship-busted-cocaine-banks-and-the-failed-drug-war.html saved.
     - how-countries-respond-facebooks-libra-cryptocurrency.html saved.
     - market-outlook-gold-and-crypto-reap-the-benefits-of-economic-fear.html saved.
-    
+
     https://news.bitcoin.com/page/436/
     - a-history-of-violent-intervention-john-mcafee-to-help-cuba-resist-us-sanctions-with-crypto.html saved.
     - liquid-exchange-launches-bch-usdc-trading-pairs.html saved.
@@ -5479,7 +5485,7 @@ for url in urls:
     - swap-and-track-bch-on-the-new-shapeshift-suite-for-noncustodial-crypto-management.html saved.
     - who-are-the-real-thieves-danish-authorities-seize-3-ferraris-in-tax-evasion-crackdown.html saved.
     - experts-dissect-craig-wrights-satoshi-testimony-and-court-documents.html saved.
-    
+
     https://news.bitcoin.com/page/437/
     - india-educate-high-ranking-police-officers-cryptocurrency.html saved.
     - how-to-encrypt-messages-with-pgp-when-using-darknet-markets.html saved.
@@ -5490,7 +5496,7 @@ for url in urls:
     - competing-stablecoins-cant-topple-tether.html saved.
     - three-bank-failures-open-new-chapter-in-never-ending-financial-crisis.html saved.
     - bitcoin-cash-etp-lists-on-leading-swiss-stock-exchange.html saved.
-    
+
     https://news.bitcoin.com/page/438/
     - the-swiss-are-onto-something-facebook-libra-and-the-case-for-decentralization.html saved.
     - modi-discussed-crypto-standards-g20-summit-india.html saved.
@@ -5501,7 +5507,7 @@ for url in urls:
     - side-effects-of-economic-growth-is-snowden-right-to-say-bitcoiners-shouldnt-be-bankers.html saved.
     - confronting-bitcoin-network-issues-using-nakamoto-consensus-and-a-mining-parliament.html saved.
     - g20-leaders-declaration-crypto-assets-commitments.html saved.
-    
+
     https://news.bitcoin.com/page/439/
     - flowery-v20-talk-and-government-terror-why-darknet-crime-is-the-least-of-our-worries.html saved.
     - bitcoin-cash-register-surpasses-10000-installs-and-bch-is-coming-to-brave-in-weekly-video-update.html saved.
@@ -5512,7 +5518,7 @@ for url in urls:
     - how-to-pay-employees-or-get-paid-with-bitcoin.html saved.
     - why-bitcoiners-are-turning-to-unschooling-for-decentralized-education.html saved.
     - satoshi-comparisons-surface-after-grin-founder-exits-in-similar-circumstances.html saved.
-    
+
     https://news.bitcoin.com/page/440/
     - bitcoins-big-price-drop-is-the-latest-in-a-long-history-of-flash-crashes.html saved.
     - keep-your-money-and-passport-safe-with-products-you-can-buy-with-bch.html saved.
@@ -5523,7 +5529,7 @@ for url in urls:
     - over-22000-traders-have-now-signed-up-to-local-bitcoin-com.html saved.
     - iranians-defy-warning-and-share-pictures-of-bitcoin-mining-in-mosque.html saved.
     - the-politicization-of-money-crypto-as-a-safeguard-against-economic-propaganda.html saved.
-    
+
     https://news.bitcoin.com/page/441/
     - namecheap-lets-you-buy-a-domain-and-host-your-website-with-bitcoin-cash.html saved.
     - g20-policymakers-discuss-regulations-crypto-industry.html saved.
@@ -5534,7 +5540,7 @@ for url in urls:
     - how-to-cold-store-your-cryptocurrency-for-safekeeping.html saved.
     - ledgerx-approved-offer-bitcoin-derivatives-investors.html saved.
     - iranian-energy-grid-blames-7-consumption-increase-on-bitcoin-miners.html saved.
-    
+
     https://news.bitcoin.com/page/442/
     - the-guns-n-bitcoin-scorpion-case-holds-your-shooter-and-your-satoshis.html saved.
     - check-out-bitcoin-coms-rebrand-giveaway-and-win-a-keepkey-hardware-wallet.html saved.
@@ -5545,7 +5551,7 @@ for url in urls:
     - 48-cryptocurrency-exchanges-philippines.html saved.
     - bitcoin-cash-shows-phenomenal-growth-over-the-last-two-quarters-of-2019.html saved.
     - how-to-find-a-bitcoin-cash-meetup-near-you.html saved.
-    
+
     https://news.bitcoin.com/page/443/
     - bch-development-fund-doubles-its-goal-after-a-successful-month.html saved.
     - in-this-weeks-video-update-bch-dev-fund-exceeds-target-bitcoin-com-reveals-rebrand.html saved.
@@ -5556,7 +5562,7 @@ for url in urls:
     - north-queenslands-bitcoin-cash-city-is-hosting-a-bch-focused-conference.html saved.
     - mydigitaldiscount-com-will-sell-you-home-automation-gadgets-for-bitcoin.html saved.
     - fatf-global-standards-crypto-assets.html saved.
-    
+
     https://news.bitcoin.com/page/444/
     - more-than-a-year-later-btc-price-skyrockets-to-10k.html saved.
     - kleiman-attorney-craig-wright-hasnt-complied-with-the-order-to-list-his-bitcoin.html saved.
@@ -5567,7 +5573,7 @@ for url in urls:
     - these-are-2019s-biggest-cryptocurrency-winners-and-losers-so-far.html saved.
     - facebook-is-a-threat-to-governments-not-crypto.html saved.
     - decorate-your-car-dashboard-with-trim-kits-you-can-buy-with-bch.html saved.
-    
+
     https://news.bitcoin.com/page/445/
     - these-websites-help-you-shop-with-major-retailers-using-cryptocurrency.html saved.
     - consumer-affairs-report-shows-70-spike-in-japanese-crypto-inquiries.html saved.
@@ -5578,7 +5584,7 @@ for url in urls:
     - bitmain-launches-low-cost-special-edition-antminer-s9.html saved.
     - latin-america-and-turkey-have-the-most-cryptocurrency-users-poll-shows.html saved.
     - free-law-projects-courtlistener-repository-now-accepts-bitcoin-cash-donations.html saved.
-    
+
     https://news.bitcoin.com/page/446/
     - how-to-invest-in-cryptocurrency-without-worrying-about-volatility.html saved.
     - policymakers-crypto-guidance-standards-g20-supports.html saved.
@@ -5589,7 +5595,7 @@ for url in urls:
     - whats-the-deal-with-the-lightning-network.html saved.
     - bitcoin-trades-for-a-premium-in-hong-kong-during-protests.html saved.
     - crypto-cards-expand-and-a-futuristic-promotion-in-the-weekly-update-from-bitcoin-com.html saved.
-    
+
     https://news.bitcoin.com/page/447/
     - vpn-providers-defy-order-to-connect-to-russias-internet-censor.html saved.
     - what-makes-slovenia-a-cryptocurrency-adoption-leader-bitcoin-com-mini-documentary.html saved.
@@ -5600,7 +5606,7 @@ for url in urls:
     - piixpay-lets-you-pay-bills-and-invoices-with-cryptocurrency.html saved.
     - how-to-stay-safe-when-using-darknet-markets.html saved.
     - new-slp-token-allows-you-to-transact-in-btc-but-with-bch-fees.html saved.
-    
+
     https://news.bitcoin.com/page/448/
     - meet-the-developer-who-added-schnorr-signatures-to-bcash.html saved.
     - bounty-cash-pairs-projects-with-developers-finding-solutions-for-bch.html saved.
@@ -5611,7 +5617,7 @@ for url in urls:
     - how-to-exchange-your-amazon-gift-cards-for-bitcoin-cash.html saved.
     - indian-government-crypto-course.html saved.
     - john-mcafees-new-trading-platform-aims-to-give-traders-a-magical-experience.html saved.
-    
+
     https://news.bitcoin.com/page/449/
     - the-blind-trust-described-in-the-kleiman-vs-wright-lawsuit-is-a-real-head-scratcher.html saved.
     - initial-exchange-offerings-are-showing-no-sign-of-slowing-down.html saved.
@@ -5622,7 +5628,7 @@ for url in urls:
     - cmes-bitcoin-futures-hit-new-records.html saved.
     - bitcoin-people-directory-lists-crypto-friendly-merchants.html saved.
     - leaked-details-indias-cryptocurrency-bill.html saved.
-    
+
     https://news.bitcoin.com/page/450/
     - local-bitcoin-com-shows-lots-of-active-bch-listings-from-traders-worldwide.html saved.
     - yahoo-japan-backed-exchange-launches-crypto-yen-markets-and-margin-trading.html saved.
@@ -5633,7 +5639,7 @@ for url in urls:
     - create-a-custom-bch-address-with-vanity-cash.html saved.
     - g20-crypto-global-standards.html saved.
     - observers-mock-fork-called-bitcoin2-that-pumps-and-dumps-on-two-exchanges.html saved.
-    
+
     https://news.bitcoin.com/page/451/
     - how-to-use-bitcoin-to-invest-in-gold.html saved.
     - find-a-job-paid-with-bch-using-workingforbitcoins-com.html saved.
@@ -5644,7 +5650,7 @@ for url in urls:
     - blockstream-developers-alleged-to-earn-850k-per-year.html saved.
     - in-a-world-where-central-planners-push-debt-cryptocurrencies-look-better-every-day.html saved.
     - why-bitpay-is-really-charging-more-for-btc-transactions.html saved.
-    
+
     https://news.bitcoin.com/page/452/
     - greenpages-cash-will-help-you-find-merchants-accepting-bitcoin-cash.html saved.
     - indias-central-bank-denies-knowledge-bill-ban-cryptocurrencies.html saved.
@@ -5655,7 +5661,7 @@ for url in urls:
     - new-browser-extension-enhances-bch-addresses-for-easy-tipping.html saved.
     - malaysia-approving-crypto-exchange-registrations.html saved.
     - anypay-and-cointext-launch-a-bch-powered-remittance-solution-for-merchants.html saved.
-    
+
     https://news.bitcoin.com/page/453/
     - bch-businesses-launch-development-fund-for-bitcoin-cash.html saved.
     - markets-update-cryptocurrency-prices-see-a-slight-correction.html saved.
@@ -5666,7 +5672,7 @@ for url in urls:
     - bitcoin-cash-and-slp-fueled-badger-wallet-launches-for-ios.html saved.
     - get-detailed-statistics-about-your-favorite-crypto-from-bitinfocharts.html saved.
     - creating-your-own-slp-based-token-using-memo.html saved.
-    
+
     https://news.bitcoin.com/page/454/
     - community-funding-and-bringing-smart-contracts-to-bch-in-the-weekly-update-from-bitcoin-com.html saved.
     - venezuelan-mining-parts-supplier-coincoin-now-accepts-bitcoin-cash.html saved.
@@ -5677,7 +5683,7 @@ for url in urls:
     - mixing-service-bitcoin-blender-quits-after-bestmixer-takedown.html saved.
     - plea-bargain-means-silk-road-2-admin-will-likely-see-no-prison-time.html saved.
     - samsung-galaxy-s10-whats-up-with-the-crypto-wallet.html saved.
-    
+
     https://news.bitcoin.com/page/455/
     - choose-where-to-buy-cryptocurrencies-using-exchangify.html saved.
     - biggest-heists-in-bitcoin-history-how-they-were-pulled-off.html saved.
@@ -5688,7 +5694,7 @@ for url in urls:
     - another-aspiring-satoshi-copyrights-the-bitcoin-whitepaper.html saved.
     - bch-vs-btc-which-offers-greater-privacy.html saved.
     - how-to-check-bitcoin-cash-transactions-with-a-block-explorer.html saved.
-    
+
     https://news.bitcoin.com/page/456/
     - new-cryptocurrency-bill-advances-japan.html saved.
     - study-publicly-listed-chinese-firms-quietly-participate-in-bitcoin-mining.html saved.
@@ -5699,7 +5705,7 @@ for url in urls:
     - crypto-assets-outshine-most-traditional-investments-in-2019.html saved.
     - dithering-u-s-regulators-risk-causing-a-brain-drain-to-friendlier-crypto-climes.html saved.
     - countries-suffering-from-rapid-inflation-show-significant-demand-for-cryptos.html saved.
-    
+
     https://news.bitcoin.com/page/457/
     - how-to-easily-convert-funds-from-btc-to-bch.html saved.
     - bitcoin-coms-local-bitcoin-cash-marketplace-gathers-thousands-of-pre-launch-signups.html saved.
@@ -5710,7 +5716,7 @@ for url in urls:
     - bitcoin-cash-privacy-has-improved-in-leaps-and-bounds.html saved.
     - massive-growth-by-p2p-exchange-and-att-accepting-bch-in-the-weekly-update-from-bitcoin-com.html saved.
     - buysellhodl-aggregates-price-predictions-from-traders-like-you.html saved.
-    
+
     https://news.bitcoin.com/page/458/
     - bogotas-exma-2019-will-feature-bitcoin-cash-payments-at-home-burgers.html saved.
     - these-tourist-destinations-welcome-bitcoin-cash-enthusiasts.html saved.
@@ -5721,7 +5727,7 @@ for url in urls:
     - hackers-have-looted-more-bitcoin-than-satoshis-entire-stash.html saved.
     - 3commas-helps-you-balance-your-crypto-portfolio.html saved.
     - supreme-court-advocate-regulate-cryptocurrency-india.html saved.
-    
+
     https://news.bitcoin.com/page/459/
     - telcom-giant-att-now-accepts-bitcoin-payments.html saved.
     - the-cryptocurrency-market-has-become-a-casino.html saved.
@@ -5732,7 +5738,7 @@ for url in urls:
     - how-to-buy-pizza-with-bitcoin-cash.html saved.
     - israeli-court-bitcoin-asset.html saved.
     - elipay-celebrates-the-first-of-100s-of-crypto-accepting-merchants-in-croatia.html saved.
-    
+
     https://news.bitcoin.com/page/460/
     - irs-plans-to-issue-guidance-on-virtual-currency-taxation.html saved.
     - you-can-pay-with-bch-for-your-domain-from-abaco-hosting.html saved.
@@ -5743,7 +5749,7 @@ for url in urls:
     - hack-concern-whatsapp-never-secure.html saved.
     - bitcoin-cash-devs-publish-the-first-3-of-3-multi-sig-schnorr-transaction.html saved.
     - how-to-travel-the-world-with-bitcoin-cash.html saved.
-    
+
     https://news.bitcoin.com/page/461/
     - bitcoin-cash-upgrade-and-30k-stores-accepting-bch-in-the-weekly-update-from-bitcoin-com.html saved.
     - markets-update-bitcoin-cash-jumps-ahead-as-crypto-prices-see-fresh-gains.html saved.
@@ -5754,7 +5760,7 @@ for url in urls:
     - bitcoin-payments-are-being-bulldozed-for-political-reasons.html saved.
     - how-to-prove-ownership-with-a-bitcoin-cash-address-and-digital-signature.html saved.
     - vaulty-aggregates-all-your-cryptocurrency-addresses-using-a-single-link.html saved.
-    
+
     https://news.bitcoin.com/page/462/
     - markets-update-bears-claw-crypto-prices-back-while-uncertainty-fills-the-air.html saved.
     - 20-year-old-cryptographic-puzzle-is-solved-and-stamped-in-the-bitcoin-cash-blockchain.html saved.
@@ -5765,7 +5771,7 @@ for url in urls:
     - local-bitcoin-com-aims-to-spread-economic-freedom-through-p2p-exchange-of-bch.html saved.
     - coincheckup-aggregator-makes-it-easier-to-analyze-the-crypto-market.html saved.
     - crypto-spring-brings-strong-profits-to-next-generation-and-older-mining-rigs.html saved.
-    
+
     https://news.bitcoin.com/page/463/
     - from-exxon-to-crypto-the-story-of-joey-king-on-the-humans-of-bitcoin-podcast.html saved.
     - bitcoin-cash-protocol-successfully-upgrades-schnorr-signatures-are-here.html saved.
@@ -5776,7 +5782,7 @@ for url in urls:
     - our-value-of-money-is-subjective-but-that-doesnt-make-it-meaningless.html saved.
     - how-to-send-bitcoin-cash-via-text-messages-to-anyone-with-a-mobile-phone.html saved.
     - markets-update-crypto-prices-continue-to-gather-bullish-momentum.html saved.
-    
+
     https://news.bitcoin.com/page/464/
     - whole-foods-and-major-retailers-now-accept-cryptocurrency-via-the-spedn-app.html saved.
     - satoshi-nakamoto-could-be-criminal-mastermind-paul-le-roux.html saved.
@@ -5787,7 +5793,7 @@ for url in urls:
     - track-rising-crypto-prices-with-cryptowat-ch.html saved.
     - bitcoin-history-part-12-when-no-one-wanted-your-btc.html saved.
     - indian-crypto-traders-ban-rumor.html saved.
-    
+
     https://news.bitcoin.com/page/465/
     - markets-update-crypto-bulls-outpace-stocks-and-gold.html saved.
     - three-very-different-paths-to-blockchain-scaling.html saved.
@@ -5798,7 +5804,7 @@ for url in urls:
     - deepdotweb-duo-indicted-for-linking-to-darknet-markets.html saved.
     - renewed-market-growth-has-sparked-demand-for-crypto-backed-loans.html saved.
     - crypto-adoption-strong-venezuela-political.html saved.
-    
+
     https://news.bitcoin.com/page/466/
     - bitcoins-software-has-been-rolled-back-before.html saved.
     - despite-100k-pledged-to-charity-adam-back-remains-silent-over-proposed-debate.html saved.
@@ -5809,7 +5815,7 @@ for url in urls:
     - major-players-discuss-btc-roll-back-following-exchange-hack.html saved.
     - keys4coins-lets-you-buy-digital-video-game-licenses-with-bitcoin-cash.html saved.
     - feds-seize-news-site-deepdotweb-as-darknet-crackdown-intensifies.html saved.
-    
+
     https://news.bitcoin.com/page/467/
     - schnorr-signatures-await-bitcoin-cash-as-the-next-fork-draws-near.html saved.
     - coin-360-provides-color-based-crypto-market-data.html saved.
@@ -5820,7 +5826,7 @@ for url in urls:
     - bitcoin-com-wallet-celebrates-4-million-wallets-created.html saved.
     - quebec-allocates-300-mw-energy-quota-for-crypto-mining.html saved.
     - pay-for-flights-on-your-next-business-trip-with-bitcoin-cash-via-corporate-traveller.html saved.
-    
+
     https://news.bitcoin.com/page/468/
     - craig-wright-ordered-to-produce-a-list-of-early-bitcoin-addresses-in-kleiman-lawsuit.html saved.
     - celsius-wallet-app-offers-interest-and-loans-for-your-cryptocurrency.html saved.
@@ -5831,7 +5837,7 @@ for url in urls:
     - institutional-investors-crypto-investments.html saved.
     - how-to-find-a-crypto-themed-template-for-your-website.html saved.
     - 500k-of-bch-shuffled-in-record-breaking-cashshuffle-transaction.html saved.
-    
+
     https://news.bitcoin.com/page/469/
     - former-mod-explains-r-bitcoin-censorship-and-why-he-was-removed.html saved.
     - how-to-accept-bitcoin-cash-payments-with-coingate.html saved.
@@ -5842,7 +5848,7 @@ for url in urls:
     - cryptocurrency-initiatives-indian-government.html saved.
     - memo-is-a-decentralized-social-network-built-on-bitcoin-cash.html saved.
     - bitpay-and-refundo-now-provide-tax-return-payouts-in-btc.html saved.
-    
+
     https://news.bitcoin.com/page/470/
     - self-styled-satoshi-accused-of-pgp-forgery-in-kleiman-vs-wright-lawsuit.html saved.
     - this-app-teaches-you-how-to-become-a-bitcoin-cash-trader.html saved.
@@ -5853,7 +5859,7 @@ for url in urls:
     - bitmain-aims-to-jump-ahead-of-competition-launching-another-next-gen-bitcoin-miner.html saved.
     - how-to-monetize-your-blog-or-website-with-bitcoin-games.html saved.
     - countries-imf-global-standards-crypto-regulation.html saved.
-    
+
     https://news.bitcoin.com/page/471/
     - as-projects-flock-to-binance-chain-its-dex-has-a-lot-to-live-up-to.html saved.
     - twitter-shenanigans-and-tether-probe-in-the-weekly-video-update-from-bitcoin-com.html saved.
@@ -5864,7 +5870,7 @@ for url in urls:
     - more-cashshuffle-compatible-wallets-are-coming-to-bitcoin-cash.html saved.
     - russia-prepares-to-test-cryptocurrencies-in-four-of-its-regions.html saved.
     - bch-developer-builds-onchain-token-auction-console-slp-agora.html saved.
-    
+
     https://news.bitcoin.com/page/472/
     - how-to-create-a-bitcoin-cash-wallet-with-cashaddress.html saved.
     - old-twitter-account-gives-away-10k-in-bitcoin-cash-in-48-hours.html saved.
@@ -5875,7 +5881,7 @@ for url in urls:
     - the-darknet-rises-with-6-new-markets.html saved.
     - researchers-find-hundreds-of-ethereum-wallets-at-risk-due-to-weak-key-pairs.html saved.
     - how-to-easily-add-a-bitcoin-cash-price-chart-to-your-website.html saved.
-    
+
     https://news.bitcoin.com/page/473/
     - blockfi-launches-high-interest-crypto-lending-program-india.html saved.
     - learn-how-to-use-bitcoin-coms-new-point-of-sale-solution-bitcoin-cash-merchant.html saved.
@@ -5886,7 +5892,7 @@ for url in urls:
     - lots-of-building-on-bch-as-bitcoin-coms-rest-layer-sees-millions-of-requests.html saved.
     - survey-shows-south-koreans-increased-crypto-holdings-by-64-last-year.html saved.
     - paytomat-enables-merchants-to-accept-18-cryptocurrencies-in-store.html saved.
-    
+
     https://news.bitcoin.com/page/474/
     - crypto-based-transfers-can-cut-remittance-costs-in-africa-by-90.html saved.
     - japan-g20-cryptocurrency-regulation.html saved.
@@ -5897,7 +5903,7 @@ for url in urls:
     - indian-laws-cryptocurrency.html saved.
     - markets-update-bch-bnb-outperform.html saved.
     - will-belarus-be-the-first-country-with-nuclear-powered-bitcoin-mining.html saved.
-    
+
     https://news.bitcoin.com/page/475/
     - the-tie-uses-sentiment-analysis-to-gauge-the-mood-of-the-markets.html saved.
     - attempts-to-deplatform-bitcoin-account-reveal-private-message-with-twitter-ceo.html saved.
@@ -5908,7 +5914,7 @@ for url in urls:
     - these-next-generation-mining-rigs-pack-a-ton-of-hashpower.html saved.
     - bch-merchant-app-allows-businesses-to-accept-crypto-payments-in-store.html saved.
     - russia-adopts-law-to-isolate-runet-from-the-internet.html saved.
-    
+
     https://news.bitcoin.com/page/476/
     - without-a-true-two-way-peg-no-real-sidechain-exists-says-drivechain-creator.html saved.
     - five-simple-ways-to-increase-your-privacy-when-using-cryptocurrency.html saved.
@@ -5919,7 +5925,7 @@ for url in urls:
     - g20-regulate-crypto-assets-policies.html saved.
     - coin-time-machine-estimates-profit-from-crypto-investments-you-could-have-made.html saved.
     - ongoing-effort-to-free-ross-supported-by-100-eminent-organizations-and-individuals.html saved.
-    
+
     https://news.bitcoin.com/page/477/
     - central-bank-digital-currencies-take-center-stage-at-imf-spring-meetings.html saved.
     - strong-evidence-suggests-a-single-entity-mined-more-than-1-million-bitcoin.html saved.
@@ -5930,7 +5936,7 @@ for url in urls:
     - token-analyst-monitors-exchange-inflows-to-help-predict-market-movements.html saved.
     - france-cryptocurrency-regulation.html saved.
     - the-struggle-to-buy-bitcoin-in-crypto-starved-botswana.html saved.
-    
+
     https://news.bitcoin.com/page/478/
     - why-the-future-of-esports-is-tied-to-cryptocurrency.html saved.
     - bsv-falls-13-after-binance-reveals-plans-to-delist-the-coin.html saved.
@@ -5941,7 +5947,7 @@ for url in urls:
     - bitcoin-cash-futures-volumes-a-prelude-to-the-recent-bch-price-appreciation.html saved.
     - bitcoin-cash-milestones-and-liberlands-merit-in-the-weekly-video-update-from-bitcoin-com.html saved.
     - cryptonite-browser-extension-protects-you-from-phishing-sites-and-fake-profiles.html saved.
-    
+
     https://news.bitcoin.com/page/479/
     - aussie-banks-cold-cryptocurrency-businesses.html saved.
     - wikileaks-cache-now-hosted-on-ipfs-thanks-to-this-bitcoin-cash-developer.html saved.
@@ -5952,7 +5958,7 @@ for url in urls:
     - regulators-tackle-businesses-in-europes-crypto-friendly-nations.html saved.
     - silk-road-2-founder-finally-sentenced-5-years-after-his-arrest.html saved.
     - wikileaks-bitcoin-donations-soar-following-assange-arrest.html saved.
-    
+
     https://news.bitcoin.com/page/480/
     - how-to-buy-pain-relief-drugs-off-the-darknet-with-bitcoin.html saved.
     - exchangewar-lets-you-compare-crypto-trading-platforms.html saved.
@@ -5963,7 +5969,7 @@ for url in urls:
     - simple-bitcoin-widget-gives-you-crypto-prices-on-the-go.html saved.
     - new-york-orders-bittrex-cease-operations-approves-bitstamp.html saved.
     - moon-landing-or-misfire-2019s-biggest-initial-exchange-offerings-analyzed.html saved.
-    
+
     https://news.bitcoin.com/page/481/
     - bitcoin-cash-users-have-mixed-millions-of-dollars-since-cashshuffles-launch.html saved.
     - how-traditional-stock-markets-can-help-mainstream-cryptocurrency.html saved.
@@ -5974,7 +5980,7 @@ for url in urls:
     - founder-of-mt-gox-creditors-cooperative-resigns-says-settlement-could-take-years.html saved.
     - xthinner-protocol-tested-on-bch-mainnet-shows-99-block-compression.html saved.
     - markets-cme-futures-record-volume.html saved.
-    
+
     https://news.bitcoin.com/page/482/
     - how-to-buy-gift-cards-for-nike-adidas-and-other-top-brands-with-bitcoin-cash.html saved.
     - indias-crypto-tv-talk-show-to-start-airing.html saved.
@@ -5985,7 +5991,7 @@ for url in urls:
     - how-asian-countries-regulate-cryptocurrency.html saved.
     - bch-led-crypto-rally-new-wallet-and-token-in-the-weekly-update-from-bitcoin-com.html saved.
     - markets-update-crypto-assets-see-fresh-gains.html saved.
-    
+
     https://news.bitcoin.com/page/483/
     - online-bank-mistertango-offers-crypto-companies-multiple-accounts-and-ibans.html saved.
     - lions-den-p2p-traders-localbitcoins.html saved.
@@ -5996,7 +6002,7 @@ for url in urls:
     - installing-a-subdermal-bitcoin-wallet-is-only-for-the-brave.html saved.
     - mt-gox-creditors-have-a-second-chance-to-appeal-claim-decisions.html saved.
     - check-if-your-market-predictions-are-right-with-sparkprofit.html saved.
-    
+
     https://news.bitcoin.com/page/484/
     - aussie-schools-cryptocurrency-programs.html saved.
     - indian-crypto-exchanges-p2p-platforms.html saved.
@@ -6007,7 +6013,7 @@ for url in urls:
     - how-to-create-and-send-cryptocurrency-invoices.html saved.
     - fomo-for-initial-exchange-offerings-is-getting-intense.html saved.
     - data-shows-short-term-crypto-tax-filers-increase-but-lots-of-investors-still-wont-file.html saved.
-    
+
     https://news.bitcoin.com/page/485/
     - how-to-save-over-15-shopping-on-amazon-with-bitcoin-cash.html saved.
     - markets-update-bitcoin-cash-rockets-forward-leading-the-crypto-bull-rally.html saved.
@@ -6018,7 +6024,7 @@ for url in urls:
     - what-it-takes-to-air-a-tv-news-channel-devoted-to-crypto-assets.html saved.
     - how-to-check-current-average-transaction-fees-for-btc-and-bch.html saved.
     - bitcoin-cash-markets-and-network-gather-strong-momentum-in-q1.html saved.
-    
+
     https://news.bitcoin.com/page/486/
     - russian-banks-join-chinese-swift-is-the-dollar-era-under-threat.html saved.
     - bitcoin-and-friends-animated-series-airs-spicy-first-episode.html saved.
@@ -6029,7 +6035,7 @@ for url in urls:
     - new-bch-apps-and-a-special-giveaway-in-this-weeks-video-update-from-bitcoin-com.html saved.
     - this-photo-gallery-app-is-a-bch-light-wallet-in-disguise.html saved.
     - cryptonaut-is-an-easy-to-use-portfolio-management-app.html saved.
-    
+
     https://news.bitcoin.com/page/487/
     - indian-supreme-court-takes-too-long-on-crypto-case-exchange-shuts-down.html saved.
     - the-darknets-largest-marketplace-is-closing-but-a-replacement-is-on-its-way.html saved.
@@ -6040,7 +6046,7 @@ for url in urls:
     - how-indias-election-impact-crypto-regulation.html saved.
     - analysis-shows-lightning-network-suffers-form-trust-issues-exacerbated-by-rising-fees.html saved.
     - what-article-13-means-for-the-cryptocurrency-industry.html saved.
-    
+
     https://news.bitcoin.com/page/488/
     - these-cryptocurrency-data-sites-aim-to-be-more-accurate-than-coinmarketcap.html saved.
     - mempool-spam-and-rising-fees-the-consequences-of-veriblocks-mainnet-launch.html saved.
@@ -6051,7 +6057,7 @@ for url in urls:
     - menu-cash-allows-diners-to-create-table-specific-orders-and-pay-with-bch.html saved.
     - coingapp-allows-you-to-exploit-arbitrage-opportunities-between-exchanges.html saved.
     - japan-approves-new-crypto-exchanges-140-more-interested.html saved.
-    
+
     https://news.bitcoin.com/page/489/
     - cashshuffle-launches-bringing-greater-privacy-to-the-bch-ecosystem.html saved.
     - examine-the-token-universe-built-on-bch-with-the-new-slp-explorer.html saved.
@@ -6062,7 +6068,7 @@ for url in urls:
     - bitcoin-com-is-giving-away-6-tickets-for-the-anon-blockchain-summit-in-austria.html saved.
     - two-bch-devs-leave-bitcoin-unlimited-as-network-upgrade-approaches.html saved.
     - how-crowd-power-and-carrots-are-redefining-blockchain-governance.html saved.
-    
+
     https://news.bitcoin.com/page/490/
     - crypto-town-hall-meetings-indian-cities-voice-regulatory-ideas.html saved.
     - how-to-install-a-crypto-widget-on-your-website.html saved.
@@ -6073,7 +6079,7 @@ for url in urls:
     - bitcoin-account-accuses-twitter-of-shadow-banning-to-restrict-its-reach.html saved.
     - bitcoinmap-cash-helps-you-find-places-to-spend-bch.html saved.
     - win-5k-of-bch-playing-cashgames-from-bitcoin-com.html saved.
-    
+
     https://news.bitcoin.com/page/491/
     - indian-supreme-court-hear-crypto-case-march.html saved.
     - the-feds-low-interest-rates-and-qe-have-created-a-dependent-generation.html saved.
@@ -6084,7 +6090,7 @@ for url in urls:
     - china-favors-tron-eos-new-crypto-ranking-bitcoin.html saved.
     - why-africa-continues-to-lag-behind-in-cryptocurrency-adoption.html saved.
     - 8-useful-browser-extensions-for-cryptocurrency-users.html saved.
-    
+
     https://news.bitcoin.com/page/492/
     - craig-satoshi-wright-claims-to-have-filed-666-blockchain-patents.html saved.
     - a-privacy-focused-bitcoin-cash-p2p-exchange-is-coming-to-bitcoin-com.html saved.
@@ -6095,7 +6101,7 @@ for url in urls:
     - bch-is-now-supported-by-a-large-crypto-atm-network-in-switzerland.html saved.
     - its-2019-and-ibm-is-still-trying-to-find-a-use-case-for-blockchain.html saved.
     - bitcoin-friendly-us-bank-silvergate-now-serves-over-500-crypto-companies.html saved.
-    
+
     https://news.bitcoin.com/page/493/
     - report-87-of-crypto-exchanges-may-be-falsifying-volume.html saved.
     - up-down-btcp-abbc-plummet.html saved.
@@ -6106,7 +6112,7 @@ for url in urls:
     - this-version-of-lode-runner-is-fueled-by-bch-powered-slp-tokens.html saved.
     - nash-is-a-decentralized-exchange-for-cross-chain-trading-with-fiat-integration.html saved.
     - switzerlands-largest-online-retailer-starts-accepting-cryptocurrencies.html saved.
-    
+
     https://news.bitcoin.com/page/494/
     - bitmain-releases-equihash-miner-3x-more-powerful-than-its-predecessor.html saved.
     - in-the-daily-cryptopia-resumes-trading-us-crypto-lobbying-intensifies-visa-crypto-job.html saved.
@@ -6117,7 +6123,7 @@ for url in urls:
     - governments-exploit-christchurch-tragedy-to-enforce-censorship-and-thought-policing.html saved.
     - xrp-sentiment-manipulated-by-thousands-of-bots-analyst-claims.html saved.
     - while-tether-withdraws-claim-of-usd-backing-rival-stablecoins-provide-monthly-attestations.html saved.
-    
+
     https://news.bitcoin.com/page/495/
     - in-the-daily-uae-needs-to-keep-up-with-crypto-australia-to-support-local-industry.html saved.
     - tel-aviv-court-rules-bank-cant-close-crypto-miners-account.html saved.
@@ -6128,7 +6134,7 @@ for url in urls:
     - these-cryptocurrency-exchanges-offer-futures-markets-on-unreleased-tokens.html saved.
     - new-tasking-platform-lazyfox-io-rewards-users-with-bitcoin-cash.html saved.
     - markets-update-crypto-prices-show-improvement-and-bch-rallies.html saved.
-    
+
     https://news.bitcoin.com/page/496/
     - in-the-daily-4k-bitcoin-grin-fund-grows-cryptopia-wallets-return.html saved.
     - crypto-enthusiasts-unite-to-voice-regulatory-suggestions.html saved.
@@ -6139,7 +6145,7 @@ for url in urls:
     - cboe-discontinues-bitcoin-futures-for-now.html saved.
     - in-the-daily-cosmos-expands-crypto-crime-network-bittrex-cancels-raid-sale.html saved.
     - canadian-capital-market-regulators-mull-new-cryptocurrency-rules.html saved.
-    
+
     https://news.bitcoin.com/page/497/
     - mtgox-ceo-mark-karpeles-not-guilty-embezzlement.html saved.
     - artificial-intelligence-and-cryptocurrency-separating-hype-from-reality.html saved.
@@ -6150,7 +6156,7 @@ for url in urls:
     - bitcoin-exchange-gatecoin-shuts-down-citing-financial-difficulty.html saved.
     - moshe-hogeg-30-days-lawsuit.html saved.
     - quoine-found-liable-for-wrongfully-reversing-btc-trades-in-singaporean-first.html saved.
-    
+
     https://news.bitcoin.com/page/498/
     - us-sanctions-moscows-evrofinance-bank-over-involvement-with-petro.html saved.
     - crypto-services-mining-trading-custody-leverage-nasdaq.html saved.
@@ -6161,7 +6167,7 @@ for url in urls:
     - crypto-users-are-still-scared-to-pay-with-bitcoin-in-2019-fio-protocol-aims-to-fix-that.html saved.
     - basel-committee-sets-out-guidelines-for-banks-intending-to-enter-crypto-market.html saved.
     - survey-70-of-cryptocurrency-owners-rarely-use-crypto-for-payments.html saved.
-    
+
     https://news.bitcoin.com/page/499/
     - the-long-relationship-between-in-game-gold-and-bitcoin-continues-to-thrive.html saved.
     - in-the-daily-token-launchpads-proliferate-crypto-movie-faireum-gaming.html saved.
@@ -6172,7 +6178,7 @@ for url in urls:
     - mining-firm-canaan-creative-secures-hundreds-of-millions-of-dollars-in-funding.html saved.
     - developer-launches-mturk-alternative-taskopus-powered-by-bitcoin-cash.html saved.
     - invesco-blockchain-etf-trading-commences.html saved.
-    
+
 
 
 
@@ -6188,7 +6194,7 @@ with open("CSV_File/html_metadata.csv", "w", encoding="utf8") as fw:
     for file_name in os.listdir(path):
         if not file_name.endswith(".html"):
             continue
-        
+
         ####################################################
         # Column values starting from the second row
         ####################################################
@@ -6196,12 +6202,12 @@ with open("CSV_File/html_metadata.csv", "w", encoding="utf8") as fw:
             print(file_name)
             soup = BeautifulSoup(fr.read(), "html.parser")
             article_title = soup.find(name="article", attrs={"class": "article__body"}).find("h1").text.strip()
-            
+
             ##modified by Troy -- this area contains the date of the article
             article_date_time = soup.find("main",attrs={"article full-grid"}).find("time").text.strip()
-            
+
             article_text = soup.find(name="article", attrs={"class": "article__body"}).text.replace("\n", " ").replace("\t", " ").strip()
-            
+
             ####################################################
             # No author exception handling
             ####################################################
@@ -6209,19 +6215,19 @@ with open("CSV_File/html_metadata.csv", "w", encoding="utf8") as fw:
                 article_author = ""
             else:
                 article_author = soup.find(name="p", attrs={"class": "article__info__author"}).find("strong").text.strip()
-            
-            
+
+
             #####################################################################
             # Remove all possible tabs, as tab is being used as column delimiter
             #####################################################################
             article_title = article_title.replace("\t", "")
             article_date_time = article_date_time.replace("\t", "")
-            
+
             #article_date_time = get_past_date(article_days_ago)
-            
+
             article_author = article_author.replace("\t", "")
             article_text = article_text.replace("\t", "")
-            
+
             fw.write("{}\t{}\t{}\t{}\t{}\n".format(file_name, article_title, article_date_time, article_author, article_text))
 ```
 
