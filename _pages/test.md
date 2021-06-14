@@ -6,4 +6,4 @@ permalink: /test.html
 sitemap: false
 ---
 
-{% include mycomponent.html %}
+{% include BBchatbot.html %}
